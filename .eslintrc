@@ -19,6 +19,9 @@
             "devDependencies": true
           }
         ]
+      },
+      "globals": {
+        "expect": false
       }
     }
   ]
