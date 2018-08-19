@@ -2,8 +2,18 @@
   "name": "super-smash-bros-tier-list",
   "version": "1.0.0",
   "description": "🎮🎯 Tier List application for Super Smash Bros series",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "https://github.com/desko27/super-smash-bros-tier-list.git",
   "author": "desko27 <desko27@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel public/index.html"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "parcel": "^1.9.7",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
 }
