@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "airbnb",
+  "overrides": [
+    {
+      "files": [
+        "scripts/testSetup.js",
+        "*.test.js"
+      ],
+      "rules": {
+        "no-unused-expressions": "off",
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": true
+          }
+        ]
+      }
+    }
+  ]
+}

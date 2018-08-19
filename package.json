@@ -1,19 +1,33 @@
 {
-  "name": "super-smash-bros-tier-list",
+  "name": "smash-tier-list",
   "version": "1.0.0",
   "description": "🎮🎯 Tier List application for Super Smash Bros series",
   "main": "src/index.js",
-  "repository": "https://github.com/desko27/super-smash-bros-tier-list.git",
+  "repository": "https://github.com/desko27/smash-tier-list.git",
   "author": "desko27 <desko27@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel public/index.html"
+    "start": "parcel public/index.html",
+    "eslint": "eslint . --ext=\"js,jsx\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn eslint"
+    }
   },
   "dependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "parcel": "^1.9.7",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.0.0-rc.13",
+    "parcel": "^1.9.7"
   }
 }
