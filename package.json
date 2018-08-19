@@ -1,0 +1,9 @@
+{
+  "name": "super-smash-bros-tier-list",
+  "version": "1.0.0",
+  "description": "🎮🎯 Tier List application for Super Smash Bros series",
+  "main": "index.js",
+  "repository": "https://github.com/desko27/super-smash-bros-tier-list.git",
+  "author": "desko27 <desko27@gmail.com>",
+  "license": "MIT"
+}
