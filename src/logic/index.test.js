@@ -1,9 +1,10 @@
-import SmashTierList from '.';
+// import SmashTierList from '.';
 
 describe('SmashTierList', () => {
-  const smash = new SmashTierList();
+  // const smash = new SmashTierList();
 
-  it('should load just fine', () => {
-    expect(smash.loaded).to.be.true;
+  describe('has the following initial properties:', () => {
+    it('title');
+    it('games');
   });
 });
