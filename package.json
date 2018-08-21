@@ -9,7 +9,7 @@
   "scripts": {
     "start": "parcel public/index.html",
     "eslint": "eslint . --ext=\"js,jsx\"",
-    "test": "cross-env NODE_ENV=test nyc mocha -R nyan -r babel-core/register --file scripts/testSetup.js \"src/**/*.test.js\""
+    "test": "cross-env NODE_ENV=test nyc mocha -R nyan -r @babel/register --file scripts/testSetup.js \"src/**/*.test.js\""
   },
   "husky": {
     "hooks": {
@@ -21,8 +21,9 @@
     "react-dom": "^16.4.2"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
+    "@babel/preset-react": "^7.0.0-rc.1",
+    "@babel/register": "^7.0.0-rc.1",
     "chai": "^4.1.2",
     "cross-env": "^5.2.0",
     "eslint": "^5.4.0",
