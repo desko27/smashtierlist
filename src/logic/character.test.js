@@ -1,3 +1,4 @@
+import { ArgumentError } from '../errors';
 import Character from './character';
 
 describe('Character', () => {
@@ -5,7 +6,7 @@ describe('Character', () => {
   const validArguments = {
     name: 'Foo',
     tier: 'A',
-    image: 'http://example.com',
+    avatarUrl: 'https://via.placeholder.com/50x50',
   };
 
   describe('has the following initial properties:', () => {
@@ -17,44 +18,53 @@ describe('Character', () => {
       expect(character.allowedTiers).to.deep.equal(['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G']);
     });
   });
+
+  it('sets properties when passing valid arguments', () => {
+    character = new Character(validArguments);
+    expect(character.name).to.exist;
+    expect(character.tier).to.exist;
+    expect(character.avatarUrl).to.exist;
+  });
+
   describe('throws error at constructor if argument', () => {
     it('name is not a string', () => {
       expect(() => {
         character = new Character({ ...validArguments, name: 7 });
-      }).to.throw(Error).with.property('name', 'InvalidArgument');
+      }).to.throw(ArgumentError);
     });
     it('tier is not a string', () => {
       expect(() => {
         character = new Character({ ...validArguments, tier: 7 });
-      }).to.throw(Error).with.property('name', 'InvalidArgument');
+      }).to.throw(ArgumentError);
     });
     it('tier is not a string from allowedTiers', () => {
       expect(() => {
         character = new Character({ ...validArguments, tier: 'FOO' });
-      }).to.throw(Error).with.property('name', 'InvalidArgument');
+      }).to.throw(ArgumentError);
     });
-    it('image is not a link', () => {
+    it('avatarUrl is not a valid link', () => {
       expect(() => {
-        character = new Character({ ...validArguments, image: 'http://example.com' });
-      }).to.throw(Error).with.property('name', 'InvalidArgument');
+        character = new Character({ ...validArguments, avatarUrl: 'asd' });
+      }).to.throw(ArgumentError);
     });
   });
+
   describe('has getTierWeight method that', () => {
     it('returns the index of the character\'s tier on allowedTiers array', () => {
       character = new Character({ ...validArguments, tier: 'S' });
-      expect(character.tier.getTierWeight()).to.equal(0);
+      expect(character.getTierWeight()).to.equal(0);
       character = new Character({ ...validArguments, tier: 'A' });
-      expect(character.tier.getTierWeight()).to.equal(1);
+      expect(character.getTierWeight()).to.equal(1);
       character = new Character({ ...validArguments, tier: 'B' });
-      expect(character.tier.getTierWeight()).to.equal(2);
+      expect(character.getTierWeight()).to.equal(2);
       character = new Character({ ...validArguments, tier: 'C' });
-      expect(character.tier.getTierWeight()).to.equal(3);
+      expect(character.getTierWeight()).to.equal(3);
       character = new Character({ ...validArguments, tier: 'D' });
-      expect(character.tier.getTierWeight()).to.equal(4);
+      expect(character.getTierWeight()).to.equal(4);
       character = new Character({ ...validArguments, tier: 'E' });
-      expect(character.tier.getTierWeight()).to.equal(5);
+      expect(character.getTierWeight()).to.equal(5);
       character = new Character({ ...validArguments, tier: 'F' });
-      expect(character.tier.getTierWeight()).to.equal(6);
+      expect(character.getTierWeight()).to.equal(6);
       character = new Character({ ...validArguments, tier: 'G' });
     });
   });
