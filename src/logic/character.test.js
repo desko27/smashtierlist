@@ -26,6 +26,12 @@ describe('Character', () => {
     expect(character.avatarUrl).to.exist;
   });
 
+  it('sets optional properties when passing valid ones', () => {
+    character = new Character({ ...validArguments, allowedTiers: ['SS', 'S', 'A+', 'A', 'A-'] });
+    expect(character.allowedTiers).to.exist;
+    expect(character.allowedTiers).to.be.an('array').that.has.lengthOf(5);
+  });
+
   describe('throws error at constructor if argument', () => {
     it('name is not a string', () => {
       expect(() => {
@@ -45,6 +51,21 @@ describe('Character', () => {
     it('avatarUrl is not a valid link', () => {
       expect(() => {
         character = new Character({ ...validArguments, avatarUrl: 'asd' });
+      }).to.throw(ArgumentError);
+    });
+    it('allowedTiers is not an array of strings', () => {
+      expect(() => {
+        character = new Character({ ...validArguments, allowedTiers: 'lol' });
+      }).to.throw(ArgumentError);
+    });
+    it('allowedTiers is an empty array', () => {
+      expect(() => {
+        character = new Character({ ...validArguments, allowedTiers: [] });
+      }).to.throw(ArgumentError);
+    });
+    it('allowedTiers is an array that has some non-string element', () => {
+      expect(() => {
+        character = new Character({ ...validArguments, allowedTiers: ['S', 15, 'A'] });
       }).to.throw(ArgumentError);
     });
   });
