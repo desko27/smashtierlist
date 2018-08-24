@@ -1,8 +1,24 @@
 import { ArgumentError } from '../errors';
 
 export default class Character {
-  constructor({ name, tier, avatarUrl }) {
-    this.allowedTiers = ['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];
+  constructor({
+    name,
+    tier,
+    avatarUrl,
+    allowedTiers,
+  }) {
+    if (allowedTiers !== undefined) {
+      if (!Array.isArray(allowedTiers)) {
+        throw new ArgumentError('Argument `allowedTiers` should be an array!');
+      }
+      allowedTiers.forEach((allowedTier) => {
+        if (typeof allowedTier !== 'string') {
+          throw new ArgumentError('Argument `allowedTiers` elements should all be strings!');
+        }
+      });
+    }
+
+    this.allowedTiers = allowedTiers || ['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
     if (typeof name !== 'string') throw new ArgumentError('Argument `name` should be a string!');
     if (typeof tier !== 'string') throw new ArgumentError('Argument `tier` should be a string!');

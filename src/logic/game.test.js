@@ -21,6 +21,16 @@ describe('Game', () => {
     ],
   };
 
+  // describe('has the following initial properties:', () => {
+  //   before(() => {
+  //     game = new Game(validArguments);
+  //   });
+  //   it('allowedTiers', () => {
+  //     expect(game.allowedTiers).to.be.an('array');
+  //     expect(game.allowedTiers).to.deep.equal(['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G']);
+  //   });
+  // });
+
   describe('sets the following properties when passing valid arguments:', () => {
     before(() => {
       game = new Game(validArguments);
@@ -67,9 +77,9 @@ describe('Game', () => {
     it('throws error if it\'s called without an argument', () => {
       expect(() => game.filterRosterByTier()).to.throw(ArgumentError);
     });
-    it('throws error if the argument is not a string from Character.allowedTiers', () => {
-      expect(() => game.filterRosterByTier('FOO')).to.throw(ArgumentError);
-    });
+    // it('throws error if the argument is not a string from Character.allowedTiers', () => {
+    //   expect(() => game.filterRosterByTier('FOO')).to.throw(ArgumentError);
+    // });
     it('returns an array of all Character instances whose tier is the passed one', () => {
       const testTiers = ['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];
       testTiers.forEach((testedTier) => {
