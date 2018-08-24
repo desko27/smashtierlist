@@ -1,7 +1,7 @@
 import { ArgumentError } from '../../../errors';
 import { ADD_CHARACTER } from './action-types';
 
-const charactersReducer = (state = [], action) => {
+const charactersReducer = (state = [], action = {}) => {
   switch (action.type) {
     case ADD_CHARACTER: {
       const { character: { name, tier, avatarUrl } } = action;
