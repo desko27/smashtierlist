@@ -5,6 +5,9 @@
     "mocha": true
   },
   "extends": "airbnb",
+  "rules": {
+    "import/prefer-default-export": "off"
+  },
   "overrides": [
     {
       "files": [
