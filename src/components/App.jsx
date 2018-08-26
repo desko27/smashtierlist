@@ -1,12 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 // eslint-disable-next-line
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
+    // eslint-disable-next-line
+    const { dispatch, state } = this.props;
     return (
       <div className="App">
-        <h1>Super Smash Bros Tier List</h1>
+        <h1>{state.title}</h1>
       </div>
     );
   }
 }
+
+export default connect(
+  state => ({ state }),
+)(App);
