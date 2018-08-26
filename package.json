@@ -9,7 +9,9 @@
   "scripts": {
     "start": "parcel public/index.html",
     "eslint": "eslint . --ext=\"js,jsx\"",
-    "test": "cross-env NODE_ENV=test nyc mocha -R nyan -r @babel/register --file scripts/testSetup.js \"src/**/*.test.js\""
+    "mocha": "mocha -R nyan -r @babel/register --file scripts/testSetup.js \"src/**/*.test.js\"",
+    "test": "cross-env NODE_ENV=test nyc yarn mocha",
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text yarn mocha"
   },
   "husky": {
     "hooks": {

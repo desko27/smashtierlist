@@ -1,1 +1,2 @@
-export const ArgumentError = class extends Error {}; // eslint-disable-line
+export const StateError = class extends Error {};
+export const ActionError = class extends Error {};
