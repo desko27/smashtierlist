@@ -1,10 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { addGame } from '../redux/game/actions';
 import gamesData from '../games-data';
 
-// eslint-disable-next-line
+import Header from '../components/layout/Header';
+import Main from '../components/layout/Main';
+import Footer from '../components/layout/Footer';
+
+import GameSelect from '../components/GameSelect';
+
+import Game from './Game';
+
 class App extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
@@ -14,10 +22,21 @@ class App extends React.Component {
   }
 
   render() {
-    const { title } = this.props;
+    const { title, games } = this.props;
     return (
-      <div className="App">
-        <h1>{title}</h1>
+      <div>
+        <Header>
+          <h1>{title}</h1>
+          <GameSelect />
+        </Header>
+        <Main>
+          {games.map(game => <Game {...game} />)}
+        </Main>
+        <Footer>
+          Made with
+          <span role="img" aria-label="love">💙</span>
+          by desko27
+        </Footer>
       </div>
     );
   }
@@ -26,10 +45,12 @@ class App extends React.Component {
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  games: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(
   state => ({
     title: state.title,
+    games: state.games,
   }),
 )(App);
