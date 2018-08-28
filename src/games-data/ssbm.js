@@ -1,5 +1,6 @@
 export default {
   name: 'Super Smash Bros. Melee',
+  shortName: 'Melee',
   console: 'Game Cube',
   year: 2001,
   roster: [

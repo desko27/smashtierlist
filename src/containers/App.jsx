@@ -34,14 +34,17 @@ class App extends React.Component {
   }
 
   render() {
-    const { state } = this.props;
-    const currentGame = currentGameSelector(state);
+    const { title, currentGame } = this.props;
 
     return (
       <div>
         <Header>
-          <h1>{state.title}</h1>
-          <GameSelect onClickPrev={this.onClickPrev} onClickNext={this.onClickNext} />
+          <h1>{title}</h1>
+          <GameSelect
+            gameTitle={currentGame ? currentGame.shortName : ''}
+            onClickPrev={this.onClickPrev}
+            onClickNext={this.onClickNext}
+          />
         </Header>
         <Main>
           {currentGame ? <Game /> : ''}
@@ -57,10 +60,14 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  state: PropTypes.object.isRequired, // eslint-disable-line
   dispatch: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  currentGame: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default connect(
-  state => ({ state }),
+  state => ({
+    title: state.title,
+    currentGame: currentGameSelector(state),
+  }),
 )(App);

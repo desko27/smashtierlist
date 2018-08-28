@@ -14,20 +14,20 @@ class Game extends React.Component {
   }
 
   render() {
-    const { gameState } = this.props;
+    const { currentState } = this.props;
     return (
       <div>
         <Filter onChange={this.onFilterChange} />
-        <Roster charactersByTier={rosterGroupedByTierSelector(gameState)} />
+        <Roster charactersByTier={rosterGroupedByTierSelector(currentState)} />
       </div>
     );
   }
 }
 
 Game.propTypes = {
-  gameState: PropTypes.object.isRequired, // eslint-disable-line
+  currentState: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default connect(
-  state => ({ gameState: currentGameSelector(state) }),
+  state => ({ currentState: currentGameSelector(state) }),
 )(Game);
