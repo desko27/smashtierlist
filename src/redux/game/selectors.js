@@ -5,16 +5,16 @@ const rosterSelector = gameState => gameState.roster;
 export const rosterGroupedByTierSelector = createSelector(
   rosterSelector,
   roster => roster.reduce((groups, character) => {
+    const tierGroupIndex = groups.findIndex(gr => gr.tier === character.tier);
+
     // add new tierGroup if not present
-    const tierGroup = groups.find(gr => gr.tier === character.tier);
-    if (!tierGroup) {
+    if (tierGroupIndex === -1) {
       groups.push({ tier: character.tier, characters: [character] });
       return groups;
     }
 
     // add character to existing tierGroup
-    const i = groups.indexOf(tierGroup);
-    groups[i].characters.push(character);
+    groups[tierGroupIndex].characters.push(character);
     return groups;
   }, []),
 );
