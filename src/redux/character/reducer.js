@@ -24,6 +24,7 @@ const charactersReducer = (state = undefined, action = {}) => {
       // return the new character
       return { ...initialState, ...action.character };
     }
+
     default:
       return state === undefined ? initialState : state;
   }

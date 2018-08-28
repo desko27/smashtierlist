@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 
 import gamesData from '../games-data';
 import { addGame } from '../redux/game/actions';
+import { prevGame, nextGame } from '../redux/app/actions';
 import { currentGameSelector } from '../redux/app/selectors';
 
 import Header from '../components/layout/Header';
@@ -22,6 +23,16 @@ class App extends React.Component {
     gamesData.forEach((game, id) => dispatch(addGame({ id, ...game })));
   }
 
+  onClickPrev = () => {
+    const { dispatch } = this.props;
+    dispatch(prevGame());
+  }
+
+  onClickNext = () => {
+    const { dispatch } = this.props;
+    dispatch(nextGame());
+  }
+
   render() {
     const { state } = this.props;
     const currentGame = currentGameSelector(state);
@@ -30,7 +41,7 @@ class App extends React.Component {
       <div>
         <Header>
           <h1>{state.title}</h1>
-          <GameSelect />
+          <GameSelect onClickPrev={this.onClickPrev} onClickNext={this.onClickNext} />
         </Header>
         <Main>
           {currentGame ? <Game /> : ''}
