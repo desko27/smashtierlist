@@ -7,7 +7,9 @@ import { validCharacter } from '../character/reducer.test';
 const initCharacter = c => ({ ...characterInitialState, ...c });
 
 export const validGame = {
-  name: 'Fake Smash',
+  id: 0,
+  name: 'Smash Bros Fake',
+  shortName: 'Fake',
   roster: [
     { name: 'Sonic', tier: 'S', avatarUrl: 'https://via.placeholder.com/50x50' },
     { name: 'Shadow', tier: 'S', avatarUrl: 'https://via.placeholder.com/50x50' },

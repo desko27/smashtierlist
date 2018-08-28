@@ -4,8 +4,8 @@ import { ADD_GAME } from '../game/action-types';
 
 export const initialState = {
   title: 'Smash Tier List',
-  games: [],
   currentGameId: null,
+  games: [],
 };
 
 const appReducer = (state = initialState, action = {}) => {
@@ -21,16 +21,20 @@ const appReducer = (state = initialState, action = {}) => {
     }
 
     case PREV_GAME: {
+      const currentGameIndex = state.games.findIndex(g => g.id === state.currentGameId);
+      const prevGameIndex = (currentGameIndex - 1 + state.games.length) % state.games.length;
       return {
         ...state,
-        currentGameId: (state.currentGameId - 1 + state.games.length) % state.games.length,
+        currentGameId: state.games[prevGameIndex].id,
       };
     }
 
     case NEXT_GAME: {
+      const currentGameIndex = state.games.findIndex(g => g.id === state.currentGameId);
+      const nextGameIndex = (currentGameIndex + 1) % state.games.length;
       return {
         ...state,
-        currentGameId: (state.currentGameId + 1) % state.games.length,
+        currentGameId: state.games[nextGameIndex].id,
       };
     }
 
