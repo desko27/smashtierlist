@@ -12,6 +12,7 @@
     "eslint": "eslint . --ext=\"js,jsx\"",
     "mocha": "mocha -R nyan -r @babel/register --file scripts/testSetup.js \"src/**/*.test.js\"",
     "test": "cross-env NODE_ENV=test nyc yarn mocha",
+    "test:debug": "cross-env NODE_ENV=test yarn mocha --inspect-brk",
     "coverage": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text yarn mocha"
   },
   "husky": {
