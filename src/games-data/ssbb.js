@@ -1,5 +1,6 @@
 export default {
   name: 'Super Smash Bros. Brawl',
+  shortName: 'Brawl',
   console: 'Wii',
   year: 2008,
   roster: [

@@ -1,5 +1,6 @@
 export default {
   name: 'Super Smash Bros. 4',
+  shortName: 'U',
   console: 'Wii U',
   year: 2014,
   roster: [

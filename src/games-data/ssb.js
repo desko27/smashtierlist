@@ -1,5 +1,6 @@
 export default {
   name: 'Super Smash Bros.',
+  shortName: '64',
   console: 'Nintendo 64',
   year: 1999,
   roster: [
