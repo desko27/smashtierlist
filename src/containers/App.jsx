@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { PropTypes } from 'prop-types';
 
-import { addGame } from '../redux/game/actions';
 import gamesData from '../games-data';
+import { addGame } from '../redux/game/actions';
+import { currentGameSelector } from '../redux/app/selectors';
 
 import Header from '../components/layout/Header';
 import Main from '../components/layout/Main';
@@ -18,19 +19,21 @@ class App extends React.Component {
     const { dispatch } = this.props;
 
     // add all the games to the redux store
-    gamesData.forEach(game => dispatch(addGame(game)));
+    gamesData.forEach((game, id) => dispatch(addGame({ id, ...game })));
   }
 
   render() {
-    const { title, games } = this.props;
+    const { state } = this.props;
+    const currentGame = currentGameSelector(state);
+
     return (
       <div>
         <Header>
-          <h1>{title}</h1>
+          <h1>{state.title}</h1>
           <GameSelect />
         </Header>
         <Main>
-          {games.map(game => <Game {...game} />)}
+          {currentGame ? <Game /> : ''}
         </Main>
         <Footer>
           Made with
@@ -43,14 +46,10 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  state: PropTypes.object.isRequired, // eslint-disable-line
   dispatch: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  games: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(
-  state => ({
-    title: state.title,
-    games: state.games,
-  }),
+  state => ({ state }),
 )(App);

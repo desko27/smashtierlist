@@ -4,6 +4,7 @@ import { addCharacter } from '../character/actions';
 import characterReducer from '../character/reducer';
 
 export const initialState = {
+  id: undefined,
   name: undefined,
   roster: [],
 };
@@ -11,7 +12,7 @@ export const initialState = {
 const gameReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case ADD_GAME: {
-      const { game: { name, roster } } = action;
+      const { game: { id, name, roster } } = action;
 
       // run ADD_CHARACTER on this reducer for every roster entry
       const addedCharactersState = roster.reduce(
@@ -20,7 +21,7 @@ const gameReducer = (state = initialState, action = {}) => {
       );
 
       // then set the name of the game
-      return { ...addedCharactersState, name };
+      return { ...addedCharactersState, id, name };
     }
     case ADD_CHARACTER:
       return {

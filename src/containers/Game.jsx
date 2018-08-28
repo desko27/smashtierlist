@@ -1,17 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
+import { rosterGroupedByTierSelector } from '../redux/game/selectors';
+import { currentGameSelector } from '../redux/app/selectors';
+
 import Filter from '../components/Filter';
 import Roster from '../components/Roster';
 
-const Game = ({ roster }) => (
-  <div>
-    <Filter />
-    <Roster charactersByTier={[{ tier: 'S', characters: roster }]} />
-  </div>
-);
+class Game extends React.Component {
+  onFilterChange() { // eslint-disable-line
+    alert('Filter changed!');
+  }
+
+  render() {
+    const { gameState } = this.props;
+    return (
+      <div>
+        <Filter onChange={this.onFilterChange} />
+        <Roster charactersByTier={rosterGroupedByTierSelector(gameState)} />
+      </div>
+    );
+  }
+}
 
 Game.propTypes = {
-  roster: PropTypes.arrayOf(PropTypes.object).isRequired,
+  gameState: PropTypes.object.isRequired, // eslint-disable-line
 };
 
-export default Game;
+export default connect(
+  state => ({ gameState: currentGameSelector(state) }),
+)(Game);
