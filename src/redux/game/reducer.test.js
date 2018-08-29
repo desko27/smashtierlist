@@ -6,6 +6,12 @@ import { validCharacter } from '../character/reducer.test';
 
 const initCharacter = c => ({ ...characterInitialState, ...c });
 
+export const initGame = (game) => {
+  const initializedRoster = game.roster.map(c => initCharacter(c));
+  const initializedGame = { ...game, roster: initializedRoster };
+  return { ...initialState, ...initializedGame };
+};
+
 export const validGame = {
   id: 0,
   name: 'Smash Bros Fake',
@@ -64,18 +70,23 @@ describe('game reducer', () => {
 
   describe('has FILTER_BY_NAME handler that', () => {
     it('filters the entire roster by name when searching "li"', () => {
-      const filteredRoster = gameReducer(validGame, filterByName('li')).roster;
+      const filteredRoster = gameReducer(initGame(validGame), filterByName('li')).roster;
       expect(filteredRoster.filter(c => c.visible)).to.have.lengthOf(2);
     });
 
     it('filters the entire roster by name when searching "so"', () => {
-      const filteredRoster = gameReducer(validGame, filterByName('so')).roster;
+      const filteredRoster = gameReducer(initGame(validGame), filterByName('so')).roster;
       expect(filteredRoster.filter(c => c.visible)).to.have.lengthOf(1);
     });
 
     it('filters the entire roster by name when searching "Lu"', () => {
-      const filteredRoster = gameReducer(validGame, filterByName('Lu')).roster;
+      const filteredRoster = gameReducer(initGame(validGame), filterByName('Lu')).roster;
       expect(filteredRoster.filter(c => c.visible)).to.have.lengthOf(2);
+    });
+
+    it('filters all the elements when searching "not-existing"', () => {
+      const filteredRoster = gameReducer(initGame(validGame), filterByName('not-existing')).roster;
+      expect(filteredRoster.filter(c => c.visible)).to.have.lengthOf(0);
     });
   });
 });

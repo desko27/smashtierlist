@@ -1,6 +1,7 @@
 import { PREV_GAME, NEXT_GAME } from './action-types';
 import gameReducer from '../game/reducer';
-import { ADD_GAME } from '../game/action-types';
+import { ADD_GAME, FILTER_BY_NAME } from '../game/action-types';
+import { currentGameSelector } from './selectors';
 
 export const initialState = {
   title: 'Smash Tier List',
@@ -35,6 +36,14 @@ const appReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentGameId: state.games[nextGameIndex].id,
+      };
+    }
+
+    case FILTER_BY_NAME: {
+      const updatedGame = gameReducer(currentGameSelector(state), action);
+      return {
+        ...state,
+        games: state.games.map(g => (g.id === updatedGame.id ? updatedGame : g)),
       };
     }
 

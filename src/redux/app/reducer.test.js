@@ -1,16 +1,7 @@
 import appReducer, { initialState } from './reducer';
 import { prevGame, nextGame } from './actions';
-import { initialState as gameInitialState } from '../game/reducer';
-import { initialState as characterInitialState } from '../character/reducer';
-import { validGame } from '../game/reducer.test';
+import { validGame, initGame } from '../game/reducer.test';
 import { addGame } from '../game/actions';
-
-const initCharacter = c => ({ ...characterInitialState, ...c });
-const initGame = (game) => {
-  const initializedRoster = game.roster.map(c => initCharacter(c));
-  const initializedGame = { ...game, roster: initializedRoster };
-  return { ...gameInitialState, ...initializedGame };
-};
 
 const validApp = {
   title: 'Some App title',
