@@ -40,7 +40,7 @@ export default {
       avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
-      name: 'Captain Falco',
+      name: 'Captain Falcon',
       tier: 'B',
       avatarUrl: 'https://via.placeholder.com/50x50',
     },
