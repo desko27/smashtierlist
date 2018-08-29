@@ -7,6 +7,7 @@ export const initialState = {
   title: 'Smash Tier List',
   currentGameId: null,
   games: [],
+  currentFilter: '',
 };
 
 const appReducer = (state = initialState, action = {}) => {
@@ -40,10 +41,12 @@ const appReducer = (state = initialState, action = {}) => {
     }
 
     case FILTER_BY_NAME: {
+      const { search } = action;
       const updatedGame = gameReducer(currentGameSelector(state), action);
       return {
         ...state,
         games: state.games.map(g => (g.id === updatedGame.id ? updatedGame : g)),
+        currentFilter: search,
       };
     }
 
