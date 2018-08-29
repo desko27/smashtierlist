@@ -1,5 +1,5 @@
 import gameReducer, { initialState } from './reducer';
-import { addGame } from './actions';
+import { addGame, filterByName } from './actions';
 import { addCharacter } from '../character/actions';
 import { initialState as characterInitialState } from '../character/reducer';
 import { validCharacter } from '../character/reducer.test';
@@ -59,6 +59,23 @@ describe('game reducer', () => {
         ...validGame,
         roster: validGame.roster.concat(initCharacter(validCharacter)),
       });
+    });
+  });
+
+  describe('has FILTER_BY_NAME handler that', () => {
+    it('filters the entire roster by name when searching "li"', () => {
+      const filteredRoster = gameReducer(validGame, filterByName('li')).roster;
+      expect(filteredRoster.filter(c => c.visible)).to.have.lengthOf(2);
+    });
+
+    it('filters the entire roster by name when searching "so"', () => {
+      const filteredRoster = gameReducer(validGame, filterByName('so')).roster;
+      expect(filteredRoster.filter(c => c.visible)).to.have.lengthOf(1);
+    });
+
+    it('filters the entire roster by name when searching "Lu"', () => {
+      const filteredRoster = gameReducer(validGame, filterByName('Lu')).roster;
+      expect(filteredRoster.filter(c => c.visible)).to.have.lengthOf(2);
     });
   });
 });
