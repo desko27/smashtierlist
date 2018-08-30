@@ -12,7 +12,7 @@ const validGameState = {
 };
 
 describe('game selectors', () => {
-  describe('has rosterGroupedByTierSelector that', () => {
+  describe('has allRosterGroupedByTierSelector that', () => {
     it('returns an array of tier groups correctly distributed', () => {
       const tierGroups = allRosterGroupedByTierSelector(validGameState);
       expect(tierGroups).to.have.lengthOf(3);

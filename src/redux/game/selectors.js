@@ -25,4 +25,4 @@ export const rosterGroupedByTier = (onlyVisible = true) => theState => (
 );
 
 export const allRosterGroupedByTierSelector = rosterGroupedByTier(false);
-export const visibleRosterGroupedByTierSelector = rosterGroupedByTier(true);
+export const visibleRosterGroupedByTierSelector = rosterGroupedByTier();
