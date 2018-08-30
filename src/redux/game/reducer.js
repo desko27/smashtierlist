@@ -1,4 +1,4 @@
-import { ADD_GAME } from './action-types';
+import { ADD_GAME, FILTER_BY_NAME } from './action-types';
 import { ADD_CHARACTER } from '../character/action-types';
 import { addCharacter } from '../character/actions';
 import characterReducer from '../character/reducer';
@@ -41,6 +41,16 @@ const gameReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         roster: state.roster.concat(characterReducer(undefined, action)),
+      };
+    }
+
+    case FILTER_BY_NAME: {
+      const { search } = action;
+      return {
+        ...state,
+        roster: state.roster.map(
+          c => ({ ...c, visible: c.name.toLowerCase().includes(search.toLowerCase()) }),
+        ),
       };
     }
 

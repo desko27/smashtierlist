@@ -1,20 +1,13 @@
 import appReducer, { initialState } from './reducer';
 import { prevGame, nextGame } from './actions';
-import { initialState as gameInitialState } from '../game/reducer';
-import { initialState as characterInitialState } from '../character/reducer';
-import { validGame } from '../game/reducer.test';
-import { addGame } from '../game/actions';
-
-const initCharacter = c => ({ ...characterInitialState, ...c });
-const initGame = (game) => {
-  const initializedRoster = game.roster.map(c => initCharacter(c));
-  const initializedGame = { ...game, roster: initializedRoster };
-  return { ...gameInitialState, ...initializedGame };
-};
+import { validGame, initGame } from '../game/reducer.test';
+import { addGame, filterByName } from '../game/actions';
+import { currentGameSelector } from './selectors';
 
 const validApp = {
   title: 'Some App title',
-  currentGameId: 0,
+  currentGameId: 11,
+  currentFilter: '',
   games: [
     {
       id: 11,
@@ -103,6 +96,19 @@ describe('app reducer', () => {
       expect(
         appReducer({ ...validApp, currentGameId: theLastOne.id }, nextGame()),
       ).to.have.property('currentGameId').that.equals(theFirstOne.id);
+    });
+  });
+
+  describe('has FILTER_BY_NAME handler that', () => {
+    it('sets currentFilter to the search string', () => {
+      expect(
+        appReducer(validApp, filterByName('test')),
+      ).to.have.property('currentFilter').that.equals('test');
+    });
+    it('updates currentGame\'s roster according to the applied filter', () => {
+      const updatedState = appReducer({ ...validApp, currentGameId: 15 }, filterByName('on'));
+      const currentGame = currentGameSelector(updatedState);
+      expect(currentGame.roster.filter(c => c.visible)).to.have.lengthOf(2);
     });
   });
 });
