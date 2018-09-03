@@ -1,5 +1,4 @@
 import characterReducer, { initialState } from './reducer';
-import { StateError, ActionError } from '../../errors';
 import { addCharacter } from './actions';
 
 export const validCharacter = {
@@ -28,22 +27,22 @@ describe('character reducer', () => {
       it('state is not undefined', () => {
         expect(() => {
           characterReducer('UNEXPECTED STATE', addCharacter(validCharacter));
-        }).to.throw(StateError);
+        }).to.throw();
       });
       it('character.name is not a string', () => {
         expect(() => {
           characterReducer(undefined, addCharacter({ ...validCharacter, name: 7 }));
-        }).to.throw(ActionError);
+        }).to.throw();
       });
       it('character.tier is not a string', () => {
         expect(() => {
           characterReducer(undefined, addCharacter({ ...validCharacter, tier: 7 }));
-        }).to.throw(ActionError);
+        }).to.throw();
       });
       it('character.avatarUrl is not a valid link', () => {
         expect(() => {
           characterReducer(undefined, addCharacter({ ...validCharacter, avatarUrl: 'asd' }));
-        }).to.throw(ActionError);
+        }).to.throw();
       });
     });
   });

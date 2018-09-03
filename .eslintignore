@@ -1,6 +1,3 @@
-/build
+/dist
 /coverage
-/config
-/src/registerServiceWorker.js
-/scripts/start.js
-/scripts/build.js
+/tmp
