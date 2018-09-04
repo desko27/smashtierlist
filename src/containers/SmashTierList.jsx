@@ -16,11 +16,12 @@ import GameSelect from '../components/GameSelect';
 import Game from './Game';
 
 class SmashTierList extends React.Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
+  constructor(props) {
+    super();
+    const { dispatch } = props;
 
     // add all the games to the redux store
-    gamesData.forEach((game, id) => dispatch(addGame({ id, ...game })));
+    gamesData.forEach(game => dispatch(addGame(game)));
   }
 
   onClickPrev = () => {

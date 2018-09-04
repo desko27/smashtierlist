@@ -5,7 +5,7 @@ import TierGroup from './TierGroup';
 const Roster = ({ charactersByTier }) => (
   <div>
     {charactersByTier.map(({ tier, characters }) => (
-      <TierGroup tier={tier} characters={characters} />
+      <TierGroup key={tier} tier={tier} characters={characters} />
     ))}
   </div>
 );

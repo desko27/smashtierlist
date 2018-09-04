@@ -13,24 +13,54 @@ const validApp = {
       id: 11,
       name: 'Melee',
       roster: [
-        { name: 'Young Link', tier: 'B', avatarUrl: 'https://via.placeholder.com/50x50' },
-        { name: 'Roy', tier: 'S', avatarUrl: 'https://via.placeholder.com/50x50' },
+        {
+          id: 0,
+          name: 'Young Link',
+          tier: 'B',
+          avatarUrl: 'https://via.placeholder.com/50x50',
+        },
+        {
+          id: 1,
+          name: 'Roy',
+          tier: 'S',
+          avatarUrl: 'https://via.placeholder.com/50x50',
+        },
       ],
     },
     {
       id: 15,
       name: 'Brawl',
       roster: [
-        { name: 'Sonic', tier: 'A', avatarUrl: 'https://via.placeholder.com/50x50' },
-        { name: 'Dk. Kong', tier: 'C', avatarUrl: 'https://via.placeholder.com/50x50' },
-        { name: 'Marth', tier: 'A', avatarUrl: 'https://via.placeholder.com/50x50' },
+        {
+          id: 0,
+          name: 'Sonic',
+          tier: 'A',
+          avatarUrl: 'https://via.placeholder.com/50x50',
+        },
+        {
+          id: 1,
+          name: 'Dk. Kong',
+          tier: 'C',
+          avatarUrl: 'https://via.placeholder.com/50x50',
+        },
+        {
+          id: 2,
+          name: 'Marth',
+          tier: 'A',
+          avatarUrl: 'https://via.placeholder.com/50x50',
+        },
       ],
     },
     {
       id: 2,
       name: 'Fake',
       roster: [
-        { name: 'Sonic', tier: 'A', avatarUrl: 'https://via.placeholder.com/50x50' },
+        {
+          id: 0,
+          name: 'Sonic',
+          tier: 'A',
+          avatarUrl: 'https://via.placeholder.com/50x50',
+        },
       ],
     },
   ],

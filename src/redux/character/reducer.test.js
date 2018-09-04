@@ -2,6 +2,7 @@ import characterReducer, { initialState } from './reducer';
 import { addCharacter } from './actions';
 
 export const validCharacter = {
+  id: 0,
   name: 'Sonic',
   tier: 'S',
   avatarUrl: 'https://via.placeholder.com/50x50',
@@ -27,6 +28,11 @@ describe('character reducer', () => {
       it('state is not undefined', () => {
         expect(() => {
           characterReducer('UNEXPECTED STATE', addCharacter(validCharacter));
+        }).to.throw();
+      });
+      it('character.id is not a number', () => {
+        expect(() => {
+          characterReducer(undefined, addCharacter({ ...validCharacter, id: 'asd' }));
         }).to.throw();
       });
       it('character.name is not a string', () => {

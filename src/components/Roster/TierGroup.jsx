@@ -8,7 +8,7 @@ const TierGroup = ({ tier, characters }) => (
       Tier {tier}
     </header>
     <main>
-      {characters.map(c => <Character {...c} />)}
+      {characters.map(c => <Character key={c.id} {...c} />)}
     </main>
   </div>
 );
