@@ -50,7 +50,7 @@ class SmashTierList extends React.Component {
           />
         </Header>
         <Main>
-          {currentGame ? <Game /> : ''}
+          <Game />
         </Main>
         <Footer>
           Made with
