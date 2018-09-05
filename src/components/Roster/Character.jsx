@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper } from './Character.styles';
+import { Wrapper, ImgWrapper, Name } from './Character.styles';
 
 const Character = ({ name, slug, gameSlug }) => (
   <Wrapper>
-    <img src={`/img/chars/${gameSlug}/${slug}.png`} alt={name} />
-    <div>{name}</div>
+    <ImgWrapper>
+      <img src={`/img/chars/${gameSlug}/${slug}.png`} alt={name} />
+    </ImgWrapper>
+    <Name>{name}</Name>
   </Wrapper>
 );
 

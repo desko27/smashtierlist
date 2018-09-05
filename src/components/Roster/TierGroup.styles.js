@@ -1,19 +1,28 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  margin: 0 -10px; /* character's lateral margin correction */
+
+  background: rgba(0, 0, 0, 0.03);
+  padding: 20px;
+  border-radius: 25px;
+
   & + & {
-    margin-top: 60px;
+    margin-top: 40px;
   }
 `;
 
-const triangleSize = 30;
-const borderSize = 6;
+const triangleSize = 20;
+const borderSize = 4;
 
 export const Header = styled.h3`
-  max-width: 400px;
+  max-width: 150px;
   margin: 0 auto;
+  margin-bottom: 20px;
 
-  font-size: 36px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400 !important;
+  font-size: 1.8em;
   font-weight: 700;
 
   padding-bottom: 3px;

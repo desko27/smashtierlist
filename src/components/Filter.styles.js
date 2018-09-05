@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FilterWrapper = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 `;
 
 export const Input = styled.input`
@@ -9,11 +9,11 @@ export const Input = styled.input`
   margin: 0 auto;
   width: 100%;
   max-width: 500px;
-  border: 3px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 100px;
 
-  padding: 15px 20px;
-  font-size: 20px;
+  padding: 10px 22px;
+  font-size: 1em;
   font-weight: 300;
 
   :focus {
