@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Container } from './common.styles';
+import { MainWrapper } from './Main.styles';
+
 const Main = ({ children }) => (
-  <main>
-    {children}
-  </main>
+  <MainWrapper>
+    <Container>
+      {children}
+    </Container>
+  </MainWrapper>
 );
 
 Main.propTypes = {

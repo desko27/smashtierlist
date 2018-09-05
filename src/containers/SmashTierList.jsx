@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
+import { SmashTierListWrapper } from './SmashTierList.styles';
+
 import gamesData from '../games-data';
 import { addGame, filterByName } from '../redux/game/actions';
 import { prevGame, nextGame } from '../redux/app/actions';
@@ -40,7 +42,7 @@ class SmashTierList extends React.Component {
     const { title, currentGame } = this.props;
 
     return (
-      <div>
+      <SmashTierListWrapper>
         <Header>
           <h1>{title}</h1>
           <GameSelect
@@ -57,7 +59,7 @@ class SmashTierList extends React.Component {
           <span role="img" aria-label="love">💙</span>
           by desko27
         </Footer>
-      </div>
+      </SmashTierListWrapper>
     );
   }
 }
