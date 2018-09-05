@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Character = ({ name, avatarUrl }) => (
+const Character = ({ name, slug, gameSlug }) => (
   <div>
-    <img src={avatarUrl} alt={name} />
+    <img src={`/img/chars/${gameSlug}/${slug}.png`} alt={name} />
     <div>{name}</div>
   </div>
 );
 
 Character.propTypes = {
   name: PropTypes.string.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  gameSlug: PropTypes.string.isRequired,
 };
 
 export default Character;

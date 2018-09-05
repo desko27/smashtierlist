@@ -3,9 +3,9 @@ import { addCharacter } from './actions';
 
 export const validCharacter = {
   id: 0,
+  slug: 'sonic',
   name: 'Sonic',
   tier: 'S',
-  avatarUrl: 'https://via.placeholder.com/50x50',
 };
 
 
@@ -45,9 +45,9 @@ describe('character reducer', () => {
           characterReducer(undefined, addCharacter({ ...validCharacter, tier: 7 }));
         }).to.throw();
       });
-      it('character.avatarUrl is not a valid link', () => {
+      it('character.slug is not a string', () => {
         expect(() => {
-          characterReducer(undefined, addCharacter({ ...validCharacter, avatarUrl: 'asd' }));
+          characterReducer(undefined, addCharacter({ ...validCharacter, slug: 7 }));
         }).to.throw();
       });
     });

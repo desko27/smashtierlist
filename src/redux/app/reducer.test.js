@@ -15,15 +15,15 @@ const validApp = {
       roster: [
         {
           id: 0,
+          slug: 'young-link',
           name: 'Young Link',
           tier: 'B',
-          avatarUrl: 'https://via.placeholder.com/50x50',
         },
         {
           id: 1,
+          slug: 'roy',
           name: 'Roy',
           tier: 'S',
-          avatarUrl: 'https://via.placeholder.com/50x50',
         },
       ],
     },
@@ -33,21 +33,21 @@ const validApp = {
       roster: [
         {
           id: 0,
+          slug: 'sonic',
           name: 'Sonic',
           tier: 'A',
-          avatarUrl: 'https://via.placeholder.com/50x50',
         },
         {
           id: 1,
+          slug: 'dk-kong',
           name: 'Dk. Kong',
           tier: 'C',
-          avatarUrl: 'https://via.placeholder.com/50x50',
         },
         {
           id: 2,
+          slug: 'marth',
           name: 'Marth',
           tier: 'A',
-          avatarUrl: 'https://via.placeholder.com/50x50',
         },
       ],
     },
@@ -57,9 +57,9 @@ const validApp = {
       roster: [
         {
           id: 0,
+          slug: 'sonic',
           name: 'Sonic',
           tier: 'A',
-          avatarUrl: 'https://via.placeholder.com/50x50',
         },
       ],
     },

@@ -1,68 +1,69 @@
 export default {
+  slug: 'ssb',
   name: 'Super Smash Bros.',
   shortName: '64',
   console: 'Nintendo 64',
   year: 1999,
   roster: [
     {
+      slug: 'pikachu',
       name: 'Pikachu',
       tier: 'S',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'kirby',
       name: 'Kirby',
       tier: 'S',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'captain-falcon',
       name: 'Captain Falcon',
       tier: 'A',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'fox',
       name: 'Fox',
       tier: 'A',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'yoshi',
       name: 'Yoshi',
       tier: 'A',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'jigglypuff',
       name: 'Jigglypuff',
       tier: 'B',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'mario',
       name: 'Mario',
       tier: 'B',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'samus',
       name: 'Samus',
       tier: 'C',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'donkey-kong',
       name: 'Donkey Kong',
       tier: 'C',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'ness',
       name: 'Ness',
       tier: 'C',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'link',
       name: 'Link',
       tier: 'C',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
     {
+      slug: 'luigi',
       name: 'Luigi',
       tier: 'C',
-      avatarUrl: 'https://via.placeholder.com/50x50',
     },
   ],
 };

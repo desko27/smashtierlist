@@ -20,7 +20,10 @@ class Game extends React.Component {
     return (
       <div>
         <Filter onChange={this.onFilterChange} />
-        <Roster charactersByTier={visibleRosterGroupedByTierSelector(currentGame)} />
+        <Roster
+          gameSlug={currentGame.slug}
+          charactersByTier={visibleRosterGroupedByTierSelector(currentGame)}
+        />
       </div>
     );
   }
