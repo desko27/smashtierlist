@@ -85,11 +85,12 @@ describe('app reducer', () => {
         games: [initGame(validGame)],
       });
     });
-    it('adds a new game when app has some games already', () => {
+    it('adds a new game when app has some games already and currentGameId is set to it', () => {
       expect(
         appReducer(validApp, addGame(validGame)),
       ).to.deep.equal({
         ...validApp,
+        currentGameId: 0,
         games: validApp.games.concat(initGame(validGame)),
       });
     });

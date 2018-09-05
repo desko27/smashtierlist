@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Wrapper } from './Character.styles';
+
 const Character = ({ name, slug, gameSlug }) => (
-  <div>
+  <Wrapper>
     <img src={`/img/chars/${gameSlug}/${slug}.png`} alt={name} />
     <div>{name}</div>
-  </div>
+  </Wrapper>
 );
 
 Character.propTypes = {

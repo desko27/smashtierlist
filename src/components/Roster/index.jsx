@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TierGroup from './TierGroup';
 
+import { RosterWrapper } from './styles';
+
 const Roster = ({ gameSlug, charactersByTier }) => (
-  <div>
+  <RosterWrapper>
     {charactersByTier.map(({ tier, characters }) => (
       <TierGroup key={tier} gameSlug={gameSlug} tier={tier} characters={characters} />
     ))}
-  </div>
+  </RosterWrapper>
 );
 
 Roster.propTypes = {

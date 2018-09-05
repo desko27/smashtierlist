@@ -2,15 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Character from './Character';
 
+import { Wrapper, Header, Main } from './TierGroup.styles';
+
 const TierGroup = ({ gameSlug, tier, characters }) => (
-  <div>
-    <header>
+  <Wrapper>
+    <Header>
       Tier {tier}
-    </header>
-    <main>
+    </Header>
+    <Main>
       {characters.map(c => <Character key={c.id} gameSlug={gameSlug} {...c} />)}
-    </main>
-  </div>
+    </Main>
+  </Wrapper>
 );
 
 TierGroup.propTypes = {

@@ -18,7 +18,7 @@ const appReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         games: state.games.concat(gameReducer(undefined, action)),
-        currentGameId: state.currentGameId === null ? newGame.id : state.currentGameId,
+        currentGameId: newGame.id,
       };
     }
 
