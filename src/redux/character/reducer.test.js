@@ -2,9 +2,11 @@ import characterReducer, { initialState } from './reducer';
 import { addCharacter } from './actions';
 
 export const validCharacter = {
+  id: 0,
+  slug: 'sonic',
   name: 'Sonic',
+  color: '#0000ff',
   tier: 'S',
-  avatarUrl: 'https://via.placeholder.com/50x50',
 };
 
 
@@ -29,19 +31,29 @@ describe('character reducer', () => {
           characterReducer('UNEXPECTED STATE', addCharacter(validCharacter));
         }).to.throw();
       });
+      it('character.id is not a number', () => {
+        expect(() => {
+          characterReducer(undefined, addCharacter({ ...validCharacter, id: 'asd' }));
+        }).to.throw();
+      });
+      it('character.slug is not a string', () => {
+        expect(() => {
+          characterReducer(undefined, addCharacter({ ...validCharacter, slug: 7 }));
+        }).to.throw();
+      });
       it('character.name is not a string', () => {
         expect(() => {
           characterReducer(undefined, addCharacter({ ...validCharacter, name: 7 }));
         }).to.throw();
       });
+      it('character.color is not a valid hex color string', () => {
+        expect(() => {
+          characterReducer(undefined, addCharacter({ ...validCharacter, color: 'asd' }));
+        }).to.throw();
+      });
       it('character.tier is not a string', () => {
         expect(() => {
           characterReducer(undefined, addCharacter({ ...validCharacter, tier: 7 }));
-        }).to.throw();
-      });
-      it('character.avatarUrl is not a valid link', () => {
-        expect(() => {
-          characterReducer(undefined, addCharacter({ ...validCharacter, avatarUrl: 'asd' }));
         }).to.throw();
       });
     });

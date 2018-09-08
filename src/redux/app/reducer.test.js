@@ -13,24 +13,60 @@ const validApp = {
       id: 11,
       name: 'Melee',
       roster: [
-        { name: 'Young Link', tier: 'B', avatarUrl: 'https://via.placeholder.com/50x50' },
-        { name: 'Roy', tier: 'S', avatarUrl: 'https://via.placeholder.com/50x50' },
+        {
+          id: 0,
+          slug: 'young-link',
+          name: 'Young Link',
+          color: '#ffffff',
+          tier: 'B',
+        },
+        {
+          id: 1,
+          slug: 'roy',
+          name: 'Roy',
+          color: '#ffffff',
+          tier: 'S',
+        },
       ],
     },
     {
       id: 15,
       name: 'Brawl',
       roster: [
-        { name: 'Sonic', tier: 'A', avatarUrl: 'https://via.placeholder.com/50x50' },
-        { name: 'Dk. Kong', tier: 'C', avatarUrl: 'https://via.placeholder.com/50x50' },
-        { name: 'Marth', tier: 'A', avatarUrl: 'https://via.placeholder.com/50x50' },
+        {
+          id: 0,
+          slug: 'sonic',
+          name: 'Sonic',
+          color: '#ffffff',
+          tier: 'A',
+        },
+        {
+          id: 1,
+          slug: 'dk-kong',
+          name: 'Dk. Kong',
+          color: '#ffffff',
+          tier: 'C',
+        },
+        {
+          id: 2,
+          slug: 'marth',
+          name: 'Marth',
+          color: '#ffffff',
+          tier: 'A',
+        },
       ],
     },
     {
       id: 2,
       name: 'Fake',
       roster: [
-        { name: 'Sonic', tier: 'A', avatarUrl: 'https://via.placeholder.com/50x50' },
+        {
+          id: 0,
+          slug: 'sonic',
+          name: 'Sonic',
+          color: '#ffffff',
+          tier: 'A',
+        },
       ],
     },
   ],
@@ -55,11 +91,12 @@ describe('app reducer', () => {
         games: [initGame(validGame)],
       });
     });
-    it('adds a new game when app has some games already', () => {
+    it('adds a new game when app has some games already and currentGameId is set to it', () => {
       expect(
         appReducer(validApp, addGame(validGame)),
       ).to.deep.equal({
         ...validApp,
+        currentGameId: 0,
         games: validApp.games.concat(initGame(validGame)),
       });
     });

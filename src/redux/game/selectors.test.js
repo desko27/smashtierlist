@@ -1,5 +1,6 @@
 import { allRosterGroupedByTierSelector, visibleRosterGroupedByTierSelector } from './selectors';
 
+// *incomplete version of a valid game state
 const validGameState = {
   roster: [
     { name: 'Pikachu', tier: 'S', visible: true },

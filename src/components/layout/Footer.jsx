@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Container } from './common.styles';
+import { FooterWrapper } from './Footer.styles';
+
 const Footer = ({ children }) => (
-  <footer>
-    {children}
-  </footer>
+  <FooterWrapper>
+    <Container>
+      {children}
+    </Container>
+  </FooterWrapper>
 );
 
 Footer.propTypes = {

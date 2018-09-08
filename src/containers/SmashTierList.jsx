@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
+import { SmashTierListWrapper } from './SmashTierList.styles';
+
 import gamesData from '../games-data';
 import { addGame, filterByName } from '../redux/game/actions';
 import { prevGame, nextGame } from '../redux/app/actions';
@@ -16,11 +18,12 @@ import GameSelect from '../components/GameSelect';
 import Game from './Game';
 
 class SmashTierList extends React.Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
+  constructor(props) {
+    super();
+    const { dispatch } = props;
 
     // add all the games to the redux store
-    gamesData.forEach((game, id) => dispatch(addGame({ id, ...game })));
+    gamesData.forEach(game => dispatch(addGame(game)));
   }
 
   onClickPrev = () => {
@@ -39,7 +42,7 @@ class SmashTierList extends React.Component {
     const { title, currentGame } = this.props;
 
     return (
-      <div>
+      <SmashTierListWrapper>
         <Header>
           <h1>{title}</h1>
           <GameSelect
@@ -49,14 +52,14 @@ class SmashTierList extends React.Component {
           />
         </Header>
         <Main>
-          {currentGame ? <Game /> : ''}
+          <Game />
         </Main>
         <Footer>
           Made with
           <span role="img" aria-label="love">💙</span>
           by desko27
         </Footer>
-      </div>
+      </SmashTierListWrapper>
     );
   }
 }

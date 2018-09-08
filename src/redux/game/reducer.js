@@ -16,6 +16,7 @@ const gameReducer = (state = initialState, action = {}) => {
       const {
         game: {
           id,
+          slug,
           name,
           shortName,
           roster,
@@ -32,6 +33,7 @@ const gameReducer = (state = initialState, action = {}) => {
       return {
         ...addedCharactersState,
         id,
+        slug,
         name,
         shortName,
       };
