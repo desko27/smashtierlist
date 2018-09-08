@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Wrapper } from './GameSelect.styles';
+
 const GameSelect = ({ gameTitle, onClickPrev, onClickNext }) => (
-  <div>
-    <div>Super Smash Bros.</div>
-    <div>
-      <button onClick={onClickPrev} onKeyDown={onClickPrev} type="button">prev</button>
-      <div>{gameTitle}</div>
-      <button onClick={onClickNext} onKeyDown={onClickNext} type="button">next</button>
-    </div>
-  </div>
+  <Wrapper>
+    <button onClick={onClickPrev} onKeyDown={onClickPrev} type="button">prev</button>
+    <div>{gameTitle}</div>
+    <button onClick={onClickNext} onKeyDown={onClickNext} type="button">next</button>
+  </Wrapper>
 );
 
 GameSelect.propTypes = {

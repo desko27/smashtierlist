@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
-import { SmashTierListWrapper } from './SmashTierList.styles';
+import { Wrapper } from './SmashTierList.styles';
 
 import gamesData from '../games-data';
 import { addGame, filterByName } from '../redux/game/actions';
@@ -13,6 +13,7 @@ import Header from '../components/layout/Header';
 import Main from '../components/layout/Main';
 import Footer from '../components/layout/Footer';
 
+import SuperTitle from '../components/SuperTitle';
 import GameSelect from '../components/GameSelect';
 
 import Game from './Game';
@@ -39,12 +40,12 @@ class SmashTierList extends React.Component {
   }
 
   render() {
-    const { title, currentGame } = this.props;
+    const { currentGame } = this.props;
 
     return (
-      <SmashTierListWrapper>
+      <Wrapper>
         <Header>
-          <h1>{title}</h1>
+          <SuperTitle>Super Smash Bros.</SuperTitle>
           <GameSelect
             gameTitle={currentGame ? currentGame.shortName : ''}
             onClickPrev={this.onClickPrev}
@@ -59,14 +60,13 @@ class SmashTierList extends React.Component {
           <span role="img" aria-label="love">💙</span>
           by desko27
         </Footer>
-      </SmashTierListWrapper>
+      </Wrapper>
     );
   }
 }
 
 SmashTierList.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
   currentGame: PropTypes.object.isRequired, // eslint-disable-line
   currentFilter: PropTypes.string.isRequired,
 };

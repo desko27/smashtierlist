@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from './common.styles';
-import { HeaderWrapper } from './Header.styles';
+import { Wrapper } from './Header.styles';
 
 const Header = ({ children }) => (
-  <HeaderWrapper>
-    <Container>
-      {children}
-    </Container>
-  </HeaderWrapper>
+  <Wrapper>
+    {children}
+  </Wrapper>
 );
 
 Header.propTypes = {

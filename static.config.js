@@ -18,7 +18,7 @@ export default {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
-        <link href="https://fonts.googleapis.com/css?family=Domine:400,700|Ubuntu:300,400,500,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
       </Head>
       <Body>{children}</Body>
     </Html>

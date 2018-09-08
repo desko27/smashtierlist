@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-export const HeaderWrapper = styled.header`
-  padding: 60px 0;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
+export const Wrapper = styled.header`
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .5));
+  position: sticky;
+  top: 0;
+  padding: 30px;
+  display: flex;
 `;
