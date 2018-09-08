@@ -24,7 +24,9 @@ export const InnerWrapper = styled.div`
 
   .title {
     margin: 0;
-    font-size: 16px;
+    font-size: 1em;
+    font-weight: 900;
+    letter-spacing: 1px;
   }
 `;
 

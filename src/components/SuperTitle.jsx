@@ -6,7 +6,7 @@ import { Wrapper, InnerWrapper, Logo } from './SuperTitle.styles';
 const SuperTitle = ({ children }) => (
   <Wrapper>
     <InnerWrapper>
-      <Logo src="/img/smash.svg" alt="Smash Logo" />
+      <Logo src="/svg/smash.svg" alt="Smash Logo" />
       <h1 className="title">{children}</h1>
     </InnerWrapper>
   </Wrapper>
