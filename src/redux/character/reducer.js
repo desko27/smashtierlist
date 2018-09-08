@@ -4,6 +4,7 @@ export const initialState = {
   id: undefined,
   slug: undefined,
   name: undefined,
+  color: undefined,
   tier: undefined,
   visible: true,
 };
@@ -17,6 +18,7 @@ const charactersReducer = (state = undefined, action = {}) => {
           id,
           slug,
           name,
+          color,
           tier,
         },
       } = action;
@@ -24,6 +26,9 @@ const charactersReducer = (state = undefined, action = {}) => {
       // validate character properties
       if (typeof id !== 'number') throw new Error('`character.id` should be a number!');
       if (typeof name !== 'string') throw new Error('`character.name` should be a string!');
+      if (typeof color !== 'string' || !color.match(/^#([0-9a-f]{3}){1,2}$/i)) {
+        throw new Error('`character.color` should be a valid hex color string!');
+      }
       if (typeof tier !== 'string') throw new Error('`character.tier` should be a string!');
       if (typeof slug !== 'string') throw new Error('`character.slug` should be a string!');
 

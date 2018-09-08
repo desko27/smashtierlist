@@ -5,6 +5,7 @@ export const validCharacter = {
   id: 0,
   slug: 'sonic',
   name: 'Sonic',
+  color: '#0000ff',
   tier: 'S',
 };
 
@@ -35,19 +36,24 @@ describe('character reducer', () => {
           characterReducer(undefined, addCharacter({ ...validCharacter, id: 'asd' }));
         }).to.throw();
       });
+      it('character.slug is not a string', () => {
+        expect(() => {
+          characterReducer(undefined, addCharacter({ ...validCharacter, slug: 7 }));
+        }).to.throw();
+      });
       it('character.name is not a string', () => {
         expect(() => {
           characterReducer(undefined, addCharacter({ ...validCharacter, name: 7 }));
         }).to.throw();
       });
+      it('character.color is not a valid hex color string', () => {
+        expect(() => {
+          characterReducer(undefined, addCharacter({ ...validCharacter, color: 'asd' }));
+        }).to.throw();
+      });
       it('character.tier is not a string', () => {
         expect(() => {
           characterReducer(undefined, addCharacter({ ...validCharacter, tier: 7 }));
-        }).to.throw();
-      });
-      it('character.slug is not a string', () => {
-        expect(() => {
-          characterReducer(undefined, addCharacter({ ...validCharacter, slug: 7 }));
         }).to.throw();
       });
     });
