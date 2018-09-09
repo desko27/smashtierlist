@@ -1,7 +1,7 @@
 export default {
   slug: 'ssb4',
   name: 'Super Smash Bros. 4',
-  shortName: 'U',
+  shortName: 'SSB4',
   console: 'Wii U',
   year: 2014,
   roster: [

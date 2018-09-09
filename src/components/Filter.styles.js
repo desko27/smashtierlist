@@ -1,18 +1,34 @@
 import styled from 'styled-components';
 
-export const FilterWrapper = styled.div`
-  margin-bottom: 60px;
+import { theme } from './layout/Header.styles';
+
+const { height } = theme;
+const color = '#e0dddd';
+
+export const Wrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+
+  :before {
+    content: '';
+    border-right: ${height}px solid ${color};
+    border-top: ${height}px solid transparent;
+  }
 `;
 
 export const Input = styled.input`
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 500px;
-  border: 2px solid #ccc;
-  border-radius: 100px;
+  height: ${height}px;
 
-  padding: 10px 22px;
+  display: block;
+  border: none;
+  width: 100%;
+  max-width: 260px;
+  background: ${color};
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+
+  padding-left: 8px;
+
   font-size: 1em;
   font-weight: 300;
 
@@ -21,6 +37,6 @@ export const Input = styled.input`
   }
 
   ::placeholder {
-    color: #ccc;
+    color: #9b9b9b;
   }
 `;

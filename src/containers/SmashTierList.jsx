@@ -10,11 +10,13 @@ import { prevGame, nextGame } from '../redux/app/actions';
 import { currentGameSelector } from '../redux/app/selectors';
 
 import Header from '../components/layout/Header';
+import { InnerHeaderSecondLine } from '../components/layout/Header.styles';
 import Main from '../components/layout/Main';
 import Footer from '../components/layout/Footer';
 
 import SuperTitle from '../components/SuperTitle';
 import GameSelect from '../components/GameSelect';
+import Filter from '../components/Filter';
 
 import Game from './Game';
 
@@ -25,6 +27,11 @@ class SmashTierList extends React.Component {
 
     // add all the games to the redux store
     gamesData.forEach(game => dispatch(addGame(game)));
+  }
+
+  onFilterChange = (e) => {
+    const { dispatch } = this.props;
+    dispatch(filterByName(e.target.value));
   }
 
   onClickPrev = () => {
@@ -51,6 +58,9 @@ class SmashTierList extends React.Component {
             onClickPrev={this.onClickPrev}
             onClickNext={this.onClickNext}
           />
+          <InnerHeaderSecondLine>
+            <Filter onChange={this.onFilterChange} />
+          </InnerHeaderSecondLine>
         </Header>
         <Main>
           <Game />
@@ -67,7 +77,7 @@ class SmashTierList extends React.Component {
 
 SmashTierList.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  currentGame: PropTypes.object.isRequired, // eslint-disable-line
+  currentGame: PropTypes.object.isRequired,
   currentFilter: PropTypes.string.isRequired,
 };
 

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
+import { theme } from './layout/Header.styles';
+
+const { height } = theme;
 const color = '#b10016';
-const height = 35;
 
 export const Wrapper = styled.div`
   display: flex;

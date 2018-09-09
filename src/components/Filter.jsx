@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FilterWrapper, Input } from './Filter.styles';
+import { Wrapper, Input } from './Filter.styles';
 
-const Filter = ({ onChange, value }) => (
-  <FilterWrapper>
-    <Input type="text" onChange={onChange} value={value} placeholder="Filter..." />
-  </FilterWrapper>
+const Filter = ({ onChange }) => (
+  <Wrapper>
+    <Input type="text" onChange={onChange} placeholder="Filter characters..." />
+  </Wrapper>
 );
 
 Filter.propTypes = {
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
 };
 
 export default Filter;
