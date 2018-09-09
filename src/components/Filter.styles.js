@@ -3,17 +3,36 @@ import styled from 'styled-components';
 import { theme } from './layout/Header.styles';
 
 const { height } = theme;
-const color = '#e0dddd';
+const backgroundColor = '#e0dddd';
+const color = '#9b9b9b';
 
 export const Wrapper = styled.div`
   flex-grow: 1;
+`;
+
+export const InputWrapper = styled.div`
   display: flex;
+
+  max-width: 260px;
+  position: relative;
 
   :before {
     content: '';
-    border-right: ${height}px solid ${color};
+    border-right: ${height}px solid ${backgroundColor};
     border-top: ${height}px solid transparent;
   }
+`;
+
+export const IconButtons = styled.div`
+  position: absolute;
+  right: 17px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+
+  color: ${color};
+  font-size: 18px;
 `;
 
 export const Input = styled.input`
@@ -22,8 +41,7 @@ export const Input = styled.input`
   display: block;
   border: none;
   width: 100%;
-  max-width: 260px;
-  background: ${color};
+  background: ${backgroundColor};
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
 
@@ -37,6 +55,6 @@ export const Input = styled.input`
   }
 
   ::placeholder {
-    color: #9b9b9b;
+    color: ${color};
   }
 `;
