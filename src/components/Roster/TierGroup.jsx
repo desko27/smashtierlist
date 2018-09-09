@@ -7,7 +7,7 @@ import { Wrapper, Header, Main } from './TierGroup.styles';
 const TierGroup = ({ gameSlug, tier, characters }) => (
   <Wrapper>
     <Header>
-      Tier {tier}
+      {tier}
     </Header>
     <Main>
       {characters.map(c => <Character key={c.id} gameSlug={gameSlug} {...c} />)}

@@ -1,46 +1,46 @@
 import styled from 'styled-components';
 
+import media from '../../media';
+
 export const Wrapper = styled.div`
-  margin: 0 -10px; /* character's lateral margin correction */
+  display: flex;
+  justify-content: stretch;
 
-  background: rgba(0, 0, 0, 0.03);
-  padding: 20px;
-  border-radius: 25px;
+  margin-bottom: 30px;
 
-  & + & {
-    margin-top: 40px;
-  }
+  ${media.lessThan('mobile')`
+    justify-content: space-between;
+  `}
 `;
 
-const triangleSize = 20;
-const borderSize = 4;
-
 export const Header = styled.h3`
-  max-width: 150px;
-  margin: 0 auto;
-  margin-bottom: 20px;
+  margin: 0;
+  border-left: 8px solid #fff;
+  padding: 0 4px;
+  padding-top: 4px;
+  color: #fff;
 
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: 400 !important;
-  font-size: 1.8em;
-  font-weight: 700;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
 
-  padding-bottom: 3px;
-  border-bottom: ${borderSize}px solid #000;
+  font-size: 36px;
+  font-weight: 900;
 
-  position: relative;
-  :after {
-    position: absolute;
-    right: -${borderSize}px;
-    bottom: -${borderSize}px;
-    content: '';
-    border-left: ${triangleSize}px solid #000;
-    border-top: ${triangleSize}px solid transparent;
-  }
+  margin-right: 30px;
+
+  ${media.lessThan('mobile')`
+    margin-right: 0;
+  `}
 `;
 
 export const Main = styled.div`
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+
+  margin: 0 -15px;
+  > * { margin: 0 15px; }
+
+  ${media.lessThan('mobile')`
+    justify-content: flex-end;
+  `}
 `;
