@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import media from '../media';
 import { theme } from './layout/Header.styles';
 
 const { height } = theme;
@@ -21,6 +22,14 @@ export const InputWrapper = styled.div`
     border-right: ${height}px solid ${backgroundColor};
     border-top: ${height}px solid transparent;
   }
+
+  ${media.lessThan('mobile')`
+    max-width: 360px;
+
+    :before {
+      display: none;
+    }
+  `}
 `;
 
 export const IconButtons = styled.div`
@@ -57,4 +66,9 @@ export const Input = styled.input`
   ::placeholder {
     color: ${color};
   }
+
+  ${media.lessThan('mobile')`
+    border-radius: 100px;
+    padding-left: 19px;
+  `}
 `;

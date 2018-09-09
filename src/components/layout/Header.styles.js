@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import media from '../../media';
+
 export const theme = {
   height: 35,
 };
@@ -10,9 +12,18 @@ export const Wrapper = styled.header`
   top: 0;
   padding: 30px;
   display: flex;
+
+  ${media.lessThan('mobile')`
+    flex-wrap: wrap;
+  `}
 `;
 
 export const InnerHeaderSecondLine = styled.div`
   flex-grow: 1;
   display: flex;
+
+  ${media.lessThan('mobile')`
+    flex-basis: 100%;
+    margin-top: 30px;
+  `}
 `;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import media from '../media';
 import { theme } from './layout/Header.styles';
 
 const { height } = theme;
@@ -13,10 +14,15 @@ export const Wrapper = styled.div`
     border-left: ${height}px solid ${color};
     border-bottom: ${height}px solid transparent;
   }
+
+  ${media.lessThan('mobile')`
+    flex-grow: 1;
+  `}
 `;
 
 export const InnerWrapper = styled.div`
   height: ${height}px;
+  flex-grow: 1;
   display: flex;
   align-items: center;
   background: ${color};
@@ -28,7 +34,6 @@ export const InnerWrapper = styled.div`
     margin: 0;
     font-size: 1em;
     font-weight: 900;
-    letter-spacing: 1px;
   }
 `;
 

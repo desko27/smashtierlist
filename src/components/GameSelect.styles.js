@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import media from '../media';
 import { theme } from './layout/Header.styles';
 
 const { height } = theme;
@@ -19,6 +20,12 @@ export const Wrapper = styled.div`
     border-left: ${height}px solid ${color};
     border-bottom: ${height}px solid transparent;
   }
+
+  ${media.lessThan('mobile')`
+    :after {
+      display: none;
+    }
+  `}
 `;
 
 export const InnerWrapper = styled.div`
@@ -27,6 +34,10 @@ export const InnerWrapper = styled.div`
   align-items: center;
   background: ${color};
   padding: 0 2px;
+
+  ${media.lessThan('mobile')`
+    padding-right: 12px;
+  `}
 `;
 
 export const Arrow = styled.button`
