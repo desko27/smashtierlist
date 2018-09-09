@@ -17,6 +17,7 @@ import Footer from '../components/layout/Footer';
 import SuperTitle from '../components/SuperTitle';
 import GameSelect from '../components/GameSelect';
 import Filter from '../components/Filter';
+import HeaderIcon from '../components/HeaderIcon';
 
 import Game from './Game';
 
@@ -60,6 +61,16 @@ class SmashTierList extends React.Component {
           />
           <InnerHeaderSecondLine>
             <Filter onChange={this.onFilterChange} />
+            <HeaderIcon
+              svgPath="/svg/book.svg"
+              alt="Smash Wiki"
+              url="https://www.ssbwiki.com/tier_list"
+            />
+            <HeaderIcon
+              svgPath="/svg/github.svg"
+              alt="Soruce on GitHub"
+              url="https://github.com/desko27/smash-tier-list"
+            />
           </InnerHeaderSecondLine>
         </Header>
         <Main>

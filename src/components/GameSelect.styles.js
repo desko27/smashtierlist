@@ -35,8 +35,7 @@ export const Arrow = styled.button`
   background: none;
 
   /* fix height */
-  line-height: 1;
-  font-size: 1px;
+  font-size: 0;
 
   cursor: pointer;
 `;
