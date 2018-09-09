@@ -7,6 +7,7 @@ export const theme = {
 };
 
 export const Wrapper = styled.header`
+  z-index: 10;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .5));
   position: sticky;
   top: 0;
