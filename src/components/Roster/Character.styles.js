@@ -22,7 +22,7 @@ const nameHeight = 16;
 export const Name = styled.div`
   position: relative;
 
-  height: ${nameHeight}px;
+  flex-basis: ${nameHeight}px;
   background: #455059;
   padding: 0 2px;
 
@@ -32,20 +32,20 @@ export const Name = styled.div`
 
   color: #fff;
   font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
 
   span {
-    /* bottom Roboto's padding fix */
-    transform: translateY(1px);
+    display: inline-block;
   }
 
   &.is-large {
-    font-size: 8px;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 
     span {
-      transform: scaleY(1.3);
+      transform: scaleX(.8);
     }
   }
 
