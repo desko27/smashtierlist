@@ -6,16 +6,21 @@ export const theme = {
   height: 35,
 };
 
+const layer = 10;
+const shadowFilter = 'drop-shadow(0 2px 4px rgba(0, 0, 0, .5));';
+
 export const Wrapper = styled.header`
-  z-index: 10;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .5));
+  z-index: ${layer};
+  filter: ${shadowFilter};
   position: sticky;
   top: 0;
   padding: 30px;
   display: flex;
 
   ${media.lessThan('mobile')`
+    position: static;
     flex-wrap: wrap;
+    padding-bottom: 0;
   `}
 `;
 
@@ -24,7 +29,19 @@ export const InnerHeaderSecondLine = styled.div`
   display: flex;
 
   ${media.lessThan('mobile')`
-    flex-basis: 100%;
-    margin-top: 30px;
+    display: none;
+  `}
+`;
+
+export const OuterHeaderSecondLine = styled.div`
+  z-index: ${layer};
+  filter: ${shadowFilter};
+  position: sticky;
+  top: 0;
+  padding: 30px;
+  display: flex;
+
+  ${media.greaterThan('mobile')`
+    display: none;
   `}
 `;

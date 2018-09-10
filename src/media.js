@@ -1,5 +1,7 @@
 import { generateMedia } from 'styled-media-query';
 
-export default generateMedia({
+export const breakpoints = {
   mobile: '820px',
-});
+};
+
+export default generateMedia(breakpoints);

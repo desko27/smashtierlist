@@ -10,7 +10,7 @@ import { prevGame, nextGame } from '../redux/app/actions';
 import { currentGameSelector } from '../redux/app/selectors';
 
 import Header from '../components/layout/Header';
-import { InnerHeaderSecondLine } from '../components/layout/Header.styles';
+import { InnerHeaderSecondLine, OuterHeaderSecondLine } from '../components/layout/Header.styles';
 import Main from '../components/layout/Main';
 import Footer from '../components/layout/Footer';
 
@@ -50,6 +50,22 @@ class SmashTierList extends React.Component {
   render() {
     const { currentGame } = this.props;
 
+    const HeaderSecondLine = TheWrapper => (
+      <TheWrapper>
+        <Filter onChange={this.onFilterChange} />
+        <HeaderIcon
+          svgPath="/svg/book.svg"
+          alt="Smash Wiki"
+          url="https://www.ssbwiki.com/tier_list"
+        />
+        <HeaderIcon
+          svgPath="/svg/github.svg"
+          alt="Soruce on GitHub"
+          url="https://github.com/desko27/smash-tier-list"
+        />
+      </TheWrapper>
+    );
+
     return (
       <Wrapper>
         <Header>
@@ -59,20 +75,9 @@ class SmashTierList extends React.Component {
             onClickPrev={this.onClickPrev}
             onClickNext={this.onClickNext}
           />
-          <InnerHeaderSecondLine>
-            <Filter onChange={this.onFilterChange} />
-            <HeaderIcon
-              svgPath="/svg/book.svg"
-              alt="Smash Wiki"
-              url="https://www.ssbwiki.com/tier_list"
-            />
-            <HeaderIcon
-              svgPath="/svg/github.svg"
-              alt="Soruce on GitHub"
-              url="https://github.com/desko27/smash-tier-list"
-            />
-          </InnerHeaderSecondLine>
+          {HeaderSecondLine(InnerHeaderSecondLine)}
         </Header>
+        {HeaderSecondLine(OuterHeaderSecondLine)}
         <Main>
           <Game />
         </Main>
