@@ -48,11 +48,11 @@ class SmashTierList extends React.Component {
   }
 
   render() {
-    const { currentGame } = this.props;
+    const { currentGame, currentFilter } = this.props;
 
     const HeaderSecondLine = TheWrapper => (
       <TheWrapper>
-        <Filter onChange={this.onFilterChange} />
+        <Filter onChange={this.onFilterChange} value={currentFilter} />
         <HeaderIcon
           svgPath="/svg/book.svg"
           alt="Smash Wiki"

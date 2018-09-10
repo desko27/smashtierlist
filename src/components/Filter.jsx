@@ -11,10 +11,15 @@ import {
   Input,
 } from './Filter.styles';
 
-const Filter = ({ onChange }) => (
+const Filter = ({ onChange, value }) => (
   <Wrapper>
     <InputWrapper>
-      <Input type="text" onChange={onChange} placeholder="Filter characters..." />
+      <Input
+        type="text"
+        onChange={onChange}
+        value={value}
+        placeholder="Filter characters..."
+      />
       <IconButtons>
         <FontAwesomeIcon className="icon" icon={faEyeSlash} />
       </IconButtons>
@@ -24,6 +29,7 @@ const Filter = ({ onChange }) => (
 
 Filter.propTypes = {
   onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default Filter;
