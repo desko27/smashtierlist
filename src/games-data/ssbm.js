@@ -4,6 +4,17 @@ export default {
   shortName: 'Melee',
   console: 'Game Cube',
   year: 2001,
+  tiers: [
+    { name: 'SS', color: '#d0021b' },
+    { name: 'S', color: '#f5a623' },
+    { name: 'A', color: '#f8e71c' },
+    { name: 'B', color: '#b8e986' },
+    { name: 'C', color: '#7ed321' },
+    { name: 'D', color: '#50e3c2' },
+    { name: 'E', color: '#4a90e2' },
+    { name: 'F', color: '#bd10e0' },
+    { name: 'G', color: '#9013fe' },
+  ],
   roster: [
     {
       slug: 'fox',

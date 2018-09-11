@@ -4,6 +4,12 @@ export default {
   shortName: '64',
   console: 'Nintendo 64',
   year: 1999,
+  tiers: [
+    { name: 'S', color: '#d0021b' },
+    { name: 'A', color: '#f8e71c' },
+    { name: 'B', color: '#7ed321' },
+    { name: 'C', color: '#4a90e2' },
+  ],
   roster: [
     {
       slug: 'pikachu',

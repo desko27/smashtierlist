@@ -15,10 +15,10 @@ export const Wrapper = styled.div`
 
 export const Header = styled.h3`
   margin: 0;
-  border-left: 8px solid #fff;
+  border-left: 8px solid ${props => props.color};
   padding: 0 4px;
   padding-top: 4px;
-  color: #fff;
+  color: ${props => props.color};
 
   writing-mode: vertical-lr;
   text-orientation: upright;

@@ -4,6 +4,16 @@ export default {
   shortName: 'SSB4',
   console: 'Wii U',
   year: 2014,
+  tiers: [
+    { name: 'S', color: '#d0021b' },
+    { name: 'A', color: '#f5a623' },
+    { name: 'B', color: '#f8e71c' },
+    { name: 'C', color: '#7ed321' },
+    { name: 'D', color: '#50e3c2' },
+    { name: 'E', color: '#4a90e2' },
+    { name: 'F', color: '#bd10e0' },
+    { name: 'G', color: '#9013fe' },
+  ],
   roster: [
     {
       slug: 'bayonetta',
