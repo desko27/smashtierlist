@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Wrapper } from './HeaderIcon.styles';
 
 const HeaderIcon = ({ url, svgPath, alt }) => (
-  <Wrapper href={url} target="_blank">
+  <Wrapper href={url} target="_blank" rel="noopener noreferrer">
     <img src={svgPath} alt={alt} />
   </Wrapper>
 );

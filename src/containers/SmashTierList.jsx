@@ -2,6 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import {
+  faReact,
+  faLinkedin,
+  faTwitterSquare,
+  faGithubSquare,
+} from '@fortawesome/free-brands-svg-icons';
+
 import { Wrapper } from './SmashTierList.styles';
 
 import gamesData from '../games-data';
@@ -17,6 +26,7 @@ import {
 } from '../components/layout/Header.styles';
 import Main from '../components/layout/Main';
 import Footer from '../components/layout/Footer';
+import { FooterLine, SocialIcons, FooterSeparator } from '../components/layout/Footer.styles';
 
 import SuperTitle from '../components/SuperTitle';
 import GameSelect from '../components/GameSelect';
@@ -110,9 +120,34 @@ class SmashTierList extends React.Component {
           <Game />
         </Main>
         <Footer>
-          Made with
-          <span role="img" aria-label="love">💙</span>
-          by desko27
+          <FooterLine>
+            <span>Made with</span>
+            <span>
+              <strong><FontAwesomeIcon icon={faHeart} /></strong>
+            </span>
+            <span>by</span>
+            <span><strong>desko27</strong></span>
+          </FooterLine>
+          <FooterSeparator />
+          <SocialIcons>
+            <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/desko27">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+            <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/desko27">
+              <FontAwesomeIcon icon={faTwitterSquare} />
+            </a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/desko27">
+              <FontAwesomeIcon icon={faGithubSquare} />
+            </a>
+          </SocialIcons>
+          <FooterSeparator />
+          <FooterLine>
+            <span>Powered by</span>
+            <span>
+              <strong><FontAwesomeIcon icon={faReact} size="lg" /></strong>
+            </span>
+            <span>React</span>
+          </FooterLine>
         </Footer>
       </Wrapper>
     );

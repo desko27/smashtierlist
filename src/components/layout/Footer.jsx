@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from './common.styles';
-import { FooterWrapper } from './Footer.styles';
+import { TopWrapper, Wrapper, FooterTop } from './Footer.styles';
 
 const Footer = ({ children }) => (
-  <FooterWrapper>
-    <Container>
+  <TopWrapper>
+    <FooterTop src="/svg/footer-top.svg" alt="Footer top" />
+    <Wrapper>
       {children}
-    </Container>
-  </FooterWrapper>
+    </Wrapper>
+  </TopWrapper>
 );
 
 Footer.propTypes = {
