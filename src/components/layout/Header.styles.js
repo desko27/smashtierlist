@@ -29,7 +29,7 @@ export const Wrapper = styled.header`
     transition: none;
 
     &.stuck {
-      background-color: none;
+      background-color: initial;
     }
   `}
 `;
