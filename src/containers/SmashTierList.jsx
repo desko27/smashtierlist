@@ -10,7 +10,11 @@ import { prevGame, nextGame } from '../redux/app/actions';
 import { currentGameSelector } from '../redux/app/selectors';
 
 import Header from '../components/layout/Header';
-import { InnerHeaderSecondLine, OuterHeaderSecondLine } from '../components/layout/Header.styles';
+import {
+  theme as headerTheme,
+  InnerHeaderSecondLine,
+  OuterHeaderSecondLine,
+} from '../components/layout/Header.styles';
 import Main from '../components/layout/Main';
 import Footer from '../components/layout/Footer';
 
@@ -28,6 +32,16 @@ class SmashTierList extends React.Component {
 
     // add all the games to the redux store
     gamesData.forEach(game => dispatch(addGame(game)));
+  }
+
+  state = {
+    secondLineStuck: false,
+  };
+
+  componentDidMount = () => {
+    window.onscroll = () => {
+      this.setState({ secondLineStuck: window.scrollY > 30 + 10 + headerTheme.height });
+    };
   }
 
   onFilterChange = (e) => {
@@ -49,9 +63,10 @@ class SmashTierList extends React.Component {
 
   render() {
     const { currentGame, currentFilter } = this.props;
+    const { secondLineStuck } = this.state;
 
     const HeaderSecondLine = TheWrapper => (
-      <TheWrapper>
+      <TheWrapper className={secondLineStuck ? 'stuck' : ''}>
         <Filter onChange={this.onFilterChange} value={currentFilter} />
         <HeaderIcon
           svgPath="/svg/book.svg"

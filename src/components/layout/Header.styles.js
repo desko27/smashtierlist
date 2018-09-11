@@ -38,10 +38,17 @@ export const OuterHeaderSecondLine = styled.div`
   filter: ${shadowFilter};
   position: sticky;
   top: 0;
-  padding: 30px;
+  padding: 20px 30px;
+  margin: 10px 0;
   display: flex;
 
   ${media.greaterThan('mobile')`
     display: none;
   `}
+
+  transition: all .2s ease-out;
+
+  &.stuck {
+    background: #000;
+  }
 `;
