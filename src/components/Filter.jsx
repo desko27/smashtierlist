@@ -1,12 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FilterWrapper, Input } from './Filter.styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
+import {
+  Wrapper,
+  InputWrapper,
+  IconButtons,
+  Input,
+} from './Filter.styles';
 
 const Filter = ({ onChange, value }) => (
-  <FilterWrapper>
-    <Input type="text" onChange={onChange} value={value} placeholder="Filter..." />
-  </FilterWrapper>
+  <Wrapper>
+    <InputWrapper>
+      <Input
+        type="text"
+        onChange={onChange}
+        value={value}
+        placeholder="Filter characters..."
+      />
+      <IconButtons>
+        <FontAwesomeIcon className="icon" icon={faEyeSlash} />
+      </IconButtons>
+    </InputWrapper>
+  </Wrapper>
 );
 
 Filter.propTypes = {

@@ -4,6 +4,19 @@ export default {
   shortName: 'Brawl',
   console: 'Wii',
   year: 2008,
+  tiers: [
+    { name: 'SS', color: '#d0021b' },
+    { name: 'S', color: '#f5a623' },
+    { name: 'A+', color: '#f7c720' },
+    { name: 'A-', color: '#f8e71c' },
+    { name: 'B', color: '#b8e986' },
+    { name: 'C+', color: '#7ed321' },
+    { name: 'C', color: '#50e3c2' },
+    { name: 'C-', color: '#4dbad2' },
+    { name: 'D', color: '#4a90e2' },
+    { name: 'E', color: '#bd10e0' },
+    { name: 'F', color: '#9013fe' },
+  ],
   roster: [
     {
       slug: 'meta-knight',

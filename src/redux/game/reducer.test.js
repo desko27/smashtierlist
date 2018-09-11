@@ -17,6 +17,13 @@ export const validGame = {
   slug: 'sbf',
   name: 'Smash Bros Fake',
   shortName: 'Fake',
+  tiers: [
+    { name: 'S', color: '#f00' },
+    { name: 'A', color: '#ff0' },
+    { name: 'B', color: '#00ff00' },
+    { name: 'C', color: '#bfffff' },
+    { name: 'D', color: '#7f7fff' },
+  ],
   roster: [
     {
       id: 0,

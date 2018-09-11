@@ -3,12 +3,7 @@
 }
 
 body {
-  font-family: 'Ubuntu', sans-serif;
+  background: #2a2a2a;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  margin: 0;
-  padding: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Domine', serif;
 }

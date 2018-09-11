@@ -6,8 +6,8 @@ import { Wrapper, Header, Main } from './TierGroup.styles';
 
 const TierGroup = ({ gameSlug, tier, characters }) => (
   <Wrapper>
-    <Header>
-      Tier {tier}
+    <Header color={tier.color}>
+      {tier.name}
     </Header>
     <Main>
       {characters.map(c => <Character key={c.id} gameSlug={gameSlug} {...c} />)}
@@ -17,7 +17,7 @@ const TierGroup = ({ gameSlug, tier, characters }) => (
 
 TierGroup.propTypes = {
   gameSlug: PropTypes.string.isRequired,
-  tier: PropTypes.string.isRequired,
+  tier: PropTypes.object.isRequired,
   characters: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

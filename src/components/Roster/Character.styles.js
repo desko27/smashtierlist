@@ -1,32 +1,78 @@
 import styled from 'styled-components';
 
-const borderSize = 4;
-
 export const Wrapper = styled.div`
-  margin: 10px;
-  max-width: 150px;
-  border: ${borderSize}px solid #000;
-  border-radius: 15px;
+  width: 89px;
+  height: 105px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `;
 
 export const ImgWrapper = styled.div`
+  z-index: 1;
+
   img {
     display: block;
     width: 100%;
   }
 `;
 
-const namePad = 4;
+const nameHeight = 16;
 
 export const Name = styled.div`
-  background: #000;
-  padding: ${namePad}px;
-  padding-top: ${namePad + borderSize}px;
+  position: relative;
 
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 0.7em;
-  font-weight: 300;
-  letter-spacing: 1px;
+  flex-basis: ${nameHeight}px;
+  background: #455059;
+  padding: 0 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  span {
+    display: inline-block;
+  }
+
+  &.is-large {
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+
+    span {
+      transform: scaleX(.8);
+    }
+  }
+
+  :before {
+    content: '';
+    position: absolute;
+    bottom: ${nameHeight}px;
+    left: 0;
+    right: 0;
+
+    height: 45px;
+    background: ${({ color }) => color};
+  }
+
+  :after {
+    content: '';
+    position: absolute;
+    bottom: ${nameHeight}px;
+    left: 0;
+    right: 0;
+
+    height: 33px;
+    width: 66px;
+    margin: 0 auto;
+    background: #fff;
+    opacity: .2;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+  }
 `;
