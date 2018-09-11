@@ -16,18 +16,20 @@ export const Wrapper = styled.header`
   top: 0;
   padding: 30px;
   display: flex;
+  transition: background-color .2s ease-out;
+
+  &.stuck {
+    background-color: #000;
+  }
 
   ${media.lessThan('mobile')`
     position: static;
     flex-wrap: wrap;
     padding-bottom: 0;
-  `}
-
-  ${media.greaterThan('mobile')`
-    transition: background-color .2s ease-out;
+    transition: none;
 
     &.stuck {
-      background-color: #000;
+      background-color: none;
     }
   `}
 `;
@@ -48,10 +50,10 @@ export const OuterHeaderSecondLine = styled.div`
   top: 0;
   padding: 20px 30px;
   margin: 10px 0;
-  display: flex;
+  display: none;
 
-  ${media.greaterThan('mobile')`
-    display: none;
+  ${media.lessThan('mobile')`
+    display: flex;
   `}
 
   transition: background-color .2s ease-out;
