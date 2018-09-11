@@ -35,12 +35,25 @@ class SmashTierList extends React.Component {
   }
 
   state = {
+    headerStuck: false,
     secondLineStuck: false,
   };
 
   componentDidMount = () => {
     window.onscroll = () => {
-      this.setState({ secondLineStuck: window.scrollY > 30 + 10 + headerTheme.height });
+      const { headerStuck, secondLineStuck } = this.state;
+      const currentHeaderStuck = window.scrollY > 0;
+      const currentSecondLineStuck = window.scrollY > 30 + 10 + headerTheme.height;
+
+      // don't do unnecessary renders
+      if (headerStuck === currentHeaderStuck && secondLineStuck === currentSecondLineStuck) {
+        return;
+      }
+
+      this.setState({
+        headerStuck: currentHeaderStuck,
+        secondLineStuck: currentSecondLineStuck,
+      });
     };
   }
 
@@ -63,7 +76,7 @@ class SmashTierList extends React.Component {
 
   render() {
     const { currentGame, currentFilter } = this.props;
-    const { secondLineStuck } = this.state;
+    const { headerStuck, secondLineStuck } = this.state;
 
     const HeaderSecondLine = TheWrapper => (
       <TheWrapper className={secondLineStuck ? 'stuck' : ''}>
@@ -83,7 +96,7 @@ class SmashTierList extends React.Component {
 
     return (
       <Wrapper>
-        <Header>
+        <Header className={headerStuck ? 'stuck' : ''}>
           <SuperTitle>Super Smash Bros.</SuperTitle>
           <GameSelect
             gameTitle={currentGame ? currentGame.shortName : ''}

@@ -22,6 +22,14 @@ export const Wrapper = styled.header`
     flex-wrap: wrap;
     padding-bottom: 0;
   `}
+
+  ${media.greaterThan('mobile')`
+    transition: background-color .2s ease-out;
+
+    &.stuck {
+      background-color: #000;
+    }
+  `}
 `;
 
 export const InnerHeaderSecondLine = styled.div`
@@ -46,9 +54,9 @@ export const OuterHeaderSecondLine = styled.div`
     display: none;
   `}
 
-  transition: all .2s ease-out;
+  transition: background-color .2s ease-out;
 
   &.stuck {
-    background: #000;
+    background-color: #000;
   }
 `;
