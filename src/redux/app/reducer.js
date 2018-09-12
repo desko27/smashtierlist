@@ -1,7 +1,7 @@
-import { PREV_GAME, NEXT_GAME } from './action-types';
+import { SELECT_GAME, PREV_GAME, NEXT_GAME } from './action-types';
 import gameReducer from '../game/reducer';
 import { ADD_GAME, FILTER_BY_NAME } from '../game/action-types';
-import { currentGameSelector } from './selectors';
+import { currentGameSelector, prevGameSelector, nextGameSelector } from './selectors';
 
 export const initialState = {
   title: 'Smash Tier List',
@@ -22,21 +22,26 @@ const appReducer = (state = initialState, action = {}) => {
       };
     }
 
-    case PREV_GAME: {
-      const currentGameIndex = state.games.findIndex(g => g.id === state.currentGameId);
-      const prevGameIndex = (currentGameIndex - 1 + state.games.length) % state.games.length;
+    case SELECT_GAME: {
+      const { key, value } = action;
+
       return {
         ...state,
-        currentGameId: state.games[prevGameIndex].id,
+        currentGameId: state.games.find(g => g[key] === value).id,
+      };
+    }
+
+    case PREV_GAME: {
+      return {
+        ...state,
+        currentGameId: prevGameSelector(state).id,
       };
     }
 
     case NEXT_GAME: {
-      const currentGameIndex = state.games.findIndex(g => g.id === state.currentGameId);
-      const nextGameIndex = (currentGameIndex + 1) % state.games.length;
       return {
         ...state,
-        currentGameId: state.games[nextGameIndex].id,
+        currentGameId: nextGameSelector(state).id,
       };
     }
 

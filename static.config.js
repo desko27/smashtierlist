@@ -6,10 +6,11 @@ export default {
     title: 'Smash Tier List',
   }),
   getRoutes: () => ([
-    {
-      path: '/',
-      component: 'src/containers/App',
-    },
+    { path: '/' },
+    { path: '/smash-64' },
+    { path: '/melee' },
+    { path: '/brawl' },
+    { path: '/smash-4' },
   ]),
   // eslint-disable-next-line
   Document: ({ Html, Head, Body, children, siteData, renderMeta }) => (

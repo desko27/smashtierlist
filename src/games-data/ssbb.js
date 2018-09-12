@@ -1,5 +1,6 @@
 export default {
   slug: 'ssbb',
+  route: 'brawl',
   name: 'Super Smash Bros. Brawl',
   shortName: 'Brawl',
   console: 'Wii',

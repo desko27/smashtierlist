@@ -17,6 +17,7 @@ const gameReducer = (state = initialState, action = {}) => {
         game: {
           id,
           slug,
+          route,
           name,
           shortName,
           tiers,
@@ -35,9 +36,10 @@ const gameReducer = (state = initialState, action = {}) => {
         ...addedCharactersState,
         id,
         slug,
+        route,
         name,
-        tiers,
         shortName,
+        tiers,
       };
     }
 

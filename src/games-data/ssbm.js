@@ -1,5 +1,6 @@
 export default {
   slug: 'ssbm',
+  route: 'melee',
   name: 'Super Smash Bros. Melee',
   shortName: 'Melee',
   console: 'Game Cube',

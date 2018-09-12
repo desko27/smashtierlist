@@ -15,6 +15,7 @@ export const initGame = (game) => {
 export const validGame = {
   id: 0,
   slug: 'sbf',
+  route: 'fake',
   name: 'Smash Bros Fake',
   shortName: 'Fake',
   tiers: [

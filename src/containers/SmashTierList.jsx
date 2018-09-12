@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { withRouter } from 'react-static';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -11,12 +12,14 @@ import {
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons';
 
+import store from '../redux/store';
+
 import { Wrapper } from './SmashTierList.styles';
 
 import gamesData from '../games-data';
+import { selectGame } from '../redux/app/actions';
 import { addGame, filterByName } from '../redux/game/actions';
-import { prevGame, nextGame } from '../redux/app/actions';
-import { currentGameSelector } from '../redux/app/selectors';
+import { currentGameSelector, prevGameSelector, nextGameSelector } from '../redux/app/selectors';
 
 import Header from '../components/layout/Header';
 import {
@@ -35,13 +38,41 @@ import HeaderIcon from '../components/HeaderIcon';
 
 import Game from './Game';
 
+// add all the games to the redux store
+gamesData.forEach(game => store.dispatch(addGame(game)));
+
 class SmashTierList extends React.Component {
   constructor(props) {
     super();
-    const { dispatch } = props;
+    const {
+      dispatch,
+      currentFilter,
+      currentGame,
+      history,
+      history: { location },
+    } = props;
 
-    // add all the games to the redux store
-    gamesData.forEach(game => dispatch(addGame(game)));
+    // get the current route
+    const getCleanRoute = route => route.slice(1);
+
+    // go to the requested game based on the current path
+    const goToRequestedGame = (route) => {
+      dispatch(selectGame('route', getCleanRoute(route)));
+      dispatch(filterByName(currentFilter));
+    };
+
+    // prepare listener for future requests
+    history.listen(({ pathname }) => {
+      goToRequestedGame(pathname);
+    });
+
+    // root url should fallback to 'currentGame'
+    if (location.pathname === '/') history.push(`/${currentGame.route}`);
+
+    // go to it for the first time only if game actually exists
+    if (gamesData.find(g => g.route === getCleanRoute(location.pathname))) {
+      goToRequestedGame(location.pathname);
+    }
   }
 
   state = {
@@ -73,15 +104,13 @@ class SmashTierList extends React.Component {
   }
 
   onClickPrev = () => {
-    const { dispatch, currentFilter } = this.props;
-    dispatch(prevGame());
-    dispatch(filterByName(currentFilter));
+    const { prevGame, history } = this.props;
+    history.push(`/${prevGame.route}`);
   }
 
   onClickNext = () => {
-    const { dispatch, currentFilter } = this.props;
-    dispatch(nextGame());
-    dispatch(filterByName(currentFilter));
+    const { nextGame, history } = this.props;
+    history.push(`/${nextGame.route}`);
   }
 
   render() {
@@ -155,15 +184,22 @@ class SmashTierList extends React.Component {
 }
 
 SmashTierList.propTypes = {
+  history: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   currentGame: PropTypes.object.isRequired,
+  prevGame: PropTypes.object.isRequired,
+  nextGame: PropTypes.object.isRequired,
   currentFilter: PropTypes.string.isRequired,
 };
 
-export default connect(
-  state => ({
-    title: state.title,
-    currentGame: currentGameSelector(state),
-    currentFilter: state.currentFilter,
-  }),
-)(SmashTierList);
+export default withRouter(
+  connect(
+    state => ({
+      title: state.title,
+      currentGame: currentGameSelector(state),
+      prevGame: prevGameSelector(state),
+      nextGame: nextGameSelector(state),
+      currentFilter: state.currentFilter,
+    }),
+  )(SmashTierList),
+);

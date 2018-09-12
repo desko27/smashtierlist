@@ -102,6 +102,8 @@ describe('app reducer', () => {
     });
   });
 
+  // describe('has SELECT_GAME handler that');
+
   describe('has PREV_GAME handler that', () => {
     it('moves currentGameId to the previous game on the array', () => {
       const theCurrentOne = validApp.games[2];
