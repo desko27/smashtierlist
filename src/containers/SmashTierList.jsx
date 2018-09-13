@@ -39,7 +39,9 @@ import HeaderIcon from '../components/HeaderIcon';
 import Game from './Game';
 
 // add all the games to the redux store
-gamesData.forEach(game => store.dispatch(addGame(game)));
+if (store.getState().games.length === 0) {
+  gamesData.forEach(game => store.dispatch(addGame(game)));
+}
 
 class SmashTierList extends React.Component {
   constructor(props) {
@@ -49,15 +51,15 @@ class SmashTierList extends React.Component {
       currentFilter,
       currentGame,
       history,
-      history: { location },
+      route,
     } = props;
 
-    // get the current route
-    const getCleanRoute = route => route.slice(1);
+    // get the raw route
+    const getCleanRoute = rr => rr.slice(1);
 
     // go to the requested game based on the current path
-    const goToRequestedGame = (route) => {
-      dispatch(selectGame('route', getCleanRoute(route)));
+    const goToRequestedGame = (rr) => {
+      dispatch(selectGame('route', getCleanRoute(rr)));
       dispatch(filterByName(currentFilter));
     };
 
@@ -67,12 +69,15 @@ class SmashTierList extends React.Component {
     });
 
     // root url should fallback to 'currentGame'
-    if (location.pathname === '/') history.push(`/${currentGame.route}`);
+    if (route === '/') history.push(`/${currentGame.route}`);
 
     // go to it for the first time only if game actually exists
-    if (gamesData.find(g => g.route === getCleanRoute(location.pathname))) {
-      goToRequestedGame(location.pathname);
+    if (gamesData.find(g => g.route === getCleanRoute(route))) {
+      goToRequestedGame(route);
     }
+
+    // save the current redux state for ssr
+    this.firstReduxState = store.getState();
   }
 
   state = {
@@ -135,10 +140,20 @@ class SmashTierList extends React.Component {
 
     return (
       <Wrapper>
+        <script
+          id="redux"
+          dangerouslySetInnerHTML={ // eslint-disable-line
+            // send redux state to the client!
+            { __html: `window.__REDUX_STATE__ = ${JSON.stringify(this.firstReduxState)}` }
+          }
+        />
         <Header className={headerStuck ? 'stuck' : ''}>
           <SuperTitle>Super Smash Bros.</SuperTitle>
           <GameSelect
-            gameTitle={currentGame ? currentGame.shortName : ''}
+            gameTitle={
+              typeof document !== 'undefined'
+                ? currentGame.shortName : currentGameSelector(this.firstReduxState).shortName
+            }
             onClickPrev={this.onClickPrev}
             onClickNext={this.onClickNext}
           />
@@ -185,6 +200,7 @@ class SmashTierList extends React.Component {
 
 SmashTierList.propTypes = {
   history: PropTypes.object.isRequired,
+  route: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
   currentGame: PropTypes.object.isRequired,
   prevGame: PropTypes.object.isRequired,
