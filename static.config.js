@@ -34,6 +34,11 @@ export default {
           <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no" />
           <meta name="theme-color" content="#000000" />
           {renderMeta.styleTags}
+          <noscript>
+            <style type="text/css">
+              {'img.loading { opacity: 1 !important; }'}
+            </style>
+          </noscript>
           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
         </Head>
         <Body>{children}</Body>

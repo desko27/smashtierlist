@@ -7,7 +7,7 @@ import { RosterWrapper } from './styles';
 const Roster = ({ gameSlug, charactersByTier }) => (
   <RosterWrapper>
     {charactersByTier.map(({ tier, characters }) => (
-      <TierGroup key={tier.name} gameSlug={gameSlug} tier={tier} characters={characters} />
+      <TierGroup key={`${gameSlug}-${tier.name}`} gameSlug={gameSlug} tier={tier} characters={characters} />
     ))}
   </RosterWrapper>
 );

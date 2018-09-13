@@ -14,6 +14,15 @@ export const ImgWrapper = styled.div`
   img {
     display: block;
     width: 100%;
+    transition: opacity .3s;
+
+    &.loading {
+      opacity: 0;
+    }
+
+    &.loaded {
+      opacity: 1;
+    }
   }
 `;
 
