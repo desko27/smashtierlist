@@ -48,7 +48,6 @@ class SmashTierList extends React.Component {
     super();
     const {
       dispatch,
-      currentFilter,
       currentGame,
       history,
       route,
@@ -57,10 +56,10 @@ class SmashTierList extends React.Component {
     // get the raw route
     const getCleanRoute = rr => rr.slice(1);
 
-    // go to the requested game based on the current path
+    // go to the requested game based on the current path and reapply current filter
     const goToRequestedGame = (rr) => {
       dispatch(selectGame('route', getCleanRoute(rr)));
-      dispatch(filterByName(currentFilter));
+      dispatch(filterByName(store.getState().currentFilter));
     };
 
     // prepare listener for future requests
