@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-static';
 
 import {
   Wrapper,
@@ -8,24 +9,28 @@ import {
   GameTitle,
 } from './GameSelect.styles';
 
-const GameSelect = ({ gameTitle, onClickPrev, onClickNext }) => (
+const GameSelect = ({ gameTitle, prevGameRoute, nextGameRoute }) => (
   <Wrapper>
     <InnerWrapper>
-      <Arrow onClick={onClickPrev} onKeyDown={onClickPrev} type="button">
-        <img src="/svg/arrow-left.svg" alt="Left" />
-      </Arrow>
+      <Link to={`/${prevGameRoute}`}>
+        <Arrow type="button">
+          <img src="/svg/arrow-left.svg" alt="Left" />
+        </Arrow>
+      </Link>
       <GameTitle>{gameTitle}</GameTitle>
-      <Arrow onClick={onClickNext} onKeyDown={onClickNext} type="button">
-        <img src="/svg/arrow-right.svg" alt="Right" />
-      </Arrow>
+      <Link to={`/${nextGameRoute}`}>
+        <Arrow type="button">
+          <img src="/svg/arrow-right.svg" alt="Right" />
+        </Arrow>
+      </Link>
     </InnerWrapper>
   </Wrapper>
 );
 
 GameSelect.propTypes = {
   gameTitle: PropTypes.string.isRequired,
-  onClickPrev: PropTypes.func.isRequired,
-  onClickNext: PropTypes.func.isRequired,
+  prevGameRoute: PropTypes.string.isRequired,
+  nextGameRoute: PropTypes.string.isRequired,
 };
 
 export default GameSelect;

@@ -107,19 +107,14 @@ class SmashTierList extends React.Component {
     dispatch(filterByName(e.target.value));
   }
 
-  onClickPrev = () => {
-    const { prevGame, history } = this.props;
-    history.push(`/${prevGame.route}`);
-  }
-
-  onClickNext = () => {
-    const { nextGame, history } = this.props;
-    history.push(`/${nextGame.route}`);
-  }
-
   render() {
-    const { currentGame, currentFilter } = this.props;
     const { headerStuck, secondLineStuck } = this.state;
+    const {
+      currentFilter,
+      currentGame,
+      prevGame,
+      nextGame,
+    } = this.props;
 
     const HeaderSecondLine = TheWrapper => (
       <TheWrapper className={secondLineStuck ? 'stuck' : ''}>
@@ -153,8 +148,14 @@ class SmashTierList extends React.Component {
               typeof document !== 'undefined'
                 ? currentGame.shortName : currentGameSelector(this.firstReduxState).shortName
             }
-            onClickPrev={this.onClickPrev}
-            onClickNext={this.onClickNext}
+            prevGameRoute={
+              typeof document !== 'undefined'
+                ? prevGame.route : prevGameSelector(this.firstReduxState).route
+            }
+            nextGameRoute={
+              typeof document !== 'undefined'
+                ? nextGame.route : nextGameSelector(this.firstReduxState).route
+            }
           />
           {HeaderSecondLine(InnerHeaderSecondLine)}
         </Header>

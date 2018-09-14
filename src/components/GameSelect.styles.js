@@ -49,6 +49,10 @@ export const Arrow = styled.button`
   font-size: 0;
 
   cursor: pointer;
+
+  :focus {
+    outline: none;
+  }
 `;
 
 export const GameTitle = styled.h2`
