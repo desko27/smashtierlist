@@ -6,6 +6,7 @@ export default {
   getSiteData: () => ({
     title: 'Smash Tier List',
   }),
+  siteRoot: 'https://smash-tier-list.com',
   getRoutes: () => ([
     { path: '/' },
     { path: '/smash-64' },
