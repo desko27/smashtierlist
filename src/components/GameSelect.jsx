@@ -14,13 +14,13 @@ const GameSelect = ({ gameTitle, prevGameRoute, nextGameRoute }) => (
     <InnerWrapper>
       <Link to={`/${prevGameRoute}`}>
         <Arrow type="button">
-          <img src="/svg/arrow-left.svg" alt="Left" />
+          <img src="/svg/arrow-left.svg" alt="Previous game" />
         </Arrow>
       </Link>
       <GameTitle>{gameTitle}</GameTitle>
       <Link to={`/${nextGameRoute}`}>
         <Arrow type="button">
-          <img src="/svg/arrow-right.svg" alt="Right" />
+          <img src="/svg/arrow-right.svg" alt="Next game" />
         </Arrow>
       </Link>
     </InnerWrapper>

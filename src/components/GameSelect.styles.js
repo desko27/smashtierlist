@@ -38,15 +38,17 @@ export const InnerWrapper = styled.div`
   ${media.lessThan('mobile')`
     padding-right: 12px;
   `}
+
+  a {
+    /* fix height */
+    font-size: 0;
+  }
 `;
 
 export const Arrow = styled.button`
   padding: 0;
   border: none;
   background: none;
-
-  /* fix height */
-  font-size: 0;
 
   cursor: pointer;
 
