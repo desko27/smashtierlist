@@ -9,10 +9,10 @@ export default {
   siteRoot: 'https://smash-tier-list.com',
   getRoutes: () => ([
     { path: '/' },
-    { path: '/smash-64' },
+    { path: '/64' },
     { path: '/melee' },
     { path: '/brawl' },
-    { path: '/smash-4' },
+    { path: '/ssb4' },
   ]),
   renderToHtml: (render, Comp, meta) => {
     const sheet = new ServerStyleSheet();

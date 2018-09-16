@@ -1,6 +1,6 @@
 export default {
   slug: 'ssb4',
-  route: 'smash-4',
+  route: 'ssb4',
   name: 'Super Smash Bros. 4',
   shortName: 'SSB4',
   console: 'Wii U',

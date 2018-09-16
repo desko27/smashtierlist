@@ -1,6 +1,6 @@
 export default {
   slug: 'ssb',
-  route: 'smash-64',
+  route: '64',
   name: 'Super Smash Bros.',
   shortName: '64',
   console: 'Nintendo 64',
