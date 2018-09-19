@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { withRouter } from 'react-static';
+import { withRouter, withSiteData, Head } from 'react-static';
 import ReactGA from 'react-ga';
 import dotenv from 'dotenv';
 
@@ -128,12 +128,15 @@ class SmashTierList extends React.Component {
 
   render() {
     const { headerStuck, secondLineStuck } = this.state;
-    const {
-      currentFilter,
-      currentGame,
-      prevGame,
-      nextGame,
-    } = this.props;
+    const { siteTitle, currentFilter } = this.props;
+    let { currentGame, prevGame, nextGame } = this.props;
+
+    const isBrowser = typeof document !== 'undefined';
+    currentGame = isBrowser ? currentGame : currentGameSelector(this.firstReduxState);
+    prevGame = isBrowser ? prevGame : prevGameSelector(this.firstReduxState);
+    nextGame = isBrowser ? nextGame : nextGameSelector(this.firstReduxState);
+
+    const fullTitle = `${siteTitle} - ${currentGame.name}`;
 
     const HeaderSecondLine = TheWrapper => (
       <TheWrapper className={secondLineStuck ? 'stuck' : ''}>
@@ -153,22 +156,13 @@ class SmashTierList extends React.Component {
 
     return (
       <Wrapper>
+        <Head>
+          <title>{fullTitle}</title>
+          <meta property="og:title" content={fullTitle} />
+        </Head>
         <Header className={headerStuck ? 'stuck' : ''}>
-          <SuperTitle>Smash Tier List.</SuperTitle>
-          <GameSelect
-            currentGame={
-              typeof document !== 'undefined'
-                ? currentGame : currentGameSelector(this.firstReduxState)
-            }
-            prevGame={
-              typeof document !== 'undefined'
-                ? prevGame : prevGameSelector(this.firstReduxState)
-            }
-            nextGame={
-              typeof document !== 'undefined'
-                ? nextGame : nextGameSelector(this.firstReduxState)
-            }
-          />
+          <SuperTitle>{siteTitle}.</SuperTitle>
+          <GameSelect currentGame={currentGame} prevGame={prevGame} nextGame={nextGame} />
           {HeaderSecondLine(InnerHeaderSecondLine)}
         </Header>
         {HeaderSecondLine(OuterHeaderSecondLine)}
@@ -233,6 +227,7 @@ class SmashTierList extends React.Component {
 }
 
 SmashTierList.propTypes = {
+  siteTitle: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
   route: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
@@ -242,7 +237,7 @@ SmashTierList.propTypes = {
   currentFilter: PropTypes.string.isRequired,
 };
 
-export default withRouter(
+export default withSiteData(withRouter(
   connect(
     state => ({
       title: state.title,
@@ -252,4 +247,4 @@ export default withRouter(
       currentFilter: state.currentFilter,
     }),
   )(SmashTierList),
-);
+));

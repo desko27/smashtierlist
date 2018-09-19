@@ -6,11 +6,11 @@ import { ServerStyleSheet } from 'styled-components';
 
 export default {
   getSiteData: () => ({
-    title: 'Smash Tier List',
-    description: 'Check out which is the Tier position of your favourite Super Smash Bros'
+    siteTitle: 'Smash Tier List',
+    metaDescription: 'Check out which is the Tier position of your favourite Super Smash Bros'
       + ' character. A tier list is a list that ranks all characters in a game based on the'
       + ' strength of their fighting abilities as well as their potential to win matches'
-      + ' under tournament conditions',
+      + ' under tournament conditions.',
   }),
   siteRoot: 'https://smash-tier-list.com',
   getRoutes: () => ([
@@ -43,11 +43,11 @@ export default {
         <Head>
           <meta charSet="UTF-8" />
 
-          <title>{siteData.title}</title>
-          <meta name="description" content={siteData.description} />
+          <title>{siteData.siteTitle}</title>
+          <meta name="description" content={siteData.metaDescription} />
 
-          <meta property="og:title" content={siteData.title} />
-          <meta property="og:description" content={siteData.description} />
+          <meta property="og:title" content={siteData.siteTitle} />
+          <meta property="og:description" content={siteData.metaDescription} />
 
           <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no" />
           <meta name="theme-color" content="#000000" />
