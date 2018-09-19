@@ -154,19 +154,19 @@ class SmashTierList extends React.Component {
     return (
       <Wrapper>
         <Header className={headerStuck ? 'stuck' : ''}>
-          <SuperTitle>Super Smash Bros.</SuperTitle>
+          <SuperTitle>Smash Tier List.</SuperTitle>
           <GameSelect
-            gameTitle={
+            currentGame={
               typeof document !== 'undefined'
-                ? currentGame.shortName : currentGameSelector(this.firstReduxState).shortName
+                ? currentGame : currentGameSelector(this.firstReduxState)
             }
-            prevGameRoute={
+            prevGame={
               typeof document !== 'undefined'
-                ? prevGame.route : prevGameSelector(this.firstReduxState).route
+                ? prevGame : prevGameSelector(this.firstReduxState)
             }
-            nextGameRoute={
+            nextGame={
               typeof document !== 'undefined'
-                ? nextGame.route : nextGameSelector(this.firstReduxState).route
+                ? nextGame : nextGameSelector(this.firstReduxState)
             }
           />
           {HeaderSecondLine(InnerHeaderSecondLine)}
@@ -186,13 +186,28 @@ class SmashTierList extends React.Component {
           </FooterLine>
           <FooterSeparator />
           <SocialIcons>
-            <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/desko27">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://linkedin.com/in/desko27"
+              title="Desko27's LinkedIn"
+            >
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
-            <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/desko27">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://twitter.com/desko27"
+              title="Desko27's Twitter"
+            >
               <FontAwesomeIcon icon={faTwitterSquare} />
             </a>
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/desko27">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/desko27"
+              title="Desko27's GitHub"
+            >
               <FontAwesomeIcon icon={faGithubSquare} />
             </a>
           </SocialIcons>
