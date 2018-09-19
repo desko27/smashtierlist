@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { withRouter } from 'react-static';
 import ReactGA from 'react-ga';
+import dotenv from 'dotenv';
 
 // fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -40,8 +41,13 @@ import Filter from '../components/Filter';
 import HeaderIcon from '../components/HeaderIcon';
 import Game from './Game';
 
+
+// environment vars
+dotenv.config();
+const env = process.env.REACT_STATIC_ENV;
+
 // init google analytics
-if (typeof document !== 'undefined') {
+if (typeof document !== 'undefined' && env === 'production') {
   ReactGA.initialize('UA-69148909-3');
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
@@ -75,7 +81,7 @@ class SmashTierList extends React.Component {
       goToRequestedGame(pathname);
 
       // register further navigation via google analytics
-      if (typeof document !== 'undefined') {
+      if (typeof document !== 'undefined' && env === 'production') {
         ReactGA.pageview(window.location.pathname + window.location.search);
       }
     });

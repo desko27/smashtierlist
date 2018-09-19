@@ -1,4 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -18,6 +20,10 @@ export default {
     { path: '/brawl' },
     { path: '/ssb4' },
   ]),
+  webpack: (config, { stage }) => {
+    config.node = { fs: 'empty' };
+    return config;
+  },
   renderToHtml: (render, Comp, meta) => {
     const sheet = new ServerStyleSheet();
 
