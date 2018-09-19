@@ -146,13 +146,6 @@ class SmashTierList extends React.Component {
 
     return (
       <Wrapper>
-        <script
-          id="redux"
-          dangerouslySetInnerHTML={ // eslint-disable-line
-            // send redux state to the client!
-            { __html: `window.__REDUX_STATE__ = ${JSON.stringify(this.firstReduxState)}` }
-          }
-        />
         <Header className={headerStuck ? 'stuck' : ''}>
           <SuperTitle>Super Smash Bros.</SuperTitle>
           <GameSelect
@@ -205,6 +198,13 @@ class SmashTierList extends React.Component {
             <span>React</span>
           </FooterLine>
         </Footer>
+        <script
+          id="redux"
+          dangerouslySetInnerHTML={ // eslint-disable-line
+            // send redux state to the client!
+            { __html: `window.__REDUX_STATE__ = ${JSON.stringify(this.firstReduxState)}` }
+          }
+        />
       </Wrapper>
     );
   }
