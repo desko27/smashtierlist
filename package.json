@@ -1,6 +1,6 @@
 {
   "name": "smash-tier-list",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "🎮🎯 Tier List application for Super Smash Bros series",
   "main": "src/index.js",
   "repository": "https://github.com/desko27/smash-tier-list.git",
