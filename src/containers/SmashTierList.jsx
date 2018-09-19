@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { withRouter } from 'react-static';
 import ReactGA from 'react-ga';
 
+// fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -13,15 +14,15 @@ import {
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons';
 
+// redux stuff
 import store from '../redux/store';
-
-import { Wrapper } from './SmashTierList.styles';
-
 import gamesData from '../games-data';
 import { selectGame } from '../redux/app/actions';
 import { addGame, filterByName } from '../redux/game/actions';
 import { currentGameSelector, prevGameSelector, nextGameSelector } from '../redux/app/selectors';
 
+// layout components & styles
+import { Wrapper } from './SmashTierList.styles';
 import Header from '../components/layout/Header';
 import {
   theme as headerTheme,
@@ -32,11 +33,11 @@ import Main from '../components/layout/Main';
 import Footer from '../components/layout/Footer';
 import { FooterLine, SocialIcons, FooterSeparator } from '../components/layout/Footer.styles';
 
+// ui pieces
 import SuperTitle from '../components/SuperTitle';
 import GameSelect from '../components/GameSelect';
 import Filter from '../components/Filter';
 import HeaderIcon from '../components/HeaderIcon';
-
 import Game from './Game';
 
 // init google analytics
