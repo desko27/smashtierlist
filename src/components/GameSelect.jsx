@@ -9,16 +9,16 @@ import {
   GameTitle,
 } from './GameSelect.styles';
 
-const GameSelect = ({ gameTitle, prevGameRoute, nextGameRoute }) => (
+const GameSelect = ({ currentGame, prevGame, nextGame }) => (
   <Wrapper>
     <InnerWrapper>
-      <Link to={`/${prevGameRoute}`}>
+      <Link to={`/${prevGame.route}`} title={prevGame.name}>
         <Arrow type="button">
           <img src="/svg/arrow-left.svg" alt="Previous game" />
         </Arrow>
       </Link>
-      <GameTitle>{gameTitle}</GameTitle>
-      <Link to={`/${nextGameRoute}`}>
+      <GameTitle>{currentGame.shortName}</GameTitle>
+      <Link to={`/${nextGame.route}`} title={nextGame.name}>
         <Arrow type="button">
           <img src="/svg/arrow-right.svg" alt="Next game" />
         </Arrow>
@@ -28,9 +28,9 @@ const GameSelect = ({ gameTitle, prevGameRoute, nextGameRoute }) => (
 );
 
 GameSelect.propTypes = {
-  gameTitle: PropTypes.string.isRequired,
-  prevGameRoute: PropTypes.string.isRequired,
-  nextGameRoute: PropTypes.string.isRequired,
+  currentGame: PropTypes.object.isRequired,
+  prevGame: PropTypes.object.isRequired,
+  nextGame: PropTypes.object.isRequired,
 };
 
 export default GameSelect;

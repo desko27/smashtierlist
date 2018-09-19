@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { withRouter } from 'react-static';
 import ReactGA from 'react-ga';
+import dotenv from 'dotenv';
 
+// fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -13,15 +15,15 @@ import {
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons';
 
+// redux stuff
 import store from '../redux/store';
-
-import { Wrapper } from './SmashTierList.styles';
-
 import gamesData from '../games-data';
 import { selectGame } from '../redux/app/actions';
 import { addGame, filterByName } from '../redux/game/actions';
 import { currentGameSelector, prevGameSelector, nextGameSelector } from '../redux/app/selectors';
 
+// layout components & styles
+import { Wrapper } from './SmashTierList.styles';
 import Header from '../components/layout/Header';
 import {
   theme as headerTheme,
@@ -32,15 +34,20 @@ import Main from '../components/layout/Main';
 import Footer from '../components/layout/Footer';
 import { FooterLine, SocialIcons, FooterSeparator } from '../components/layout/Footer.styles';
 
+// ui pieces
 import SuperTitle from '../components/SuperTitle';
 import GameSelect from '../components/GameSelect';
 import Filter from '../components/Filter';
 import HeaderIcon from '../components/HeaderIcon';
-
 import Game from './Game';
 
+
+// environment vars
+dotenv.config();
+const env = process.env.REACT_STATIC_ENV;
+
 // init google analytics
-if (typeof document !== 'undefined') {
+if (typeof document !== 'undefined' && env === 'production') {
   ReactGA.initialize('UA-69148909-3');
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
@@ -74,7 +81,7 @@ class SmashTierList extends React.Component {
       goToRequestedGame(pathname);
 
       // register further navigation via google analytics
-      if (typeof document !== 'undefined') {
+      if (typeof document !== 'undefined' && env === 'production') {
         ReactGA.pageview(window.location.pathname + window.location.search);
       }
     });
@@ -146,27 +153,20 @@ class SmashTierList extends React.Component {
 
     return (
       <Wrapper>
-        <script
-          id="redux"
-          dangerouslySetInnerHTML={ // eslint-disable-line
-            // send redux state to the client!
-            { __html: `window.__REDUX_STATE__ = ${JSON.stringify(this.firstReduxState)}` }
-          }
-        />
         <Header className={headerStuck ? 'stuck' : ''}>
-          <SuperTitle>Super Smash Bros.</SuperTitle>
+          <SuperTitle>Smash Tier List.</SuperTitle>
           <GameSelect
-            gameTitle={
+            currentGame={
               typeof document !== 'undefined'
-                ? currentGame.shortName : currentGameSelector(this.firstReduxState).shortName
+                ? currentGame : currentGameSelector(this.firstReduxState)
             }
-            prevGameRoute={
+            prevGame={
               typeof document !== 'undefined'
-                ? prevGame.route : prevGameSelector(this.firstReduxState).route
+                ? prevGame : prevGameSelector(this.firstReduxState)
             }
-            nextGameRoute={
+            nextGame={
               typeof document !== 'undefined'
-                ? nextGame.route : nextGameSelector(this.firstReduxState).route
+                ? nextGame : nextGameSelector(this.firstReduxState)
             }
           />
           {HeaderSecondLine(InnerHeaderSecondLine)}
@@ -186,13 +186,28 @@ class SmashTierList extends React.Component {
           </FooterLine>
           <FooterSeparator />
           <SocialIcons>
-            <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/desko27">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://linkedin.com/in/desko27"
+              title="Desko27's LinkedIn"
+            >
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
-            <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/desko27">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://twitter.com/desko27"
+              title="Desko27's Twitter"
+            >
               <FontAwesomeIcon icon={faTwitterSquare} />
             </a>
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/desko27">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/desko27"
+              title="Desko27's GitHub"
+            >
               <FontAwesomeIcon icon={faGithubSquare} />
             </a>
           </SocialIcons>
@@ -205,6 +220,13 @@ class SmashTierList extends React.Component {
             <span>React</span>
           </FooterLine>
         </Footer>
+        <script
+          id="redux"
+          dangerouslySetInnerHTML={ // eslint-disable-line
+            // send redux state to the client!
+            { __html: `window.__REDUX_STATE__ = ${JSON.stringify(this.firstReduxState)}` }
+          }
+        />
       </Wrapper>
     );
   }
