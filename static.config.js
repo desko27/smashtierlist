@@ -42,8 +42,13 @@ export default {
       <Html lang="en-US">
         <Head>
           <meta charSet="UTF-8" />
+
           <title>{siteData.title}</title>
           <meta name="description" content={siteData.description} />
+
+          <meta property="og:title" content={siteData.title} />
+          <meta property="og:description" content={siteData.description} />
+
           <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no" />
           <meta name="theme-color" content="#000000" />
           {renderMeta.styleTags}
