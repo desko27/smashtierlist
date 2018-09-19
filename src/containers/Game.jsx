@@ -12,11 +12,13 @@ class Game extends React.Component {
   render() {
     const { currentGame } = this.props;
     return (
-      <div>
+      <div itemScope itemType="http://schema.org/VideoGame">
         <Roster
           gameSlug={currentGame.slug}
           charactersByTier={visibleRosterGroupedByTierSelector(currentGame)}
         />
+        <meta itemProp="name" content={currentGame.name} />
+        <meta itemProp="gamePlatform" content={currentGame.console} />
       </div>
     );
   }

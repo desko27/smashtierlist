@@ -39,17 +39,18 @@ class Character extends React.Component {
     const { loaded } = this.state;
 
     return (
-      <Wrapper>
+      <Wrapper itemProp="character" itemScope itemType="http://schema.org/Person">
         <ImgWrapper>
           <img
             ref={this.imageRef}
             className={loaded ? 'loaded' : 'loading'}
             src={`/img/chars/${gameSlug}/${slug}.png`}
             alt={name}
+            itemProp="image"
           />
         </ImgWrapper>
         <Name color={color} className={name.length > 11 ? 'is-large' : ''}>
-          <span>{name}</span>
+          <span itemProp="name">{name}</span>
         </Name>
       </Wrapper>
     );
