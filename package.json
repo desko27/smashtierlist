@@ -1,6 +1,6 @@
 {
   "name": "smash-tier-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "🎮🎯 Tier List application for Super Smash Bros series",
   "main": "src/index.js",
   "repository": "https://github.com/desko27/smash-tier-list.git",
@@ -32,6 +32,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-ga": "^2.5.3",
     "react-hot-loader": "^4.0.0-beta.21",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",

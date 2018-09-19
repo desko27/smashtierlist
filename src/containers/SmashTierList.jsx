@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { withRouter } from 'react-static';
+import ReactGA from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -38,6 +39,12 @@ import HeaderIcon from '../components/HeaderIcon';
 
 import Game from './Game';
 
+// init google analytics
+if (typeof document !== 'undefined') {
+  ReactGA.initialize('UA-69148909-3');
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
+
 // add all the games to the redux store
 if (store.getState().games.length === 0) {
   gamesData.forEach(game => store.dispatch(addGame(game)));
@@ -65,6 +72,11 @@ class SmashTierList extends React.Component {
     // prepare listener for future requests
     history.listen(({ pathname }) => {
       goToRequestedGame(pathname);
+
+      // register further navigation via google analytics
+      if (typeof document !== 'undefined') {
+        ReactGA.pageview(window.location.pathname + window.location.search);
+      }
     });
 
     // root url should fallback to 'currentGame'
