@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 import { Wrapper, InnerWrapper, Logo } from './SuperTitle.styles';
 
+import smashSrc from '../assets/svg/smash.svg';
+
 const SuperTitle = ({ children }) => (
   <Wrapper>
     <InnerWrapper>
-      <Logo src="/svg/smash.svg" alt="Smash Logo" />
+      <Logo src={smashSrc} alt="Smash Logo" />
       <h1 className="title">{children}</h1>
     </InnerWrapper>
   </Wrapper>

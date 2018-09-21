@@ -4,11 +4,17 @@ import PropTypes from 'prop-types';
 import { Wrapper, ImgWrapper, Name } from './Character.styles';
 
 class Character extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     if (typeof document !== 'undefined') {
       this.imageRef = React.createRef();
     }
+
+    const { slug, gameSlug } = props;
+
+    // eslint-disable-next-line
+    // this.charSrc = require(`../../assets/img/chars/${gameSlug}/${slug}.png`);
+    this.charSrc = `/img/chars/${gameSlug}/${slug}.png`;
   }
 
   state = { loaded: false };
@@ -29,12 +35,7 @@ class Character extends React.Component {
   }
 
   render() {
-    const {
-      name,
-      color,
-      slug,
-      gameSlug,
-    } = this.props;
+    const { name, color } = this.props;
 
     const { loaded } = this.state;
 
@@ -44,7 +45,7 @@ class Character extends React.Component {
           <img
             ref={this.imageRef}
             className={loaded ? 'loaded' : 'loading'}
-            src={`/img/chars/${gameSlug}/${slug}.png`}
+            src={this.charSrc}
             alt={name}
             itemProp="image"
           />

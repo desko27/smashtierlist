@@ -3,6 +3,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
+import util from 'util';
+import ImageminPlugin from 'imagemin-webpack-plugin';
 
 export default {
   getSiteData: () => ({
@@ -20,10 +22,63 @@ export default {
     { path: '/brawl' },
     { path: '/ssb4' },
   ]),
-  webpack: (config, { stage }) => {
-    config.node = { fs: 'empty' };
-    return config;
-  },
+  webpack: [
+    (config, { defaultLoaders, stage }) => {
+      config.plugins = [
+        ...config.plugins,
+
+        // Make sure that the plugin is after any plugins that add images
+        new ImageminPlugin({
+          disable: stage === 'dev', // Disable during development
+          pngquant: {
+            quality: '95-100',
+          },
+        }),
+      ];
+
+      // https://iamakulov.com/notes/optimize-images-webpack/
+      const newRules = [
+        {
+          test: /\.(jpe?g|png|gif)$/,
+          loader: 'url-loader',
+          options: {
+            // Images larger than 10 KB won’t be inlined
+            limit: 10 * 1024,
+          },
+        },
+        {
+          test: /\.svg$/,
+          loader: 'svg-url-loader',
+          options: {
+            limit: 100 * 1024,
+            // Remove quotes around the encoded URL –
+            // they’re rarely useful
+            noquotes: true,
+          },
+        },
+        {
+          test: /\.(jpg|png|gif|svg)$/,
+          loader: 'image-webpack-loader',
+          // Specify enforce: 'pre' to apply the loader
+          // before url-loader/svg-url-loader
+          // and not duplicate it in rules with them
+          enforce: 'pre',
+        },
+      ];
+
+      const rules = config.module.rules[0].oneOf;
+      config.module.rules[0].oneOf = [
+        ...newRules,
+        ...rules,
+      ];
+
+      return config;
+    },
+    (config) => {
+      // comment out to see the full webpack config at build time
+      // console.log(util.inspect(config.module.rules[0].oneOf, false, null, true));
+    },
+  ],
   renderToHtml: (render, Comp, meta) => {
     const sheet = new ServerStyleSheet();
 
