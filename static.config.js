@@ -1,10 +1,13 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-vars */
+/* eslint-disable import/no-extraneous-dependencies */
+
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 import util from 'util';
 import ImageminPlugin from 'imagemin-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
 
 export default {
   getSiteData: () => ({
@@ -27,12 +30,22 @@ export default {
       config.plugins = [
         ...config.plugins,
 
-        // Make sure that the plugin is after any plugins that add images
+        // compress all images
+        // make sure that this is after any plugins that add images
         new ImageminPlugin({
-          disable: stage === 'dev', // Disable during development
+          disable: stage === 'dev',
           pngquant: {
             quality: '95-100',
           },
+        }),
+
+        // get gzipped files
+        new CompressionPlugin({
+          asset: '[path].gz[query]',
+          algorithm: 'gzip',
+          test: /\.js$|\.css$|\.html$/,
+          threshold: 10240,
+          minRatio: 0.8,
         }),
       ];
 
@@ -42,7 +55,7 @@ export default {
           test: /\.(jpe?g|png|gif)$/,
           loader: 'url-loader',
           options: {
-            // Images larger than 10 KB won’t be inlined
+            // images larger than 10 KB won't be inlined
             limit: 10 * 1024,
           },
         },
@@ -50,18 +63,16 @@ export default {
           test: /\.svg$/,
           loader: 'svg-url-loader',
           options: {
+            // svgs larger than 100 KB won't be inlined
             limit: 100 * 1024,
-            // Remove quotes around the encoded URL –
-            // they’re rarely useful
+            // remove quotes around the encoded url, they're rarely useful
             noquotes: true,
           },
         },
         {
           test: /\.(jpg|png|gif|svg)$/,
           loader: 'image-webpack-loader',
-          // Specify enforce: 'pre' to apply the loader
-          // before url-loader/svg-url-loader
-          // and not duplicate it in rules with them
+          // apply loader before url-loader/svg-url-loader and not duplicate it in rules with them
           enforce: 'pre',
         },
       ];
