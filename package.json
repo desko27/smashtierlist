@@ -15,10 +15,10 @@
     "serve": "serve dist -p 3000",
     "eslint": "eslint . --ext=\"js,jsx\"",
     "mocha": "mocha -r babel-core/register --file scripts/testSetup.js \"src/**/*.test.js\"",
-    "test": "cross-env NODE_ENV=test nyc yarn mocha",
-    "test:debug": "cross-env NODE_ENV=test yarn mocha --inspect-brk",
-    "coverage": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text yarn mocha",
-    "coveralls": "cross-env NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
+    "test": "nyc yarn mocha",
+    "test:debug": "yarn mocha --inspect-brk",
+    "coverage": "nyc --reporter=html --reporter=text yarn mocha",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "husky": {
     "hooks": {
