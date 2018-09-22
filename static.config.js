@@ -11,7 +11,14 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import S3Plugin from 'webpack-s3-plugin';
 import path from 'path';
 
-const { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_S3_BUCKET } = process.env;
+const {
+  ENV,
+  DEPLOY,
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+  AWS_S3_BUCKET_STAGING,
+  AWS_S3_BUCKET_PRODUCTION,
+} = process.env;
 
 export default {
   getSiteData: () => ({
@@ -53,7 +60,7 @@ export default {
         }),
 
         // upload assets to s3
-        stage === 'dev' ? { apply: () => {} } : (
+        stage === 'dev' || DEPLOY !== 's3' ? { apply: () => {} } : (
           new S3Plugin({
             include: /\.(jpe?g|png|gif|svg)$/,
             s3Options: {
@@ -62,7 +69,7 @@ export default {
               region: 'us-east-2',
             },
             s3UploadOptions: {
-              Bucket: AWS_S3_BUCKET,
+              Bucket: ENV === 'production' ? AWS_S3_BUCKET_PRODUCTION : AWS_S3_BUCKET_STAGING,
             },
           })
         ),
@@ -87,7 +94,10 @@ export default {
           test: /\.png$/,
           include: path.resolve(__dirname, 'src/assets/img/chars'),
           loader: 'responsive-loader',
-          options: { size: 89 },
+          options: {
+            size: 89,
+            name: '[hash].[ext]',
+          },
         },
         {
           test: /\.svg$/,
