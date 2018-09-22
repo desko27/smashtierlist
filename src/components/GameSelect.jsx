@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-static';
 
+import arrowLeftSrc from 'assets/svg/arrow-left.svg';
+import arrowRightSrc from 'assets/svg/arrow-right.svg';
+
 import {
   Wrapper,
   InnerWrapper,
@@ -14,13 +17,13 @@ const GameSelect = ({ currentGame, prevGame, nextGame }) => (
     <InnerWrapper>
       <Link to={`/${prevGame.route}`} title={prevGame.name}>
         <Arrow type="button">
-          <img src="/svg/arrow-left.svg" alt="Previous game" />
+          <img src={arrowLeftSrc} alt="Previous game" />
         </Arrow>
       </Link>
       <GameTitle>{currentGame.shortName}</GameTitle>
       <Link to={`/${nextGame.route}`} title={nextGame.name}>
         <Arrow type="button">
-          <img src="/svg/arrow-right.svg" alt="Next game" />
+          <img src={arrowRightSrc} alt="Next game" />
         </Arrow>
       </Link>
     </InnerWrapper>

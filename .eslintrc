@@ -6,6 +6,15 @@
     "mocha": true
   },
   "extends": "airbnb",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src"
+        ]
+      }
+    }
+  },
   "rules": {
     "import/prefer-default-export": "off",
     "react/jsx-one-expression-per-line": "off",

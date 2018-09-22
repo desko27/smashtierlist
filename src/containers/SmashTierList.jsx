@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { withRouter, withSiteData, Head } from 'react-static';
 import ReactGA from 'react-ga';
-import dotenv from 'dotenv';
 
 // fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,6 +13,9 @@ import {
   faTwitterSquare,
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons';
+
+import bookSrc from 'assets/svg/book.svg';
+import githubSrc from 'assets/svg/github.svg';
 
 // redux stuff
 import store from '../redux/store';
@@ -43,7 +45,6 @@ import Game from './Game';
 
 
 // environment vars
-dotenv.config();
 const env = process.env.REACT_STATIC_ENV;
 
 // init google analytics
@@ -142,12 +143,12 @@ class SmashTierList extends React.Component {
       <TheWrapper className={secondLineStuck ? 'stuck' : ''}>
         <Filter onChange={this.onFilterChange} value={currentFilter} />
         <HeaderIcon
-          svgPath="/svg/book.svg"
+          svgPath={bookSrc}
           alt="Smash Wiki"
           url="https://www.ssbwiki.com/tier_list"
         />
         <HeaderIcon
-          svgPath="/svg/github.svg"
+          svgPath={githubSrc}
           alt="Soruce on GitHub"
           url="https://github.com/desko27/smash-tier-list"
         />

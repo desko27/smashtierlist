@@ -1,8 +1,27 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-vars */
+/* eslint-disable import/no-extraneous-dependencies */
+
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
+import util from 'util';
+import webpack from 'webpack';
+import ImageminPlugin from 'imagemin-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
+import S3Plugin from 'webpack-s3-plugin';
+import path from 'path';
+
+const {
+  ENV,
+  DEPLOY,
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+  AWS_S3_BUCKET_STAGING,
+  AWS_S3_BUCKET_STAGING_REGION: S3_STAGING_REGION,
+  AWS_S3_BUCKET_PRODUCTION,
+  AWS_S3_BUCKET_PRODUCTION_REGION: S3_PRODUCTION_REGION,
+} = process.env;
 
 export default {
   getSiteData: () => ({
@@ -20,10 +39,117 @@ export default {
     { path: '/brawl' },
     { path: '/ssb4' },
   ]),
-  webpack: (config, { stage }) => {
-    config.node = { fs: 'empty' };
-    return config;
-  },
+  webpack: [
+    (config, { stage }) => {
+      config.resolve.alias = {
+        // Fix for ESLint: https://goo.gl/8kgMF5
+        common: path.resolve('src/common'),
+        assets: path.resolve('src/assets'),
+      };
+
+      config.plugins = [
+        ...config.plugins,
+
+        // make some .env vars available to the client (end-user's browser)
+        new webpack.DefinePlugin({
+          'process.env': {
+            ENV: JSON.stringify(ENV),
+            AWS_S3_BUCKET_STAGING: JSON.stringify(AWS_S3_BUCKET_STAGING),
+            AWS_S3_BUCKET_STAGING_REGION: JSON.stringify(S3_STAGING_REGION),
+            AWS_S3_BUCKET_PRODUCTION: JSON.stringify(AWS_S3_BUCKET_PRODUCTION),
+            AWS_S3_BUCKET_PRODUCTION_REGION: JSON.stringify(S3_PRODUCTION_REGION),
+          },
+        }),
+
+        // compress all images
+        // make sure that this is after any plugins that add images
+        new ImageminPlugin({
+          disable: stage === 'dev',
+          pngquant: {
+            quality: '95-100',
+          },
+        }),
+
+        // get gzipped files
+        new CompressionPlugin({
+          asset: '[path].gz[query]',
+          algorithm: 'gzip',
+          test: /\.js$|\.css$|\.html$/,
+          threshold: 10240,
+          minRatio: 0.8,
+        }),
+
+        // upload assets to s3
+        stage === 'dev' || DEPLOY !== 's3' ? { apply: () => {} } : (
+          new S3Plugin({
+            include: /\.(jpe?g|png|gif|svg)$/,
+            s3Options: {
+              accessKeyId: AWS_ACCESS_KEY_ID,
+              secretAccessKey: AWS_SECRET_ACCESS_KEY,
+              region: ENV === 'production' ? S3_PRODUCTION_REGION : S3_STAGING_REGION,
+            },
+            s3UploadOptions: {
+              Bucket: ENV === 'production' ? AWS_S3_BUCKET_PRODUCTION : AWS_S3_BUCKET_STAGING,
+            },
+          })
+        ),
+      ];
+
+      // https://iamakulov.com/notes/optimize-images-webpack/
+      const newRules = [
+        {
+          test: /\.(jpe?g|png|gif)$/,
+          exclude: path.resolve(__dirname, 'src/assets/img/chars'),
+          loaders: [
+            {
+              loader: 'url-loader',
+              options: {
+                // images larger than 10 KB won't be inlined
+                limit: 10 * 1024,
+              },
+            },
+          ],
+        },
+        {
+          test: /\.png$/,
+          include: path.resolve(__dirname, 'src/assets/img/chars'),
+          loader: 'responsive-loader',
+          options: {
+            size: 89,
+            name: '[hash].[ext]',
+          },
+        },
+        {
+          test: /\.svg$/,
+          loader: 'svg-url-loader',
+          options: {
+            // svgs larger than 100 KB won't be inlined
+            limit: 100 * 1024,
+            // remove quotes around the encoded url, they're rarely useful
+            noquotes: true,
+          },
+        },
+        {
+          test: /\.(jpe?g|png|gif|svg)$/,
+          loader: 'image-webpack-loader',
+          // apply loader before url-loader/svg-url-loader and not duplicate it in rules with them
+          enforce: 'pre',
+        },
+      ];
+
+      const rules = config.module.rules[0].oneOf;
+      config.module.rules[0].oneOf = [
+        ...newRules,
+        ...rules,
+      ];
+
+      return config;
+    },
+    (config) => {
+      // comment out to see the full webpack config at build time
+      // console.log(util.inspect(config.module.rules[0].oneOf, false, null, true));
+    },
+  ],
   renderToHtml: (render, Comp, meta) => {
     const sheet = new ServerStyleSheet();
 
@@ -54,7 +180,15 @@ export default {
           {renderMeta.styleTags}
           <noscript>
             <style type="text/css">
-              {'img.loading { opacity: 1 !important; }'}
+              {`
+              .loading {
+                opacity: 1 !important;
+                transform: none !important;
+              }
+              .loading-bar {
+                display: none !important;
+              }
+              `}
             </style>
           </noscript>
           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
