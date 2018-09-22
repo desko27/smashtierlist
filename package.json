@@ -18,7 +18,7 @@
     "test": "nyc yarn mocha",
     "test:debug": "yarn mocha --inspect-brk",
     "coverage": "nyc --reporter=html --reporter=text yarn mocha",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "ci:coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "husky": {
     "hooks": {
