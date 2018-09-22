@@ -46,6 +46,7 @@
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.2",
     "chai": "^4.1.2",
+    "compression-webpack-plugin": "^1.1.12",
     "cross-env": "^5.2.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -53,13 +54,14 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "husky": "^1.0.0-rc.13",
-    "mocha": "^5.2.0",
-    "nyc": "^13.0.1",
-    "serve": "^6.1.0",
-    "svg-url-loader": "^2.3.2",
-    "url-loader": "^1.1.1",
     "image-webpack-loader": "^4.3.1",
     "imagemin-webpack-plugin": "^2.3.0",
-    "compression-webpack-plugin": "^1.1.12"
+    "jimp": "^0.5.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "responsive-loader": "^1.1.0",
+    "serve": "^6.1.0",
+    "svg-url-loader": "^2.3.2",
+    "url-loader": "^1.1.1"
   }
 }

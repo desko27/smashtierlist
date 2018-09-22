@@ -8,6 +8,7 @@ import { ServerStyleSheet } from 'styled-components';
 import util from 'util';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
+import path from 'path';
 
 export default {
   getSiteData: () => ({
@@ -53,11 +54,22 @@ export default {
       const newRules = [
         {
           test: /\.(jpe?g|png|gif)$/,
-          loader: 'url-loader',
-          options: {
-            // images larger than 10 KB won't be inlined
-            limit: 10 * 1024,
-          },
+          exclude: path.resolve(__dirname, 'src/assets/img/chars'),
+          loaders: [
+            {
+              loader: 'url-loader',
+              options: {
+                // images larger than 10 KB won't be inlined
+                limit: 10 * 1024,
+              },
+            },
+          ],
+        },
+        {
+          test: /\.png$/,
+          include: path.resolve(__dirname, 'src/assets/img/chars'),
+          loader: 'responsive-loader',
+          options: { size: 89 },
         },
         {
           test: /\.svg$/,

@@ -20,8 +20,7 @@ class Character extends React.Component {
     const { slug, gameSlug } = props;
 
     // eslint-disable-next-line
-    // this.charSrc = require(`../../assets/img/chars/${gameSlug}/${slug}.png`);
-    this.charSrc = `/img/chars/${gameSlug}/${slug}.png`;
+    this.charSrc = require(`../../assets/img/chars/${gameSlug}/${slug}.png`).src;
 
     // check elapsed time for loading threshold
     this.start = new Date();
