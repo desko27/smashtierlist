@@ -8,7 +8,10 @@ import { ServerStyleSheet } from 'styled-components';
 import util from 'util';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
+import S3Plugin from 'webpack-s3-plugin';
 import path from 'path';
+
+const { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_S3_BUCKET } = process.env;
 
 export default {
   getSiteData: () => ({
@@ -27,7 +30,7 @@ export default {
     { path: '/ssb4' },
   ]),
   webpack: [
-    (config, { defaultLoaders, stage }) => {
+    (config, { stage }) => {
       config.plugins = [
         ...config.plugins,
 
@@ -48,6 +51,21 @@ export default {
           threshold: 10240,
           minRatio: 0.8,
         }),
+
+        // upload assets to s3
+        stage === 'dev' ? { apply: () => {} } : (
+          new S3Plugin({
+            include: /\.(jpe?g|png|gif|svg)$/,
+            s3Options: {
+              accessKeyId: AWS_ACCESS_KEY_ID,
+              secretAccessKey: AWS_SECRET_ACCESS_KEY,
+              region: 'us-east-2',
+            },
+            s3UploadOptions: {
+              Bucket: AWS_S3_BUCKET,
+            },
+          })
+        ),
       ];
 
       // https://iamakulov.com/notes/optimize-images-webpack/
@@ -82,7 +100,7 @@ export default {
           },
         },
         {
-          test: /\.(jpg|png|gif|svg)$/,
+          test: /\.(jpe?g|png|gif|svg)$/,
           loader: 'image-webpack-loader',
           // apply loader before url-loader/svg-url-loader and not duplicate it in rules with them
           enforce: 'pre',

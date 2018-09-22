@@ -7,9 +7,9 @@
   "author": "desko27 <desko27@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "react-static start",
-    "stage": "react-static build --staging",
-    "build": "react-static build",
+    "start": "env-cmd .env react-static start",
+    "stage": "env-cmd .env react-static build --staging",
+    "build": "env-cmd .env react-static build",
     "serve": "serve dist -p 3000",
     "eslint": "eslint . --ext=\"js,jsx\"",
     "mocha": "mocha -R nyan -r babel-core/register --file scripts/testSetup.js \"src/**/*.test.js\"",
@@ -48,6 +48,7 @@
     "chai": "^4.1.2",
     "compression-webpack-plugin": "^1.1.12",
     "cross-env": "^5.2.0",
+    "env-cmd": "^8.0.2",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -62,6 +63,7 @@
     "responsive-loader": "^1.1.0",
     "serve": "^6.1.0",
     "svg-url-loader": "^2.3.2",
-    "url-loader": "^1.1.1"
+    "url-loader": "^1.1.1",
+    "webpack-s3-plugin": "git+https://github.com/eyupci/s3-plugin-webpack.git#master"
   }
 }
