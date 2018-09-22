@@ -6,6 +6,7 @@
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 import util from 'util';
+import webpack from 'webpack';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import S3Plugin from 'webpack-s3-plugin';
@@ -17,7 +18,9 @@ const {
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
   AWS_S3_BUCKET_STAGING,
+  AWS_S3_BUCKET_STAGING_REGION: S3_STAGING_REGION,
   AWS_S3_BUCKET_PRODUCTION,
+  AWS_S3_BUCKET_PRODUCTION_REGION: S3_PRODUCTION_REGION,
 } = process.env;
 
 export default {
@@ -38,8 +41,25 @@ export default {
   ]),
   webpack: [
     (config, { stage }) => {
+      config.resolve.alias = {
+        // Fix for ESLint: https://goo.gl/8kgMF5
+        common: path.resolve('src/common'),
+        assets: path.resolve('src/assets'),
+      };
+
       config.plugins = [
         ...config.plugins,
+
+        // make some .env vars available to the client (end-user's browser)
+        new webpack.DefinePlugin({
+          'process.env': {
+            ENV: JSON.stringify(ENV),
+            AWS_S3_BUCKET_STAGING: JSON.stringify(AWS_S3_BUCKET_STAGING),
+            AWS_S3_BUCKET_STAGING_REGION: JSON.stringify(S3_STAGING_REGION),
+            AWS_S3_BUCKET_PRODUCTION: JSON.stringify(AWS_S3_BUCKET_PRODUCTION),
+            AWS_S3_BUCKET_PRODUCTION_REGION: JSON.stringify(S3_PRODUCTION_REGION),
+          },
+        }),
 
         // compress all images
         // make sure that this is after any plugins that add images
@@ -66,7 +86,7 @@ export default {
             s3Options: {
               accessKeyId: AWS_ACCESS_KEY_ID,
               secretAccessKey: AWS_SECRET_ACCESS_KEY,
-              region: 'us-east-2',
+              region: ENV === 'production' ? S3_PRODUCTION_REGION : S3_STAGING_REGION,
             },
             s3UploadOptions: {
               Bucket: ENV === 'production' ? AWS_S3_BUCKET_PRODUCTION : AWS_S3_BUCKET_STAGING,

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import media from '../../media';
+import media from 'common/media';
 
 export const TopWrapper = styled.footer`
   overflow-x: hidden;

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import srcS3 from 'common/src-s3';
+
 import {
   Wrapper,
   ImgWrapper,
@@ -20,7 +22,7 @@ class Character extends React.Component {
     const { slug, gameSlug } = props;
 
     // eslint-disable-next-line
-    this.charSrc = require(`../../assets/img/chars/${gameSlug}/${slug}.png`).src;
+    this.charSrc = srcS3(require(`assets/img/chars/${gameSlug}/${slug}.png`).src);
 
     // check elapsed time for loading threshold
     this.start = new Date();
@@ -51,7 +53,6 @@ class Character extends React.Component {
 
   render() {
     const { name, color } = this.props;
-
     const { loaded } = this.state;
 
     return (

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-static';
 
-import arrowLeftSrc from '../assets/svg/arrow-left.svg';
-import arrowRightSrc from '../assets/svg/arrow-right.svg';
+import arrowLeftSrc from 'assets/svg/arrow-left.svg';
+import arrowRightSrc from 'assets/svg/arrow-right.svg';
 
 import {
   Wrapper,

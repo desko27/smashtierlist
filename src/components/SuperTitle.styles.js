@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import media from '../media';
+import media from 'common/media';
+
 import { theme } from './layout/Header.styles';
 
 const { height } = theme;

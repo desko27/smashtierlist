@@ -14,8 +14,8 @@ import {
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons';
 
-import bookSrc from '../assets/svg/book.svg';
-import githubSrc from '../assets/svg/github.svg';
+import bookSrc from 'assets/svg/book.svg';
+import githubSrc from 'assets/svg/github.svg';
 
 // redux stuff
 import store from '../redux/store';

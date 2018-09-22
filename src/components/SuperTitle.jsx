@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper, InnerWrapper, Logo } from './SuperTitle.styles';
+import smashSrc from 'assets/svg/smash.svg';
 
-import smashSrc from '../assets/svg/smash.svg';
+import { Wrapper, InnerWrapper, Logo } from './SuperTitle.styles';
 
 const SuperTitle = ({ children }) => (
   <Wrapper>
