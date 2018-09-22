@@ -115,7 +115,7 @@ export default {
           include: path.resolve(__dirname, 'src/assets/img/chars'),
           loader: 'responsive-loader',
           options: {
-            size: 89,
+            size: 150,
             name: '[hash].[ext]',
           },
         },
