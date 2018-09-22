@@ -120,7 +120,15 @@ export default {
           {renderMeta.styleTags}
           <noscript>
             <style type="text/css">
-              {'img.loading { opacity: 1 !important; }'}
+              {`
+              .loading {
+                opacity: 1 !important;
+                transform: none !important;
+              }
+              .loading-bar {
+                display: none !important;
+              }
+              `}
             </style>
           </noscript>
           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />

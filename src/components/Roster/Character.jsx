@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper, ImgWrapper, Name } from './Character.styles';
+import {
+  Wrapper,
+  ImgWrapper,
+  Name,
+  LoadingBar,
+} from './Character.styles';
+
+const LOADING_THRESHOLD = 500;
 
 class Character extends React.Component {
   constructor(props) {
@@ -15,9 +22,13 @@ class Character extends React.Component {
     // eslint-disable-next-line
     // this.charSrc = require(`../../assets/img/chars/${gameSlug}/${slug}.png`);
     this.charSrc = `/img/chars/${gameSlug}/${slug}.png`;
+
+    // check elapsed time for loading threshold
+    this.start = new Date();
   }
 
-  state = { loaded: false };
+  // states: yes | no | early
+  state = { loaded: 'no' };
 
   componentDidMount() {
     const image = this.imageRef.current;
@@ -31,7 +42,12 @@ class Character extends React.Component {
   }
 
   handleImageLoaded = () => {
-    this.setState({ loaded: true });
+    const now = new Date();
+    if (now - this.start > LOADING_THRESHOLD) {
+      this.setState({ loaded: 'yes' });
+    } else {
+      this.setState({ loaded: 'early' });
+    }
   }
 
   render() {
@@ -44,11 +60,24 @@ class Character extends React.Component {
         <ImgWrapper>
           <img
             ref={this.imageRef}
-            className={loaded ? 'loaded' : 'loading'}
+            className={
+              // eslint-disable-next-line
+              loaded === 'early' ?
+                'early-loaded' : (loaded === 'no' ? 'loading' : 'loaded')
+            }
             src={this.charSrc}
             alt={name}
             itemProp="image"
           />
+          {loaded === 'no' ? (
+            <LoadingBar className="loading-bar">
+              <div>
+                <div className="bar" />
+                <div className="bar" />
+                <div className="bar" />
+              </div>
+            </LoadingBar>
+          ) : ''}
         </ImgWrapper>
         <Name color={color} className={name.length > 11 ? 'is-large' : ''}>
           <span itemProp="name">{name}</span>
