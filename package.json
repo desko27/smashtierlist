@@ -14,10 +14,11 @@
     "build:s3": "env-cmd .env cross-env DEPLOY=s3 ENV=production react-static build",
     "serve": "serve dist -p 3000",
     "eslint": "eslint . --ext=\"js,jsx\"",
-    "mocha": "mocha -R nyan -r babel-core/register --file scripts/testSetup.js \"src/**/*.test.js\"",
+    "mocha": "mocha -r babel-core/register --file scripts/testSetup.js \"src/**/*.test.js\"",
     "test": "cross-env NODE_ENV=test nyc yarn mocha",
     "test:debug": "cross-env NODE_ENV=test yarn mocha --inspect-brk",
-    "coverage": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text yarn mocha"
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text yarn mocha",
+    "coveralls": "cross-env NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
   },
   "husky": {
     "hooks": {
@@ -49,6 +50,7 @@
     "babel-loader": "^8.0.2",
     "chai": "^4.1.2",
     "compression-webpack-plugin": "^1.1.12",
+    "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "env-cmd": "^8.0.2",
     "eslint": "^5.5.0",
