@@ -1,8 +1,12 @@
-<h1 align="center">🎮 🎯 Smash Tier List</h1>
+<h1 align="center">🎮 🎯 <a href="https://smash-tier-list.com" alt="Smash Tier List">Smash Tier List</a></h1>
 
 <p align="center">
   <a href='https://travis-ci.org/desko27/smash-tier-list'><img src='https://travis-ci.org/desko27/smash-tier-list.svg?branch=develop' alt='Build Status' /></a>
   <a href='https://coveralls.io/github/desko27/smash-tier-list?branch=develop'><img src='https://coveralls.io/repos/github/desko27/smash-tier-list/badge.svg?branch=develop' alt='Coverage Status' /></a>
+</p>
+
+<p align="center">
+  <a href="https://smash-tier-list.com" alt="Smash Tier List">See it online ↗</a>
 </p>
 
 <p align="center">
@@ -24,3 +28,62 @@
   <img height="100" src="https://user-images.githubusercontent.com/4168389/45922365-8ba02680-beca-11e8-8c89-a8f6fe84bab6.png" />
   <img height="100" src="https://user-images.githubusercontent.com/4168389/45922521-1df5f980-bece-11e8-8fa1-99201d5bd322.png" />
 </p>
+
+
+# Getting Started
+
+## Installation
+
+```
+$ yarn
+$ cp .env.example .env
+```
+
+Note: while it's not required in order to run it locally in dev mode, it is important to define your own S3 bucket data in `.env` to be able to deploy assets to S3.
+
+## Development server
+
+```
+$ yarn start
+```
+
+Then you should be able to open a browser at http://localhost:3000 and see the application.
+
+# Syntax check and tests
+
+## Run ESLint
+
+```
+$ yarn eslint
+```
+
+## Run tests
+
+```
+$ yarn test
+```
+
+## Generate coverage
+
+```
+$ yarn coverage
+```
+
+# Building the project
+
+## Make a production build to run it locally
+
+```
+$ yarn stage
+$ yarn serve
+```
+
+Note: if you use `stage:s3` instead of `stage`, all the assets that have been processed by webpack are deployed into the S3 bucket right away.
+
+## Make a definitive production build
+
+```
+$ yarn build
+```
+
+Note: again, you can use `build:s3` instead of `build` and compiled assets are sent to the S3 bucket.
