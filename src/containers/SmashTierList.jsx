@@ -149,7 +149,7 @@ class SmashTierList extends React.Component {
         />
         <HeaderIcon
           svgPath={githubSrc}
-          alt="Soruce on GitHub"
+          alt="Source on GitHub"
           url="https://github.com/desko27/smash-tier-list"
         />
       </TheWrapper>
