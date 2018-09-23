@@ -1,8 +1,8 @@
-<h1 align="center">🎮 🎯 <a href="https://smash-tier-list.com" alt="Smash Tier List">Smash Tier List</a></h1>
+<h1 align="center">🎮 🎯 <a href="https://smash-tier-list.com" alt="Smash Tier List">Smash Tier List</a> &nbsp; <a href="https://twitter.com/intent/tweet?text=Check%20which%20Tier%20position%20is%20your%20favourite%20Super%20Smash%20Bros%20character&url=https://smash-tier-list.com&via=desko27&hashtags=smashbros,smash,ssb,ssb4,tierlist"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" /></a></h1>
 
 <p align="center">
-  <a href='https://travis-ci.org/desko27/smash-tier-list'><img src='https://travis-ci.org/desko27/smash-tier-list.svg?branch=develop' alt='Build Status' /></a>
-  <a href='https://coveralls.io/github/desko27/smash-tier-list?branch=develop'><img src='https://coveralls.io/repos/github/desko27/smash-tier-list/badge.svg?branch=develop' alt='Coverage Status' /></a>
+  <a href="https://travis-ci.org/desko27/smash-tier-list"><img src="https://travis-ci.org/desko27/smash-tier-list.svg?branch=develop" alt="Build Status" /></a>
+  <a href="https://coveralls.io/github/desko27/smash-tier-list?branch=develop"><img src="https://coveralls.io/repos/github/desko27/smash-tier-list/badge.svg?branch=develop" alt="Coverage Status" /></a>
 </p>
 
 <p align="center">
