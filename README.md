@@ -30,9 +30,9 @@
 </p>
 
 
-# Getting Started
+## Getting Started
 
-## Installation
+### Installation
 
 ```
 $ yarn
@@ -41,7 +41,7 @@ $ cp .env.example .env
 
 Note: while it's not required in order to run it locally in dev mode, it is important to define your own S3 bucket data in `.env` to be able to deploy assets to S3.
 
-## Development server
+### Development server
 
 ```
 $ yarn start
@@ -49,29 +49,29 @@ $ yarn start
 
 Then you should be able to open a browser at http://localhost:3000 and see the application.
 
-# Syntax check and tests
+## Syntax check and tests
 
-## Run ESLint
+### Run ESLint
 
 ```
 $ yarn eslint
 ```
 
-## Run tests
+### Run tests
 
 ```
 $ yarn test
 ```
 
-## Generate coverage
+### Generate coverage
 
 ```
 $ yarn coverage
 ```
 
-# Building the project
+## Building the project
 
-## Make a production build to run it locally
+### Make a production build to run it locally
 
 ```
 $ yarn stage
@@ -80,7 +80,7 @@ $ yarn serve
 
 Note: if you use `stage:s3` instead of `stage`, all the assets that have been processed by webpack are deployed into the S3 bucket right away.
 
-## Make a definitive production build
+### Make a definitive production build
 
 ```
 $ yarn build
