@@ -168,6 +168,7 @@ export default {
       <Html lang="en-US">
         <Head>
           <meta charSet="UTF-8" />
+          <meta name="google-site-verification" content="aFOAcZeGtRB40F1nauAUGNlZ1WPySap0eHhMWO0QKDU" />
 
           <title>{siteData.siteTitle}</title>
           <meta name="description" content={siteData.metaDescription} />
