@@ -30,6 +30,26 @@
 </p>
 
 
+## Design >> Desktop HD
+
+### SketchApp mockup VS actual screenshot
+<p align="center">
+  <img width="720" src="https://user-images.githubusercontent.com/4168389/45922912-aa0d1e80-bed8-11e8-9005-aab431dd48b8.png" alt="sketchapp - desktop hd - ssb4" />
+  <img width="720" src="https://user-images.githubusercontent.com/4168389/45923025-bb572a80-beda-11e8-899e-978b97501826.png" alt="actual - desktop hd - ssb4" />
+</p>
+
+## Design >> Mobile
+
+### SketchApp mockup VS actual screenshot
+<table align="center">
+  <td valign="top">
+    <img width="221" src="https://user-images.githubusercontent.com/4168389/45922913-ada0a580-bed8-11e8-9158-3eb09c564f46.png" alt="sketchapp - mobile - ssb4" />
+  </td>
+  <td valign="top">
+    <img width="221" src="https://user-images.githubusercontent.com/4168389/45923039-096c2e00-bedb-11e8-8de8-af5c800b515a.png" alt="actual - mobile - ssb4" />
+  </td>
+</table>
+
 ## Getting Started
 
 ### Installation
