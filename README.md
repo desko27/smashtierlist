@@ -55,6 +55,12 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://smash-tier-list.com" alt="Smash Tier List">
+    <img src="https://user-images.githubusercontent.com/4168389/45924092-1a2a9d00-bef7-11e8-8153-e701ec523391.gif" />
+  </a>
+</p>
+
 
 ## 💎 SketchApp Design
 <details>
