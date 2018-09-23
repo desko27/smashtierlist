@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://smash-tier-list.com" alt="Smash Tier List">
+    <img src="https://user-images.githubusercontent.com/4168389/45923712-a0da7c80-beed-11e8-82bf-4acc17664466.png" alt="Super Smash Bros Ball" />
+  </a>
+</p>
+
 <h1 align="center">🎮 🎯 <a href="https://smash-tier-list.com" alt="Smash Tier List">Smash Tier List</a> &nbsp; <a href="https://twitter.com/intent/tweet?text=Check%20which%20Tier%20position%20is%20your%20favourite%20Super%20Smash%20Bros%20character&url=https://smash-tier-list.com&via=desko27&hashtags=smashbros,smash,ssb,ssb4,tierlist"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" /></a></h1>
 
 <p align="center">
@@ -15,37 +21,37 @@
 
 <p align="center">
   <a href="https://github.com/nozzle/react-static" alt="React Static">
-    <img width="380" src="https://user-images.githubusercontent.com/4168389/45922345-0b79c100-beca-11e8-8fe3-88f103d4995b.png" />
+    <img width="280" src="https://user-images.githubusercontent.com/4168389/45922345-0b79c100-beca-11e8-8fe3-88f103d4995b.png" />
   </a>
 </p>
 
 <p align="center">
   <a href="https://github.com/yarnpkg/yarn" alt="Yarn">
-    <img height="100" src="https://user-images.githubusercontent.com/4168389/45922413-bf2f8080-becb-11e8-9dd7-f50bb6e063f0.png" />
+    <img height="70" src="https://user-images.githubusercontent.com/4168389/45922413-bf2f8080-becb-11e8-9dd7-f50bb6e063f0.png" />
   </a>
   <a href="https://github.com/facebook/react" alt="React">
-    <img height="100" src="https://user-images.githubusercontent.com/4168389/45922462-e3d82800-becc-11e8-99ca-b8677de2168b.png" />
+    <img height="70" src="https://user-images.githubusercontent.com/4168389/45922462-e3d82800-becc-11e8-99ca-b8677de2168b.png" />
   </a>
   <a href="https://github.com/reduxjs/redux" alt="Redux">
-    <img height="100" src="https://user-images.githubusercontent.com/4168389/45922501-80022f00-becd-11e8-9c77-f4c563683297.png" />
+    <img height="70" src="https://user-images.githubusercontent.com/4168389/45922501-80022f00-becd-11e8-9c77-f4c563683297.png" />
   </a>
   <a href="https://github.com/webpack/webpack" alt="Webpack">
-    <img height="100" src="https://user-images.githubusercontent.com/4168389/45922477-26016980-becd-11e8-897d-96da8127b2e0.png" />
+    <img height="70" src="https://user-images.githubusercontent.com/4168389/45922477-26016980-becd-11e8-897d-96da8127b2e0.png" />
   </a>
   <a href="https://github.com/eslint/eslint" alt="ESLint">
-    <img height="100" src="https://user-images.githubusercontent.com/4168389/45922421-e71ee400-becb-11e8-9134-22cc476008f3.png" />
+    <img height="70" src="https://user-images.githubusercontent.com/4168389/45922421-e71ee400-becb-11e8-9134-22cc476008f3.png" />
   </a>
   <a href="https://github.com/mochajs/mocha" alt="Mocha">
-    <img height="100" src="https://user-images.githubusercontent.com/4168389/45922483-3fa2b100-becd-11e8-9ffa-1e5f3f789c5c.png" />
+    <img height="70" src="https://user-images.githubusercontent.com/4168389/45922483-3fa2b100-becd-11e8-9ffa-1e5f3f789c5c.png" />
   </a>
   <a href="https://github.com/styled-components/styled-components" alt="Styled Components">
-    <img height="100" src="https://user-images.githubusercontent.com/4168389/45922515-ed15c480-becd-11e8-8191-b0c5d5df6f74.png" />
+    <img height="70" src="https://user-images.githubusercontent.com/4168389/45922515-ed15c480-becd-11e8-8191-b0c5d5df6f74.png" />
   </a>
   <a href="https://netlify.com" alt="Netlify">
-    <img height="100" src="https://user-images.githubusercontent.com/4168389/45922365-8ba02680-beca-11e8-8c89-a8f6fe84bab6.png" />
+    <img height="70" src="https://user-images.githubusercontent.com/4168389/45922365-8ba02680-beca-11e8-8c89-a8f6fe84bab6.png" />
   </a>
   <a href="https://aws.amazon.com/s3‎" alt="AWS S3">
-    <img height="100" src="https://user-images.githubusercontent.com/4168389/45922521-1df5f980-bece-11e8-8fa1-99201d5bd322.png" />
+    <img height="70" src="https://user-images.githubusercontent.com/4168389/45922521-1df5f980-bece-11e8-8fa1-99201d5bd322.png" />
   </a>
 </p>
 
