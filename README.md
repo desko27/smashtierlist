@@ -50,23 +50,23 @@
 </p>
 
 
-<h2 align="center">Design / Desktop HD</h2>
-<h3 align="center">SketchApp mockup VS actual screenshot</h3>
+## 💎 SketchApp Design
+<details>
+  <summary>Desktop HD - Mockup vs Screenshot</summary>
+  <p>
+    <img width="720" src="https://user-images.githubusercontent.com/4168389/45922912-aa0d1e80-bed8-11e8-9005-aab431dd48b8.png" alt="sketchapp - desktop hd - ssb4" />
+    <img width="720" src="https://user-images.githubusercontent.com/4168389/45923025-bb572a80-beda-11e8-899e-978b97501826.png" alt="actual - desktop hd - ssb4" />
+  </p>
+</details>
+<details>
+  <summary>Mobile - Mockup vs Screenshot</summary>
+  <p>
+    <img valign="top" width="221" src="https://user-images.githubusercontent.com/4168389/45922913-ada0a580-bed8-11e8-9158-3eb09c564f46.png" alt="sketchapp - mobile - ssb4" />
+    <img valign="top" width="221" src="https://user-images.githubusercontent.com/4168389/45923039-096c2e00-bedb-11e8-8de8-af5c800b515a.png" alt="actual - mobile - ssb4" />
+  </p>
+</details>
 
-<p align="center">
-  <img width="720" src="https://user-images.githubusercontent.com/4168389/45922912-aa0d1e80-bed8-11e8-9005-aab431dd48b8.png" alt="sketchapp - desktop hd - ssb4" />
-  <img width="720" src="https://user-images.githubusercontent.com/4168389/45923025-bb572a80-beda-11e8-899e-978b97501826.png" alt="actual - desktop hd - ssb4" />
-</p>
-
-<h2 align="center">Design / Mobile</h2>
-<h3 align="center">SketchApp mockup VS actual screenshot</h3>
-
-<p align="center">
-  <img valign="top" width="221" src="https://user-images.githubusercontent.com/4168389/45922913-ada0a580-bed8-11e8-9158-3eb09c564f46.png" alt="sketchapp - mobile - ssb4" />
-  <img valign="top" width="221" src="https://user-images.githubusercontent.com/4168389/45923039-096c2e00-bedb-11e8-8de8-af5c800b515a.png" alt="actual - mobile - ssb4" />
-</p>
-
-## Getting Started
+## 🎬 Getting Started
 
 ### Installation
 
@@ -85,7 +85,7 @@ $ yarn start
 
 Then you should be able to open a browser at http://localhost:3000 and see the application.
 
-## Syntax check and tests
+## ✅ Syntax check and tests
 
 ### Run ESLint
 
@@ -105,7 +105,7 @@ $ yarn test
 $ yarn coverage
 ```
 
-## Building the project
+## 🛠 Building the project
 
 ### Make a production build to run it locally
 
