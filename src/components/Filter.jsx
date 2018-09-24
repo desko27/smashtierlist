@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+// import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import {
   Wrapper,
@@ -18,10 +19,10 @@ const Filter = ({ onChange, value }) => (
         type="text"
         onChange={onChange}
         value={value}
-        placeholder="Filter characters..."
+        placeholder="Search characters..."
       />
       <IconButtons>
-        <FontAwesomeIcon className="icon" icon={faEyeSlash} />
+        <FontAwesomeIcon className="icon" icon={faSearch} />
       </IconButtons>
     </InputWrapper>
   </Wrapper>
