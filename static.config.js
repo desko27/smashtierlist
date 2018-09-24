@@ -90,6 +90,7 @@ export default {
             },
             s3UploadOptions: {
               Bucket: ENV === 'production' ? AWS_S3_BUCKET_PRODUCTION : AWS_S3_BUCKET_STAGING,
+              CacheControl: 'max-age=31536000', // 1 year
             },
           })
         ),
