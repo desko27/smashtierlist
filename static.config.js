@@ -26,6 +26,7 @@ const {
 export default {
   getSiteData: () => ({
     siteTitle: 'Smash Tier List',
+    siteRoot: 'https://smash-tier-list.com',
     metaDescription: 'Check out which is the Tier position of your favourite Super Smash Bros'
       + ' character. A tier list is a list that ranks all characters in a game based on the'
       + ' strength of their fighting abilities as well as their potential to win matches'
@@ -169,13 +170,26 @@ export default {
       <Html lang="en-US">
         <Head>
           <meta charSet="UTF-8" />
-          <meta name="google-site-verification" content="aFOAcZeGtRB40F1nauAUGNlZ1WPySap0eHhMWO0QKDU" />
+          <meta
+            name="google-site-verification"
+            content="aFOAcZeGtRB40F1nauAUGNlZ1WPySap0eHhMWO0QKDU"
+          />
 
-          <title>{siteData.siteTitle}</title>
+          {/* title is in SmashTierList component */}
           <meta name="description" content={siteData.metaDescription} />
 
-          <meta property="og:title" content={siteData.siteTitle} />
+          {/* og:title and other specific open graph metatags are in SmashTierList component */}
           <meta property="og:description" content={siteData.metaDescription} />
+          <meta property="og:type" content="website" />
+          <meta property="og:image" content={`${siteData.siteRoot}/apple-touch-icon.png`} />
+          <meta property="og:site_name" content={siteData.siteTitle} />
+
+          {/* twitter:title and other specific twitter metatags are in SmashTierList component */}
+          <meta property="twitter:card" content="app" />
+          <meta property="twitter:site" content="desko27" />
+          <meta property="twitter:creator" content="desko27" />
+          <meta property="twitter:description" content={siteData.metaDescription} />
+          <meta property="twitter:image" content={`${siteData.siteRoot}/apple-touch-icon.png`} />
 
           <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no" />
           <meta name="theme-color" content="#000000" />
@@ -202,7 +216,11 @@ export default {
               `}
             </style>
           </noscript>
-          <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+
+          <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+            rel="stylesheet"
+          />
         </Head>
         <Body>{children}</Body>
       </Html>
