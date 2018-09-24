@@ -129,8 +129,13 @@ class SmashTierList extends React.Component {
 
   render() {
     const { headerStuck, secondLineStuck } = this.state;
-    const { siteTitle, currentFilter } = this.props;
     let { currentGame, prevGame, nextGame } = this.props;
+    const {
+      siteTitle,
+      siteRoot,
+      route,
+      currentFilter,
+    } = this.props;
 
     const isBrowser = typeof document !== 'undefined';
     currentGame = isBrowser ? currentGame : currentGameSelector(this.firstReduxState);
@@ -160,6 +165,9 @@ class SmashTierList extends React.Component {
         <Head>
           <title>{fullTitle}</title>
           <meta property="og:title" content={fullTitle} />
+          <meta property="og:url" content={`${siteRoot}${route}`} />
+          <meta property="twitter:title" content={fullTitle} />
+          <meta property="twitter:url" content={`${siteRoot}${route}`} />
         </Head>
         <Header className={headerStuck ? 'stuck' : ''}>
           <SuperTitle>{siteTitle}.</SuperTitle>
@@ -229,6 +237,7 @@ class SmashTierList extends React.Component {
 
 SmashTierList.propTypes = {
   siteTitle: PropTypes.string.isRequired,
+  siteRoot: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
   route: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
