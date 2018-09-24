@@ -166,8 +166,8 @@ class SmashTierList extends React.Component {
           <title>{fullTitle}</title>
           <meta property="og:title" content={fullTitle} />
           <meta property="og:url" content={`${siteRoot}${route}`} />
-          <meta property="twitter:title" content={fullTitle} />
-          <meta property="twitter:url" content={`${siteRoot}${route}`} />
+          <meta name="twitter:title" content={fullTitle} />
+          <meta name="twitter:url" content={`${siteRoot}${route}`} />
         </Head>
         <Header className={headerStuck ? 'stuck' : ''}>
           <SuperTitle>{siteTitle}.</SuperTitle>

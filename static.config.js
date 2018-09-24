@@ -185,11 +185,11 @@ export default {
           <meta property="og:site_name" content={siteData.siteTitle} />
 
           {/* twitter:title and other specific twitter metatags are in SmashTierList component */}
-          <meta property="twitter:card" content="app" />
-          <meta property="twitter:site" content="desko27" />
-          <meta property="twitter:creator" content="desko27" />
-          <meta property="twitter:description" content={siteData.metaDescription} />
-          <meta property="twitter:image" content={`${siteData.siteRoot}/apple-touch-icon.png`} />
+          <meta name="twitter:card" content="app" />
+          <meta name="twitter:site" content="desko27" />
+          <meta name="twitter:creator" content="desko27" />
+          <meta name="twitter:description" content={siteData.metaDescription} />
+          <meta name="twitter:image" content={`${siteData.siteRoot}/apple-touch-icon.png`} />
 
           <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no" />
           <meta name="theme-color" content="#000000" />
