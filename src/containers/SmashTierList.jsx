@@ -93,7 +93,7 @@ class SmashTierList extends React.Component {
   }
 
   render() {
-    const { route } = this.props;
+    const { route, siteRoot } = this.props;
     const { headerStuck, secondLineStuck } = this.state;
     const { siteTitle, currentFilter, currentGameIndex, games } = store.state;
 
@@ -135,6 +135,9 @@ class SmashTierList extends React.Component {
         <Head>
           <title>{fullTitle}</title>
           <meta property="og:title" content={fullTitle} />
+          <meta property="og:url" content={`${siteRoot}${route}`} />
+          <meta name="twitter:title" content={fullTitle} />
+          <meta name="twitter:url" content={`${siteRoot}${route}`} />
         </Head>
         <Header className={headerStuck ? 'stuck' : ''}>
           <SuperTitle>{siteTitle}.</SuperTitle>
@@ -203,8 +206,9 @@ class SmashTierList extends React.Component {
 }
 
 SmashTierList.propTypes = {
-  route: PropTypes.string.isRequired
+  siteRoot: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
+  route: PropTypes.string.isRequired,
 };
 
-// export default withSiteData(withRouter(SmashTierList));
 export default withRouter(SmashTierList);
