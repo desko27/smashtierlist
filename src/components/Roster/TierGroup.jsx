@@ -10,7 +10,7 @@ const TierGroup = ({ gameSlug, tier, characters }) => (
       {tier.name}
     </Header>
     <Main>
-      {characters.map(c => <Character key={c.id} gameSlug={gameSlug} {...c} />)}
+      {characters.map(c => <Character key={c.slug} gameSlug={gameSlug} {...c} />)}
     </Main>
   </Wrapper>
 );
