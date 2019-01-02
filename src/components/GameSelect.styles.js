@@ -65,6 +65,6 @@ export const GameTitle = styled.h2`
   font-weight: 900;
   letter-spacing: 1px;
 
-  min-width: 50px;
+  min-width: 70px;
   text-align: center;
 `;
