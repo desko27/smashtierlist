@@ -10485,9 +10485,9 @@ webpack-node-externals@^1.6.0:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-1.7.2.tgz#6e1ee79ac67c070402ba700ef033a9b8d52ac4e3"
 
-"webpack-s3-plugin@git+https://github.com/eyupci/s3-plugin-webpack.git#master":
+"webpack-s3-plugin@git+https://github.com/desko27/s3-plugin-webpack.git#master":
   version "1.0.0-rc.0"
-  resolved "git+https://github.com/eyupci/s3-plugin-webpack.git#66924f2c36790459a16ec5c28037ec84e6bb47e1"
+  resolved "git+https://github.com/desko27/s3-plugin-webpack.git#66924f2c36790459a16ec5c28037ec84e6bb47e1"
   dependencies:
     aws-sdk "^2.4.1"
     cdnizer "^1.1.5"

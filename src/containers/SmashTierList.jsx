@@ -14,7 +14,7 @@ import {
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons';
 
-import bookSrc from 'assets/svg/book.svg';
+import exclamationCircleSrc from 'assets/svg/exclamation-circle.svg';
 import githubSrc from 'assets/svg/github.svg';
 
 // redux stuff
@@ -42,6 +42,7 @@ import GameSelect from '../components/GameSelect';
 import Filter from '../components/Filter';
 import HeaderIcon from '../components/HeaderIcon';
 import Game from './Game';
+import Notices from './Notices';
 
 
 // environment vars
@@ -148,7 +149,7 @@ class SmashTierList extends React.Component {
       <TheWrapper className={secondLineStuck ? 'stuck' : ''}>
         <Filter onChange={this.onFilterChange} value={currentFilter} />
         <HeaderIcon
-          svgPath={bookSrc}
+          svgPath={exclamationCircleSrc}
           alt="Smash Wiki"
           url="https://www.ssbwiki.com/tier_list"
         />
@@ -176,6 +177,7 @@ class SmashTierList extends React.Component {
         </Header>
         {HeaderSecondLine(OuterHeaderSecondLine)}
         <Main>
+          <Notices />
           <Game />
         </Main>
         <Footer>
