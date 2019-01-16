@@ -7,7 +7,7 @@ export const theme = {
 };
 
 const layer = 10;
-const shadowFilter = 'drop-shadow(0 2px 4px rgba(0, 0, 0, .5));';
+export const shadowFilter = 'drop-shadow(0 2px 4px rgba(0, 0, 0, .5));';
 
 export const Wrapper = styled.header`
   z-index: ${layer};

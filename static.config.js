@@ -28,9 +28,7 @@ export default {
     siteTitle: 'Smash Tier List',
     siteRoot: 'https://smash-tier-list.com',
     metaDescription: 'Check out which is the Tier position of your favourite Super Smash Bros'
-      + ' character. A tier list is a list that ranks all characters in a game based on the'
-      + ' strength of their fighting abilities as well as their potential to win matches'
-      + ' under tournament conditions.',
+      + ' character. A tier list is a list that ranks all characters in a game.',
   }),
   siteRoot: 'https://smash-tier-list.com',
   getRoutes: () => ([
@@ -39,6 +37,7 @@ export default {
     { path: '/melee' },
     { path: '/brawl' },
     { path: '/ssb4' },
+    { path: '/ultimate' },
   ]),
   webpack: [
     (config, { stage }) => {

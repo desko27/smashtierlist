@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -8,7 +8,7 @@ import { currentGameSelector } from '../redux/app/selectors';
 import Roster from '../components/Roster';
 
 // eslint-disable-next-line
-class Game extends React.Component {
+class Game extends Component {
   render() {
     const { currentGame } = this.props;
     return (

@@ -21,7 +21,10 @@
 
 <p align="center">
   <a href="https://github.com/nozzle/react-static" alt="React Static">
-    <img width="280" src="https://user-images.githubusercontent.com/4168389/45922345-0b79c100-beca-11e8-8fe3-88f103d4995b.png" />
+    <img height="60" src="https://user-images.githubusercontent.com/4168389/45922345-0b79c100-beca-11e8-8fe3-88f103d4995b.png" />
+  </a>&nbsp;
+  <a href="https://www.browserstack.com" alt="BrowserStack">
+    <img height="60" src="https://user-images.githubusercontent.com/4168389/46262500-88c4b780-c502-11e8-87ef-8d028e50fef8.png" />
   </a>
 </p>
 

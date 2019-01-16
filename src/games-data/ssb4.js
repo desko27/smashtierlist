@@ -5,6 +5,23 @@ export default {
   shortName: 'SSB4',
   console: 'Wii U',
   year: 2014,
+  notices: [
+    {
+      id: '2019/01/15',
+      message: `
+        <p>
+          This is the latest and most widely-accepted tier list for
+          <a href="https://www.ssbwiki.com/Super_Smash_Bros._4">Super Smash Bros. 4</a>
+          from Nintendo Wii U, produced by the Smash Back Room and last updated
+          on December 11th, 2017. Reflects version 1.1.7 of the game.
+        </p>
+        <p>
+          To know more about how these tier lists are made check out the "Tier list" article
+          on <a href="https://www.ssbwiki.com/tier_list">the Smash Wiki</a>.
+        </p>
+      `,
+    },
+  ],
   tiers: [
     { name: 'S', color: '#d0021b' },
     { name: 'A', color: '#f5a623' },

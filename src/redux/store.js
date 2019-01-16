@@ -7,7 +7,8 @@ let initialState;
 if (typeof document !== 'undefined') {
   // modified version of 'createStore' in order to load redux devToolsExtension
   finalCreateStore = compose(
-    window.devToolsExtension ? window.devToolsExtension() : f => f,
+    // eslint-disable-next-line no-underscore-dangle
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
   )(createStore);
 
   // pick up initialState sent from server
