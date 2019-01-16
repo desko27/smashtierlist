@@ -5,6 +5,23 @@ export default {
   shortName: 'Brawl',
   console: 'Wii',
   year: 2008,
+  notices: [
+    {
+      id: '2019/01/15',
+      message: `
+        <p>
+          This is the latest and most widely-accepted tier list for
+          <a href="https://www.ssbwiki.com/Super_Smash_Bros._Brawl">Super Smash Bros. Brawl</a>
+          from Nintendo Wii, produced by the Smash Back Room and last updated
+          on April 25, 2013.
+        </p>
+        <p>
+          To know more about how these tier lists are made check out the "Tier list" article
+          on <a href="https://www.ssbwiki.com/tier_list">the Smash Wiki</a>.
+        </p>
+      `,
+    },
+  ],
   tiers: [
     { name: 'SS', color: '#d0021b' },
     { name: 'S', color: '#f5a623' },

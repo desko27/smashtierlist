@@ -5,6 +5,28 @@ export default {
   shortName: 'Ultimate',
   console: 'Switch',
   year: 2018,
+  notices: [
+    {
+      id: '2019/01/15',
+      message: `
+        <p>
+          This is the latest and most widely-accepted tier list for
+          <a href="https://www.ssbwiki.com/Super_Smash_Bros._Ultimate">Super Smash Bros. Ultimate</a>
+          from Nintendo Switch, produced by ZeRo (who is considered
+          the best SSB4 player in the world) and last updated
+          on December 17th, 2018. Reflects version 1.2.0 of the game.
+        </p>
+        <p>
+          To know more about how this tier list is made you can check
+          <a href="https://youtu.be/kBqjNVFv6Go">ZeRo's video</a> and
+          <a href="https://twitter.com/zerowondering">his Twitter account</a>.
+        </p>
+      `,
+    },
+    // need to specify it's not an official one
+    // ZeRo twitter: https://twitter.com/zerowondering
+    // video: https://youtu.be/kBqjNVFv6Go
+  ],
   tiers: [
     { name: 'S', color: '#d0021b' },
     { name: 'A', color: '#f5a623' },

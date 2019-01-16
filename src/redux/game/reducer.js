@@ -20,6 +20,7 @@ const gameReducer = (state = initialState, action = {}) => {
           route,
           name,
           shortName,
+          notices,
           tiers,
           roster,
         },
@@ -39,6 +40,7 @@ const gameReducer = (state = initialState, action = {}) => {
         route,
         name,
         shortName,
+        notices,
         tiers,
       };
     }

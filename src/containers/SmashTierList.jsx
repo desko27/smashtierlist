@@ -15,6 +15,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 import exclamationCircleSrc from 'assets/svg/exclamation-circle.svg';
+import exclamationCircleActiveSrc from 'assets/svg/exclamation-circle-active.svg';
 import githubSrc from 'assets/svg/github.svg';
 
 // redux stuff
@@ -103,6 +104,7 @@ class SmashTierList extends React.Component {
   state = {
     headerStuck: false,
     secondLineStuck: false,
+    showAllNotices: false,
   };
 
   componentDidMount = () => {
@@ -128,8 +130,12 @@ class SmashTierList extends React.Component {
     dispatch(filterByName(e.target.value));
   }
 
+  handleNoticeBallClick = () => {
+    this.setState(({ showAllNotices }) => ({ showAllNotices: !showAllNotices }));
+  }
+
   render() {
-    const { headerStuck, secondLineStuck } = this.state;
+    const { headerStuck, secondLineStuck, showAllNotices } = this.state;
     let { currentGame, prevGame, nextGame } = this.props;
     const {
       siteTitle,
@@ -150,8 +156,9 @@ class SmashTierList extends React.Component {
         <Filter onChange={this.onFilterChange} value={currentFilter} />
         <HeaderIcon
           svgPath={exclamationCircleSrc}
-          alt="Smash Wiki"
-          url="https://www.ssbwiki.com/tier_list"
+          svgPathActive={exclamationCircleActiveSrc}
+          active={showAllNotices}
+          onClick={this.handleNoticeBallClick}
         />
         <HeaderIcon
           svgPath={githubSrc}
@@ -177,7 +184,7 @@ class SmashTierList extends React.Component {
         </Header>
         {HeaderSecondLine(OuterHeaderSecondLine)}
         <Main>
-          <Notices />
+          <Notices showAll={showAllNotices} />
           <Game />
         </Main>
         <Footer>

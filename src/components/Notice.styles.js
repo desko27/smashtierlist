@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
     color: #fff;
     font-size: 16px;
     font-weight: 300;
+    line-height: 1.5;
 
     p {
       margin: 0;
