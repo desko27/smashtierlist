@@ -16,7 +16,7 @@ export default {
           on December 11th, 2017. Reflects version 1.1.7 of the game.
         </p>
         <p>
-          To know more about how these tier lists are made check out the "Tier list" article
+          To learn more about how these tier lists are made check out the "Tier list" article
           on <a href="https://www.ssbwiki.com/tier_list">the Smash Wiki</a>.
         </p>
       `,

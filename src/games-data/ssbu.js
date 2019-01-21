@@ -17,7 +17,7 @@ export default {
           on December 17th, 2018. Reflects version 1.2.0 of the game.
         </p>
         <p>
-          To know more about how this tier list is made you can check
+          To learn more about how this tier list is made you can check
           <a href="https://youtu.be/kBqjNVFv6Go">ZeRo's video</a> and
           <a href="https://twitter.com/zerowondering">his Twitter account</a>.
         </p>
