@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { withRouter, withSiteData, Head } from 'react-static';
+import throttle from 'just-throttle';
 import ReactGA from 'react-ga';
+import storage from 'store';
 
 // fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,7 +23,7 @@ import githubSrc from 'assets/svg/github.svg';
 // redux stuff
 import store from '../redux/store';
 import gamesData from '../games-data';
-import { selectGame } from '../redux/app/actions';
+import { selectGame, setEyeFilter } from '../redux/app/actions';
 import { addGame, filterByName } from '../redux/game/actions';
 import { currentGameSelector, prevGameSelector, nextGameSelector } from '../redux/app/selectors';
 
@@ -99,6 +101,10 @@ class SmashTierList extends React.Component {
 
     // save the current redux state for ssr
     this.firstReduxState = store.getState();
+
+    // make throttled methods
+    const SCROLL_TRIGGER_THRESHOLD = 20; // ms
+    this._throttledHandleScroll = throttle(this._handleScroll, SCROLL_TRIGGER_THRESHOLD, true);
   }
 
   state = {
@@ -108,29 +114,53 @@ class SmashTierList extends React.Component {
   };
 
   componentDidMount = () => {
-    window.onscroll = () => {
-      const { headerStuck, secondLineStuck } = this.state;
-      const currentHeaderStuck = window.scrollY > 0;
-      const currentSecondLineStuck = window.scrollY > 30 + 10 + headerTheme.height;
+    document.addEventListener('scroll', this._handleScrollZero);
+    document.addEventListener('scroll', this._throttledHandleScroll);
 
-      // don't do unnecessary renders
-      if (headerStuck === currentHeaderStuck && secondLineStuck === currentSecondLineStuck) {
-        return;
-      }
-
-      this.setState({
-        headerStuck: currentHeaderStuck,
-        secondLineStuck: currentSecondLineStuck,
-      });
-    };
+    // recover some settings from local storage
+    const { dispatch } = this.props;
+    const eyeFilter = storage.get('setting:eyeFilter');
+    dispatch(setEyeFilter(eyeFilter));
   }
 
-  onFilterChange = (e) => {
+  componentWillUnmount = () => {
+    document.removeEventListener('scroll', this._handleScrollZero);
+    document.removeEventListener('scroll', this._throttledHandleScroll);
+  }
+
+  _handleScrollZero = () => window.scrollY === 0 && this._handleScroll()
+
+  _handleScroll = () => {
+    const { headerStuck, secondLineStuck } = this.state;
+    const currentHeaderStuck = window.scrollY > 0;
+    const currentSecondLineStuck = window.scrollY > 30 + 10 + headerTheme.height;
+
+    // don't do unnecessary renders
+    if (headerStuck === currentHeaderStuck && secondLineStuck === currentSecondLineStuck) {
+      return;
+    }
+
+    this.setState({
+      headerStuck: currentHeaderStuck,
+      secondLineStuck: currentSecondLineStuck,
+    });
+  }
+
+  _handleFilterChange = (e) => {
     const { dispatch } = this.props;
     dispatch(filterByName(e.target.value));
   }
 
-  handleNoticeBallClick = () => {
+  _handleFilterEyeClick = () => {
+    const { dispatch, eyeFilter } = this.props;
+    const newValue = !eyeFilter;
+    dispatch(setEyeFilter(newValue));
+
+    // also set it on local storage to recover the setting
+    storage.set('setting:eyeFilter', newValue);
+  }
+
+  _handleNoticeBallClick = () => {
     this.setState(({ showAllNotices }) => ({ showAllNotices: !showAllNotices }));
   }
 
@@ -142,6 +172,7 @@ class SmashTierList extends React.Component {
       siteRoot,
       route,
       currentFilter,
+      eyeFilter,
     } = this.props;
 
     const isBrowser = typeof document !== 'undefined';
@@ -153,12 +184,17 @@ class SmashTierList extends React.Component {
 
     const HeaderSecondLine = TheWrapper => (
       <TheWrapper className={secondLineStuck ? 'stuck' : ''}>
-        <Filter onChange={this.onFilterChange} value={currentFilter} />
+        <Filter
+          value={currentFilter}
+          eye={eyeFilter}
+          onChange={this._handleFilterChange}
+          onEyeClick={this._handleFilterEyeClick}
+        />
         <HeaderIcon
           svgPath={exclamationCircleSrc}
           svgPathActive={exclamationCircleActiveSrc}
           active={showAllNotices}
-          onClick={this.handleNoticeBallClick}
+          onClick={this._handleNoticeBallClick}
         />
         <HeaderIcon
           svgPath={githubSrc}
@@ -254,6 +290,7 @@ SmashTierList.propTypes = {
   prevGame: PropTypes.object.isRequired,
   nextGame: PropTypes.object.isRequired,
   currentFilter: PropTypes.string.isRequired,
+  eyeFilter: PropTypes.bool.isRequired,
 };
 
 export default withSiteData(withRouter(
@@ -264,6 +301,7 @@ export default withSiteData(withRouter(
       prevGame: prevGameSelector(state),
       nextGame: nextGameSelector(state),
       currentFilter: state.currentFilter,
+      eyeFilter: state.eyeFilter,
     }),
   )(SmashTierList),
 ));

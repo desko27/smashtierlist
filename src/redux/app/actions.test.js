@@ -1,5 +1,16 @@
-import { SELECT_GAME, PREV_GAME, NEXT_GAME } from './action-types';
-import { selectGame, prevGame, nextGame } from './actions';
+import {
+  SELECT_GAME,
+  PREV_GAME,
+  NEXT_GAME,
+  SET_EYE_FILTER,
+} from './action-types';
+
+import {
+  selectGame,
+  prevGame,
+  nextGame,
+  setEyeFilter,
+} from './actions';
 
 describe('app actions', () => {
   it('should create an action to move to the requested game by route', () => {
@@ -12,5 +23,8 @@ describe('app actions', () => {
   });
   it('should create an action to move to the next game', () => {
     expect(nextGame()).to.deep.equal({ type: NEXT_GAME });
+  });
+  it('should create an action to set the eye filter', () => {
+    expect(setEyeFilter(true)).to.deep.equal({ type: SET_EYE_FILTER, value: true });
   });
 });

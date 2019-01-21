@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 const tiersSelector = gameState => gameState.tiers;
 const rosterSelector = gameState => gameState.roster;
 
-export const rosterGroupedByTier = (onlyVisible = true) => theState => (
+export const rosterGroupedByTier = ({ onlyVisible = true } = {}) => theState => (
   createSelector(
     tiersSelector,
     rosterSelector,
@@ -18,5 +18,5 @@ export const rosterGroupedByTier = (onlyVisible = true) => theState => (
   )(theState)
 );
 
-export const allRosterGroupedByTierSelector = rosterGroupedByTier(false);
+export const allRosterGroupedByTierSelector = rosterGroupedByTier({ onlyVisible: false });
 export const visibleRosterGroupedByTierSelector = rosterGroupedByTier();

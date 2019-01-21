@@ -1,4 +1,9 @@
-import { SELECT_GAME, PREV_GAME, NEXT_GAME } from './action-types';
+import {
+  SELECT_GAME,
+  PREV_GAME,
+  NEXT_GAME,
+  SET_EYE_FILTER,
+} from './action-types';
 import gameReducer from '../game/reducer';
 import { ADD_GAME, FILTER_BY_NAME } from '../game/action-types';
 import { currentGameSelector, prevGameSelector, nextGameSelector } from './selectors';
@@ -8,6 +13,7 @@ export const initialState = {
   currentGameId: null,
   games: [],
   currentFilter: '',
+  eyeFilter: false,
 };
 
 const appReducer = (state = initialState, action = {}) => {
@@ -52,6 +58,16 @@ const appReducer = (state = initialState, action = {}) => {
         ...state,
         games: state.games.map(g => (g.id === updatedGame.id ? updatedGame : g)),
         currentFilter: search,
+      };
+    }
+
+    case SET_EYE_FILTER: {
+      const { value } = action;
+      const updatedGame = gameReducer(currentGameSelector(state), action);
+      return {
+        ...state,
+        games: state.games.map(g => (g.id === updatedGame.id ? updatedGame : g)),
+        eyeFilter: value,
       };
     }
 

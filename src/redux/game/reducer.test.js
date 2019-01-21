@@ -18,6 +18,12 @@ export const validGame = {
   route: 'fake',
   name: 'Smash Bros Fake',
   shortName: 'Fake',
+  notices: [
+    {
+      id: '2019/01/15',
+      message: 'This is a message',
+    },
+  ],
   tiers: [
     { name: 'S', color: '#f00' },
     { name: 'A', color: '#ff0' },
