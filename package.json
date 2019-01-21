@@ -67,7 +67,7 @@
     "mocha": "^5.2.0",
     "nyc": "^13.1.0",
     "responsive-loader": "^1.1.0",
-    "serve": "^6.1.0",
+    "serve": "^10.1.1",
     "svg-url-loader": "^2.3.2",
     "url-loader": "^1.1.1",
     "webpack-s3-plugin": "git+https://github.com/desko27/s3-plugin-webpack.git#master"
