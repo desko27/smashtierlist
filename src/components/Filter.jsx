@@ -20,6 +20,7 @@ const Filter = ({
   <Wrapper>
     <InputWrapper>
       <Input
+        id="filter-box"
         type="text"
         value={value}
         onChange={onChange}
