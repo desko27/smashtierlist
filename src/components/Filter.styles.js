@@ -34,31 +34,6 @@ export const InputWrapper = styled.div`
   `}
 `;
 
-export const IconButtons = styled.div`
-  position: absolute;
-  right: 17px;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-
-  /* each button */
-  > * {
-    cursor: pointer;
-    user-select: none;
-    color: ${color};
-    font-size: 18px;
-
-    :hover {
-      color: ${darkColor};
-    }
-
-    :active {
-      transform: translateY(1px);
-    }
-  }
-`;
-
 export const Input = styled.input`
   height: ${height}px;
 
@@ -86,4 +61,29 @@ export const Input = styled.input`
     border-radius: 100px;
     padding-left: 19px;
   `}
+`;
+
+export const IconButtons = styled.div`
+  position: absolute;
+  right: 17px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+
+  /* each button */
+  > * {
+    cursor: pointer;
+    user-select: none;
+    color: ${color};
+    font-size: 18px;
+
+    :hover {
+      color: ${darkColor};
+    }
+
+    :active {
+      transform: translateY(1px);
+    }
+  }
 `;

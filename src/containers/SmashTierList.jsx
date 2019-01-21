@@ -116,6 +116,7 @@ class SmashTierList extends React.Component {
   componentDidMount = () => {
     document.addEventListener('scroll', this._handleScrollZero);
     document.addEventListener('scroll', this._throttledHandleScroll);
+    document.addEventListener('keydown', this._handleKeyDown);
 
     // recover some settings from local storage
     const { dispatch } = this.props;
@@ -126,6 +127,7 @@ class SmashTierList extends React.Component {
   componentWillUnmount = () => {
     document.removeEventListener('scroll', this._handleScrollZero);
     document.removeEventListener('scroll', this._throttledHandleScroll);
+    document.removeEventListener('keydown', this._handleKeyDown);
   }
 
   _handleScrollZero = () => window.scrollY === 0 && this._handleScroll()
@@ -144,6 +146,13 @@ class SmashTierList extends React.Component {
       headerStuck: currentHeaderStuck,
       secondLineStuck: currentSecondLineStuck,
     });
+  }
+
+  _handleKeyDown = ({ keyCode }) => {
+    if (keyCode > 127) return; // allow only ascii keys
+    const filterInput = document.getElementById('filter-box');
+    if (document.activeElement === filterInput) return;
+    filterInput.focus();
   }
 
   _handleFilterChange = (e) => {
