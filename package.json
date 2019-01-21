@@ -15,9 +15,9 @@
     "serve": "serve dist -p 3000",
     "eslint": "eslint . --ext=\"js,jsx\"",
     "mocha": "mocha -r babel-core/register --file scripts/testSetup.js \"src/**/*.test.js\"",
-    "test": "nyc yarn mocha",
-    "test:debug": "yarn mocha --inspect-brk",
-    "coverage": "nyc --reporter=html --reporter=text yarn mocha",
+    "test": "nyc npm run mocha",
+    "test:debug": "npm run mocha --inspect-brk",
+    "coverage": "nyc --reporter=html --reporter=text npm run mocha",
     "ci:coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "husky": {
@@ -64,7 +64,7 @@
     "imagemin-webpack-plugin": "^2.3.0",
     "jimp": "^0.5.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.0.1",
+    "nyc": "^13.1.0",
     "responsive-loader": "^1.1.0",
     "serve": "^6.1.0",
     "svg-url-loader": "^2.3.2",
