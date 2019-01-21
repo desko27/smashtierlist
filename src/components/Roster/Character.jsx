@@ -52,11 +52,16 @@ class Character extends React.Component {
   }
 
   render() {
-    const { name, color } = this.props;
+    const { name, color, visible } = this.props;
     const { loaded } = this.state;
 
     return (
-      <Wrapper itemProp="character" itemScope itemType="http://schema.org/Person">
+      <Wrapper
+        visible={visible}
+        itemProp="character"
+        itemScope
+        itemType="http://schema.org/Person"
+      >
         <ImgWrapper>
           <img
             ref={this.imageRef}
@@ -92,6 +97,7 @@ Character.propTypes = {
   color: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   gameSlug: PropTypes.string.isRequired,
+  visible: PropTypes.bool.isRequired,
 };
 
 export default Character;

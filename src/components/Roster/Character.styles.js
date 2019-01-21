@@ -10,6 +10,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  opacity: ${({ visible }) => (visible ? 1 : 0.3)};
 `;
 
 export const ImgWrapper = styled.div`

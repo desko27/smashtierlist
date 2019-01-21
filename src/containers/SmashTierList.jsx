@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { withRouter, withSiteData, Head } from 'react-static';
 import throttle from 'just-throttle';
 import ReactGA from 'react-ga';
+import storage from 'store';
 
 // fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,7 +23,7 @@ import githubSrc from 'assets/svg/github.svg';
 // redux stuff
 import store from '../redux/store';
 import gamesData from '../games-data';
-import { selectGame } from '../redux/app/actions';
+import { selectGame, setEyeFilter } from '../redux/app/actions';
 import { addGame, filterByName } from '../redux/game/actions';
 import { currentGameSelector, prevGameSelector, nextGameSelector } from '../redux/app/selectors';
 
@@ -115,6 +116,11 @@ class SmashTierList extends React.Component {
   componentDidMount = () => {
     document.addEventListener('scroll', this._handleScrollZero);
     document.addEventListener('scroll', this._throttledHandleScroll);
+
+    // recover some settings from local storage
+    const { dispatch } = this.props;
+    const eyeFilter = storage.get('setting:eyeFilter');
+    dispatch(setEyeFilter(eyeFilter));
   }
 
   componentWillUnmount = () => {
@@ -145,6 +151,15 @@ class SmashTierList extends React.Component {
     dispatch(filterByName(e.target.value));
   }
 
+  _handleFilterEyeClick = () => {
+    const { dispatch, eyeFilter } = this.props;
+    const newValue = !eyeFilter;
+    dispatch(setEyeFilter(newValue));
+
+    // also set it on local storage to recover the setting
+    storage.set('setting:eyeFilter', newValue);
+  }
+
   _handleNoticeBallClick = () => {
     this.setState(({ showAllNotices }) => ({ showAllNotices: !showAllNotices }));
   }
@@ -157,6 +172,7 @@ class SmashTierList extends React.Component {
       siteRoot,
       route,
       currentFilter,
+      eyeFilter,
     } = this.props;
 
     const isBrowser = typeof document !== 'undefined';
@@ -168,7 +184,12 @@ class SmashTierList extends React.Component {
 
     const HeaderSecondLine = TheWrapper => (
       <TheWrapper className={secondLineStuck ? 'stuck' : ''}>
-        <Filter onChange={this._handleFilterChange} value={currentFilter} />
+        <Filter
+          value={currentFilter}
+          eye={eyeFilter}
+          onChange={this._handleFilterChange}
+          onEyeClick={this._handleFilterEyeClick}
+        />
         <HeaderIcon
           svgPath={exclamationCircleSrc}
           svgPathActive={exclamationCircleActiveSrc}
@@ -269,6 +290,7 @@ SmashTierList.propTypes = {
   prevGame: PropTypes.object.isRequired,
   nextGame: PropTypes.object.isRequired,
   currentFilter: PropTypes.string.isRequired,
+  eyeFilter: PropTypes.bool.isRequired,
 };
 
 export default withSiteData(withRouter(
@@ -279,6 +301,7 @@ export default withSiteData(withRouter(
       prevGame: prevGameSelector(state),
       nextGame: nextGameSelector(state),
       currentFilter: state.currentFilter,
+      eyeFilter: state.eyeFilter,
     }),
   )(SmashTierList),
 ));

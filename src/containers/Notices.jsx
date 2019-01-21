@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import store from 'store';
+import storage from 'store';
 
 import { currentGameSelector } from '../redux/app/selectors';
 
@@ -14,7 +14,7 @@ const getNoticeKey = ({ slug, id }) => `${slug}-${id}`;
 class Notices extends Component {
   handleCloseNotice = (noticeId) => {
     const { currentGame } = this.props;
-    store.set(getNoticeKey({ slug: currentGame.slug, id: noticeId }), true);
+    storage.set(getNoticeKey({ slug: currentGame.slug, id: noticeId }), true);
     this.forceUpdate();
   }
 
@@ -27,7 +27,7 @@ class Notices extends Component {
         {
           currentGame.notices
             .filter(({ id }) => (
-              isServer || showAll || !store.get(getNoticeKey({ slug: currentGame.slug, id }))
+              isServer || showAll || !storage.get(getNoticeKey({ slug: currentGame.slug, id }))
             ))
             .map(({ id, message }) => (
               <Notice

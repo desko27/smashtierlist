@@ -7,6 +7,7 @@ import { theme } from './layout/Header.styles';
 const { height } = theme;
 const backgroundColor = '#e0dddd';
 const color = '#9b9b9b';
+const darkColor = '#2a2a2a';
 
 export const Wrapper = styled.div`
   flex-grow: 1;
@@ -41,8 +42,21 @@ export const IconButtons = styled.div`
   display: flex;
   align-items: center;
 
-  color: ${color};
-  font-size: 18px;
+  /* each button */
+  > * {
+    cursor: pointer;
+    user-select: none;
+    color: ${color};
+    font-size: 18px;
+
+    :hover {
+      color: ${darkColor};
+    }
+
+    :active {
+      transform: translateY(1px);
+    }
+  }
 `;
 
 export const Input = styled.input`

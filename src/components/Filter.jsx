@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import {
   Wrapper,
@@ -12,25 +11,36 @@ import {
   Input,
 } from './Filter.styles';
 
-const Filter = ({ onChange, value }) => (
+const Filter = ({
+  value,
+  eye,
+  onChange,
+  onEyeClick,
+}) => (
   <Wrapper>
     <InputWrapper>
       <Input
         type="text"
-        onChange={onChange}
         value={value}
+        onChange={onChange}
         placeholder="Search characters..."
       />
       <IconButtons>
-        <FontAwesomeIcon className="icon" icon={faSearch} />
+        <FontAwesomeIcon
+          className="icon"
+          icon={eye ? faEye : faEyeSlash}
+          onClick={onEyeClick}
+        />
       </IconButtons>
     </InputWrapper>
   </Wrapper>
 );
 
 Filter.propTypes = {
-  onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  eye: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onEyeClick: PropTypes.func.isRequired,
 };
 
 export default Filter;
