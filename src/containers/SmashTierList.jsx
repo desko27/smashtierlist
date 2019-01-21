@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { withRouter, withSiteData, Head } from 'react-static';
+import throttle from 'just-throttle';
 import ReactGA from 'react-ga';
 
 // fontawesome icons
@@ -99,6 +100,10 @@ class SmashTierList extends React.Component {
 
     // save the current redux state for ssr
     this.firstReduxState = store.getState();
+
+    // make throttled methods
+    const SCROLL_TRIGGER_THRESHOLD = 20; // ms
+    this._throttledHandleScroll = throttle(this._handleScroll, SCROLL_TRIGGER_THRESHOLD, true);
   }
 
   state = {
@@ -108,29 +113,39 @@ class SmashTierList extends React.Component {
   };
 
   componentDidMount = () => {
-    window.onscroll = () => {
-      const { headerStuck, secondLineStuck } = this.state;
-      const currentHeaderStuck = window.scrollY > 0;
-      const currentSecondLineStuck = window.scrollY > 30 + 10 + headerTheme.height;
-
-      // don't do unnecessary renders
-      if (headerStuck === currentHeaderStuck && secondLineStuck === currentSecondLineStuck) {
-        return;
-      }
-
-      this.setState({
-        headerStuck: currentHeaderStuck,
-        secondLineStuck: currentSecondLineStuck,
-      });
-    };
+    document.addEventListener('scroll', this._handleScrollZero);
+    document.addEventListener('scroll', this._throttledHandleScroll);
   }
 
-  onFilterChange = (e) => {
+  componentWillUnmount = () => {
+    document.removeEventListener('scroll', this._handleScrollZero);
+    document.removeEventListener('scroll', this._throttledHandleScroll);
+  }
+
+  _handleScrollZero = () => window.scrollY === 0 && this._handleScroll()
+
+  _handleScroll = () => {
+    const { headerStuck, secondLineStuck } = this.state;
+    const currentHeaderStuck = window.scrollY > 0;
+    const currentSecondLineStuck = window.scrollY > 30 + 10 + headerTheme.height;
+
+    // don't do unnecessary renders
+    if (headerStuck === currentHeaderStuck && secondLineStuck === currentSecondLineStuck) {
+      return;
+    }
+
+    this.setState({
+      headerStuck: currentHeaderStuck,
+      secondLineStuck: currentSecondLineStuck,
+    });
+  }
+
+  _handleFilterChange = (e) => {
     const { dispatch } = this.props;
     dispatch(filterByName(e.target.value));
   }
 
-  handleNoticeBallClick = () => {
+  _handleNoticeBallClick = () => {
     this.setState(({ showAllNotices }) => ({ showAllNotices: !showAllNotices }));
   }
 
@@ -153,12 +168,12 @@ class SmashTierList extends React.Component {
 
     const HeaderSecondLine = TheWrapper => (
       <TheWrapper className={secondLineStuck ? 'stuck' : ''}>
-        <Filter onChange={this.onFilterChange} value={currentFilter} />
+        <Filter onChange={this._handleFilterChange} value={currentFilter} />
         <HeaderIcon
           svgPath={exclamationCircleSrc}
           svgPathActive={exclamationCircleActiveSrc}
           active={showAllNotices}
-          onClick={this.handleNoticeBallClick}
+          onClick={this._handleNoticeBallClick}
         />
         <HeaderIcon
           svgPath={githubSrc}
