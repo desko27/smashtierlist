@@ -204,11 +204,13 @@ class SmashTierList extends React.Component {
           svgPathActive={exclamationCircleActiveSrc}
           active={showAllNotices}
           onClick={this._handleNoticeBallClick}
+          tooltip={`Notices for ${currentGame.shortName}`}
         />
         <HeaderIcon
           svgPath={githubSrc}
           alt="Source on GitHub"
           url="https://github.com/desko27/smash-tier-list"
+          tooltip="See code on GitHub"
         />
       </TheWrapper>
     );
