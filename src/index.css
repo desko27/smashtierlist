@@ -7,3 +7,12 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
 }
+
+/* tooltip customization */
+.tippy-tooltip {
+  font-size: 14px;
+  padding: 4px 6px;
+}
+.tippy-tooltip [x-circle] {
+  background-color: #4a4a4a;
+}

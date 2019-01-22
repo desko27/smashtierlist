@@ -7717,6 +7717,11 @@ pngquant-bin@^5.0.0:
     execa "^0.10.0"
     logalot "^2.0.0"
 
+popper.js@^1.11.1:
+  version "1.14.6"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.6.tgz#ab20dd4edf9288b8b3b6531c47c361107b60b4b0"
+  integrity sha512-AGwHGQBKumlk/MDfrSOf0JHhJCImdDMcGNoqKmKkU+68GFazv3CQ6q9r7Ja1sKDZmYWTckY/uLyEznheTDycnA==
+
 portfinder@^1.0.9:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.17.tgz#a8a1691143e46c4735edefcf4fbcccedad26456a"
@@ -8416,6 +8421,13 @@ react-static@^5.9.7:
     webpack-dev-server "^2.8.2"
     webpack-flush-chunks "^1.2.3"
     webpack-node-externals "^1.6.0"
+
+react-tippy@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-tippy/-/react-tippy-1.2.3.tgz#8aef183ec4986ca7c5c556465013d95196fecfd8"
+  integrity sha512-cEmhw29DbVP33n9ayo0nLzibuSz6o0A77cZtzno7zGsfOH8tUEGai/8a7TXRIKHPYDooW8iJkJBIPDnxmEu00g==
+  dependencies:
+    popper.js "^1.11.1"
 
 react-universal-component@^2.8.1:
   version "2.9.0"
