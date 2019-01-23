@@ -22,6 +22,7 @@ const Filter = ({
     <InputWrapper>
       <Input
         id="filter-box"
+        autoComplete="off"
         type="text"
         value={value}
         onChange={onChange}
