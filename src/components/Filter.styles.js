@@ -5,7 +5,10 @@ import media from 'common/media';
 import { theme } from './layout/Header.styles';
 
 const { height } = theme;
-const backgroundColor = '#e0dddd';
+const bg = '#e0dddd';
+const bgFail = '#ffc5c5';
+const fcFail = '#c33a3a';
+
 const color = '#9b9b9b';
 const darkColor = '#2a2a2a';
 
@@ -21,7 +24,7 @@ export const InputWrapper = styled.div`
 
   :before {
     content: '';
-    border-right: ${height}px solid ${backgroundColor};
+    border-right: ${height}px solid ${({ noMatch }) => (noMatch ? bgFail : bg)};
     border-top: ${height}px solid transparent;
   }
 
@@ -40,12 +43,13 @@ export const Input = styled.input`
   display: block;
   border: none;
   width: 100%;
-  background: ${backgroundColor};
+  background: ${({ noMatch }) => (noMatch ? bgFail : bg)};
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
 
   padding-left: 8px;
 
+  color: ${({ noMatch }) => (noMatch ? fcFail : 'inherit')};
   font-size: 1em;
   font-weight: 300;
 

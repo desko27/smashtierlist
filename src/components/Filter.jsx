@@ -17,9 +17,10 @@ const Filter = ({
   eye,
   onChange,
   onEyeClick,
+  noMatch,
 }) => (
   <Wrapper>
-    <InputWrapper>
+    <InputWrapper noMatch={noMatch}>
       <Input
         id="filter-box"
         autoComplete="off"
@@ -27,6 +28,7 @@ const Filter = ({
         value={value}
         onChange={onChange}
         placeholder="Search characters..."
+        noMatch={noMatch}
       />
       <IconButtons>
         <Tooltip
@@ -55,6 +57,7 @@ Filter.propTypes = {
   eye: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   onEyeClick: PropTypes.func.isRequired,
+  noMatch: PropTypes.bool.isRequired,
 };
 
 export default Filter;
