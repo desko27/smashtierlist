@@ -26,6 +26,7 @@ import gamesData from '../games-data';
 import { selectGame, setEyeFilter } from '../redux/app/actions';
 import { addGame, filterByName } from '../redux/game/actions';
 import { currentGameSelector, prevGameSelector, nextGameSelector } from '../redux/app/selectors';
+import { noMatchSelector } from '../redux/game/selectors';
 
 // layout components & styles
 import { Wrapper } from './SmashTierList.styles';
@@ -182,6 +183,7 @@ class SmashTierList extends React.Component {
       route,
       currentFilter,
       eyeFilter,
+      noMatch,
     } = this.props;
 
     const isBrowser = typeof document !== 'undefined';
@@ -198,6 +200,7 @@ class SmashTierList extends React.Component {
           eye={eyeFilter}
           onChange={this._handleFilterChange}
           onEyeClick={this._handleFilterEyeClick}
+          noMatch={noMatch}
         />
         <HeaderIcon
           svgPath={exclamationCircleSrc}
@@ -302,6 +305,7 @@ SmashTierList.propTypes = {
   nextGame: PropTypes.object.isRequired,
   currentFilter: PropTypes.string.isRequired,
   eyeFilter: PropTypes.bool.isRequired,
+  noMatch: PropTypes.bool.isRequired,
 };
 
 export default withSiteData(withRouter(
@@ -313,6 +317,7 @@ export default withSiteData(withRouter(
       nextGame: nextGameSelector(state),
       currentFilter: state.currentFilter,
       eyeFilter: state.eyeFilter,
+      noMatch: noMatchSelector(currentGameSelector(state)),
     }),
   )(SmashTierList),
 ));
