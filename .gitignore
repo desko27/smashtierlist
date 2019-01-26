@@ -10,6 +10,7 @@
 /tmp
 
 # misc
+/todo
 .DS_Store
 .env
 .env.local
