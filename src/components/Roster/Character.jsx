@@ -75,11 +75,7 @@ class Character extends React.Component {
             }
           >
             <source srcSet={this.charSrcs.webp} type="image/webp" />
-            <img
-              ref={this.imageRef}
-              src={this.charSrcs.png}
-              alt={name}
-            />
+            <img ref={this.imageRef} src={this.charSrcs.png} alt={name} />
           </picture>
           {loaded === 'no' ? (
             <LoadingBar className="loading-bar">
