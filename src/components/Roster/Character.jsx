@@ -66,16 +66,19 @@ class Character extends React.Component {
         itemType="http://schema.org/Person"
       >
         <ImgWrapper>
-          <picture
-            itemProp="image"
-            className={
-              // eslint-disable-next-line
-              loaded === 'early' ?
-                'early-loaded' : (loaded === 'no' ? 'loading' : 'loaded')
-            }
-          >
+          <picture>
             <source srcSet={this.charSrcs.webp} type="image/webp" />
-            <img ref={this.imageRef} src={this.charSrcs.png} alt={name} />
+            <img
+              itemProp="image"
+              className={
+                // eslint-disable-next-line
+                loaded === 'early' ?
+                  'early-loaded' : (loaded === 'no' ? 'loading' : 'loaded')
+              }
+              ref={this.imageRef}
+              src={this.charSrcs.png}
+              alt={name}
+            />
           </picture>
           {loaded === 'no' ? (
             <LoadingBar className="loading-bar">
