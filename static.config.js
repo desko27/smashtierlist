@@ -72,7 +72,7 @@ export default {
         // upload assets to s3
         stage === 'dev' || DEPLOY !== 's3' ? { apply: () => {} } : (
           new S3Plugin({
-            include: /\.(jpe?g|png|gif|svg)$/,
+            include: /\.(jpe?g|png|webp|gif|svg)$/,
             s3Options: {
               accessKeyId: AWS_ACCESS_KEY_ID,
               secretAccessKey: AWS_SECRET_ACCESS_KEY,
@@ -92,10 +92,8 @@ export default {
           test: /\.(jpe?g|png|webp|gif)$/,
           loaders: [
             {
-              loader: 'url-loader',
+              loader: 'file-loader',
               options: {
-                // images larger than 5 KB won't be inlined
-                limit: 5 * 1024,
                 name: '[hash].[ext]',
               },
             },
