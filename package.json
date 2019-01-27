@@ -1,6 +1,6 @@
 {
   "name": "smash-tier-list",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "🎮🎯 Tier List application for Super Smash Bros series",
   "main": "src/index.js",
   "repository": "https://github.com/desko27/smash-tier-list.git",
@@ -18,7 +18,10 @@
     "test": "nyc npm run mocha",
     "test:debug": "npm run mocha --inspect-brk",
     "coverage": "nyc --reporter=html --reporter=text npm run mocha",
-    "ci:coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "ci:coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "images:build": "yarn images:build:png && yarn images:build:webp",
+    "images:build:png": "rimraf src/assets/img/chars/**/*.150.png && find src/assets/img/chars -name \\*.png -type f -exec convert {} -resize 150x150 {}.150.png \\;",
+    "images:build:webp": "rimraf src/assets/img/chars/**/*.150.png.webp && find src/assets/img/chars -name \\*.150.png -type f -exec sh -c \"npx imagemin --plugin=webp {} > {}.webp\" \\;"
   },
   "husky": {
     "hooks": {
@@ -62,16 +65,18 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
+    "file-loader": "^3.0.1",
     "husky": "^1.0.0-rc.13",
-    "image-webpack-loader": "^4.3.1",
-    "imagemin-webpack-plugin": "^2.3.0",
+    "image-webpack-loader": "^4.6.0",
+    "imagemin-cli": "^4.0.0",
+    "imagemin-webp": "^5.0.0",
     "jimp": "^0.5.0",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0",
     "responsive-loader": "^1.1.0",
+    "rimraf": "^2.6.3",
     "serve": "^10.1.1",
     "svg-url-loader": "^2.3.2",
-    "url-loader": "^1.1.1",
     "webpack-s3-plugin": "git+https://github.com/desko27/s3-plugin-webpack.git#master"
   }
 }

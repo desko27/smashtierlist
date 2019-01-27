@@ -7,7 +7,6 @@ import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 import util from 'util';
 import webpack from 'webpack';
-import ImageminPlugin from 'imagemin-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import S3Plugin from 'webpack-s3-plugin';
 import path from 'path';
@@ -61,15 +60,6 @@ export default {
           },
         }),
 
-        // compress all images
-        // make sure that this is after any plugins that add images
-        new ImageminPlugin({
-          disable: stage === 'dev',
-          pngquant: {
-            quality: '95-100',
-          },
-        }),
-
         // get gzipped files
         new CompressionPlugin({
           asset: '[path].gz[query]',
@@ -82,7 +72,7 @@ export default {
         // upload assets to s3
         stage === 'dev' || DEPLOY !== 's3' ? { apply: () => {} } : (
           new S3Plugin({
-            include: /\.(jpe?g|png|gif|svg)$/,
+            include: /\.(jpe?g|png|webp|gif|svg)$/,
             s3Options: {
               accessKeyId: AWS_ACCESS_KEY_ID,
               secretAccessKey: AWS_SECRET_ACCESS_KEY,
@@ -99,26 +89,15 @@ export default {
       // https://iamakulov.com/notes/optimize-images-webpack/
       const newRules = [
         {
-          test: /\.(jpe?g|png|gif)$/,
-          exclude: path.resolve(__dirname, 'src/assets/img/chars'),
+          test: /\.(jpe?g|png|webp|gif)$/,
           loaders: [
             {
-              loader: 'url-loader',
+              loader: 'file-loader',
               options: {
-                // images larger than 10 KB won't be inlined
-                limit: 10 * 1024,
+                name: '[hash].[ext]',
               },
             },
           ],
-        },
-        {
-          test: /\.png$/,
-          include: path.resolve(__dirname, 'src/assets/img/chars'),
-          loader: 'responsive-loader',
-          options: {
-            size: 150,
-            name: '[hash].[ext]',
-          },
         },
         {
           test: /\.svg$/,
@@ -131,7 +110,7 @@ export default {
           },
         },
         {
-          test: /\.(jpe?g|png|gif|svg)$/,
+          test: /\.(jpe?g|png|webp|gif|svg)$/,
           loader: 'image-webpack-loader',
           // apply loader before url-loader/svg-url-loader and not duplicate it in rules with them
           enforce: 'pre',

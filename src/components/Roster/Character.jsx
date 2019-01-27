@@ -21,8 +21,11 @@ class Character extends React.Component {
 
     const { slug, gameSlug } = props;
 
-    // eslint-disable-next-line
-    this.charSrc = srcS3(require(`assets/img/chars/${gameSlug}/${slug}.png`).src);
+    this.charSrcs = {
+      /* eslint-disable import/no-dynamic-require, global-require */
+      png: srcS3(require(`assets/img/chars/${gameSlug}/${slug}.png.150.png`)),
+      webp: srcS3(require(`assets/img/chars/${gameSlug}/${slug}.png.150.png.webp`)),
+    };
 
     // check elapsed time for loading threshold
     this.start = new Date();
@@ -63,17 +66,20 @@ class Character extends React.Component {
         itemType="http://schema.org/Person"
       >
         <ImgWrapper>
-          <img
-            ref={this.imageRef}
-            className={
-              // eslint-disable-next-line
-              loaded === 'early' ?
-                'early-loaded' : (loaded === 'no' ? 'loading' : 'loaded')
-            }
-            src={this.charSrc}
-            alt={name}
-            itemProp="image"
-          />
+          <picture>
+            <source srcSet={this.charSrcs.webp} type="image/webp" />
+            <img
+              itemProp="image"
+              className={
+                // eslint-disable-next-line
+                loaded === 'early' ?
+                  'early-loaded' : (loaded === 'no' ? 'loading' : 'loaded')
+              }
+              ref={this.imageRef}
+              src={this.charSrcs.png}
+              alt={name}
+            />
+          </picture>
           {loaded === 'no' ? (
             <LoadingBar className="loading-bar">
               <div>

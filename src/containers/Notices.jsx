@@ -53,8 +53,8 @@ class Notices extends Component {
                     hideCloseButton={showAll}
                   >
                     {
-                      // message with target="_blank" attribute at any link
-                      message.replace(/<a /g, '<a target="_blank" ')
+                      // message with target="_blank" and safe attrs at any link
+                      message.replace(/<a /g, '<a target="_blank" rel="noopener noreferrer" ')
                     }
                   </Notice>
                 </PoseItem>
