@@ -104,7 +104,7 @@ class SmashTierList extends React.Component {
     this.firstReduxState = store.getState();
 
     // make throttled methods
-    const SCROLL_TRIGGER_THRESHOLD = 20; // ms
+    const SCROLL_TRIGGER_THRESHOLD = 10; // ms
     this._throttledHandleScroll = throttle(this._handleScroll, SCROLL_TRIGGER_THRESHOLD, true);
   }
 
@@ -131,7 +131,7 @@ class SmashTierList extends React.Component {
     document.removeEventListener('keydown', this._handleKeyDown);
   }
 
-  _handleScrollZero = () => window.scrollY === 0 && this._handleScroll()
+  _handleScrollZero = () => window.scrollY < 100 && this._handleScroll()
 
   _handleScroll = () => {
     const { headerStuck, secondLineStuck } = this.state;
