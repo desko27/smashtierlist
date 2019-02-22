@@ -23,6 +23,7 @@ const {
 } = process.env;
 
 export default {
+  plugins: ['react-static-plugin-preact'],
   getSiteData: () => ({
     siteTitle: 'Smash Tier List',
     siteRoot: 'https://smash-tier-list.com',
@@ -194,11 +195,6 @@ export default {
               `}
             </style>
           </noscript>
-
-          <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
-            rel="stylesheet"
-          />
         </Head>
         <Body>{children}</Body>
       </Html>
