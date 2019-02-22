@@ -45,6 +45,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-static": "^5.9.7",
+    "react-static-plugin-preact": "^6.3.0",
     "react-tippy": "^1.2.3",
     "redux": "^4.0.0",
     "reselect": "^3.0.1",

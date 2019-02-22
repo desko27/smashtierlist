@@ -23,6 +23,7 @@ const {
 } = process.env;
 
 export default {
+  plugins: ['react-static-plugin-preact'],
   getSiteData: () => ({
     siteTitle: 'Smash Tier List',
     siteRoot: 'https://smash-tier-list.com',
