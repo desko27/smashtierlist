@@ -1,6 +1,5 @@
 import React, {
   useState,
-  useLayoutEffect,
   useEffect,
   useRef,
 } from 'react';
@@ -24,21 +23,14 @@ function Character({
   gameSlug,
   visible,
 }) {
-  let imageRef = null;
-  if (typeof document !== 'undefined') imageRef = useRef();
-
-  // check elapsed time for loading threshold
-  const start = useRef();
-
-  useEffect(() => {
-    start.current = new Date();
-  });
-
   const charSrcs = {
     /* eslint-disable import/no-dynamic-require, global-require */
     png: srcS3(require(`assets/img/chars/${gameSlug}/${slug}.png.150.png`)),
     webp: srcS3(require(`assets/img/chars/${gameSlug}/${slug}.png.150.png.webp`)),
   };
+
+  const start = useRef(); // check elapsed time for loading threshold
+  const imageRef = typeof document !== 'undefined' ? useRef() : null;
 
   // 'loaded' states: yes | no | early
   const [loaded, setLoaded] = useState('no');
@@ -52,13 +44,17 @@ function Character({
     }
   };
 
-  useLayoutEffect(() => {
-    const image = imageRef.current;
-    if (image) {
-      if (image.complete) {
-        handleImageLoaded();
-      } else {
-        image.onload = handleImageLoaded;
+  useEffect(() => {
+    start.current = new Date();
+
+    if (typeof document !== 'undefined') {
+      const image = imageRef.current;
+      if (image) {
+        if (image.complete) {
+          handleImageLoaded();
+        } else {
+          image.onload = handleImageLoaded;
+        }
       }
     }
   });
