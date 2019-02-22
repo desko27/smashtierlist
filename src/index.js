@@ -15,4 +15,13 @@ if (typeof document !== 'undefined') {
 
   // render!
   render(App);
+
+  // load async google fonts on client
+  import('webfontloader').then((WebFontLoader) => {
+    WebFontLoader.load({
+      google: {
+        families: ['Roboto:300,400,500,700'],
+      },
+    });
+  });
 }
