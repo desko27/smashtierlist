@@ -12,6 +12,7 @@ import S3Plugin from 'webpack-s3-plugin';
 import path from 'path';
 
 const {
+  BUNDLE_ANALYZER,
   ENV,
   DEPLOY,
   AWS_ACCESS_KEY_ID,
@@ -39,6 +40,7 @@ export default {
     { path: '/ssb4' },
     { path: '/ultimate' },
   ]),
+  bundleAnalyzer: !!BUNDLE_ANALYZER,
   webpack: [
     (config, { stage }) => {
       config.resolve.alias = {
