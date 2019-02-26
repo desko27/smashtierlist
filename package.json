@@ -1,6 +1,6 @@
 {
   "name": "smash-tier-list",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "🎮🎯 Tier List application for Super Smash Bros series",
   "main": "src/index.js",
   "repository": "https://github.com/desko27/smash-tier-list.git",
@@ -57,6 +57,7 @@
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.2",
+    "babel-plugin-transform-imports": "^1.5.1",
     "chai": "^4.1.2",
     "compression-webpack-plugin": "^1.1.12",
     "coveralls": "^3.0.2",

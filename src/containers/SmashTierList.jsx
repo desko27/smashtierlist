@@ -8,11 +8,13 @@ import storage from 'store';
 
 // fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import faHeart from '@fortawesome/free-solid-svg-icons/faHeart';
-import faReact from '@fortawesome/free-brands-svg-icons/faReact';
-import faLinkedin from '@fortawesome/free-brands-svg-icons/faLinkedin';
-import faTwitterSquare from '@fortawesome/free-brands-svg-icons/faTwitterSquare';
-import faGithubSquare from '@fortawesome/free-brands-svg-icons/faGithubSquare';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import {
+  faReact,
+  faLinkedin,
+  faTwitterSquare,
+  faGithubSquare,
+} from '@fortawesome/free-brands-svg-icons';
 
 import exclamationCircleSrc from 'assets/svg/exclamation-circle.svg';
 import exclamationCircleActiveSrc from 'assets/svg/exclamation-circle-active.svg';

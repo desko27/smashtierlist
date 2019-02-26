@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Tooltip } from 'react-tippy';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import faEye from '@fortawesome/free-solid-svg-icons/faEye';
-import faEyeSlash from '@fortawesome/free-solid-svg-icons/faEyeSlash';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import {
   Wrapper,
