@@ -47,17 +47,19 @@ function Character({
   useEffect(() => {
     start.current = new Date();
 
-    if (typeof document !== 'undefined') {
-      const image = imageRef.current;
-      if (image) {
-        if (image.complete) {
-          handleImageLoaded();
-        } else {
-          image.onload = handleImageLoaded;
-        }
+    const image = imageRef.current;
+    if (image) {
+      if (image.complete) {
+        handleImageLoaded();
+      } else {
+        image.onload = handleImageLoaded;
       }
     }
-  });
+
+    return () => {
+      image.onload = null;
+    };
+  }, []);
 
   return (
     <Wrapper
