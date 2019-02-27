@@ -1,6 +1,6 @@
 {
   "name": "smash-tier-list",
-  "version": "1.5.0",
+  "version": "1.6.2",
   "description": "🎮🎯 Tier List application for Super Smash Bros series",
   "main": "src/index.js",
   "repository": "https://github.com/desko27/smash-tier-list.git",
@@ -45,16 +45,19 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-static": "^5.9.7",
+    "react-static-plugin-preact": "^6.3.0",
     "react-tippy": "^1.2.3",
     "redux": "^4.0.0",
     "reselect": "^3.0.1",
     "store": "^2.0.12",
     "styled-components": "^3.4.5",
-    "styled-media-query": "^2.0.2"
+    "styled-media-query": "^2.0.2",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.2",
+    "babel-plugin-transform-imports": "^1.5.1",
     "chai": "^4.1.2",
     "compression-webpack-plugin": "^1.1.12",
     "coveralls": "^3.0.2",

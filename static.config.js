@@ -12,6 +12,7 @@ import S3Plugin from 'webpack-s3-plugin';
 import path from 'path';
 
 const {
+  BUNDLE_ANALYZER,
   ENV,
   DEPLOY,
   AWS_ACCESS_KEY_ID,
@@ -23,6 +24,7 @@ const {
 } = process.env;
 
 export default {
+  plugins: ['react-static-plugin-preact'],
   getSiteData: () => ({
     siteTitle: 'Smash Tier List',
     siteRoot: 'https://smash-tier-list.com',
@@ -38,6 +40,7 @@ export default {
     { path: '/ssb4' },
     { path: '/ultimate' },
   ]),
+  bundleAnalyzer: !!BUNDLE_ANALYZER,
   webpack: [
     (config, { stage }) => {
       config.resolve.alias = {
@@ -194,11 +197,6 @@ export default {
               `}
             </style>
           </noscript>
-
-          <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
-            rel="stylesheet"
-          />
         </Head>
         <Body>{children}</Body>
       </Html>
