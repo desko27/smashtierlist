@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -9,29 +9,24 @@ import { visibleRosterGroupedByTierSelector, allRosterGroupedByTierSelector, noM
 import Roster from '../components/Roster';
 import NoMatch from '../components/NoMatch';
 
-// eslint-disable-next-line
-class Game extends Component {
-  render() {
-    const { currentGame, eyeFilter, noMatch } = this.props;
+const Game = ({ currentGame, eyeFilter, noMatch }) => {
+  if (noMatch) return <NoMatch />;
 
-    if (noMatch) return <NoMatch />;
+  const charactersByTier = eyeFilter
+    ? allRosterGroupedByTierSelector(currentGame)
+    : visibleRosterGroupedByTierSelector(currentGame);
 
-    const charactersByTier = eyeFilter
-      ? allRosterGroupedByTierSelector(currentGame)
-      : visibleRosterGroupedByTierSelector(currentGame);
-
-    return (
-      <div itemScope itemType="http://schema.org/VideoGame">
-        <Roster
-          gameSlug={currentGame.slug}
-          charactersByTier={charactersByTier}
-        />
-        <meta itemProp="name" content={currentGame.name} />
-        <meta itemProp="gamePlatform" content={currentGame.console} />
-      </div>
-    );
-  }
-}
+  return (
+    <div itemScope itemType="http://schema.org/VideoGame">
+      <Roster
+        gameSlug={currentGame.slug}
+        charactersByTier={charactersByTier}
+      />
+      <meta itemProp="name" content={currentGame.name} />
+      <meta itemProp="gamePlatform" content={currentGame.console} />
+    </div>
+  );
+};
 
 Game.propTypes = {
   currentGame: PropTypes.object.isRequired,
