@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import useForceUpdate from 'use-force-update';
 import posed, { PoseGroup } from 'react-pose';
 import storage from 'store';
 
@@ -27,44 +28,42 @@ const PoseItem = posed.div({
 
 const getNoticeKey = ({ slug, id }) => `${slug}-${id}`;
 
-class Notices extends Component {
-  handleCloseNotice = (noticeId) => {
-    const { currentGame } = this.props;
+const Notices = ({ currentGame, showAll }) => {
+  const forceUpdate = useForceUpdate();
+
+  const handleCloseNotice = (noticeId) => {
     storage.set(getNoticeKey({ slug: currentGame.slug, id: noticeId }), true);
-    this.forceUpdate();
-  }
+    forceUpdate();
+  };
 
-  render() {
-    const { currentGame, showAll } = this.props;
-    const isServer = typeof document === 'undefined';
+  const isServer = typeof document === 'undefined';
 
-    return (
-      <Wrapper>
-        <PoseGroup flipMove={false}>
-          {
-            currentGame.notices
-              .filter(({ id }) => (
-                isServer || showAll || !storage.get(getNoticeKey({ slug: currentGame.slug, id }))
-              ))
-              .map(({ id, message }) => (
-                <PoseItem key={id}>
-                  <Notice
-                    onClose={() => this.handleCloseNotice(id)}
-                    hideCloseButton={showAll}
-                  >
-                    {
-                      // message with target="_blank" and safe attrs at any link
-                      message.replace(/<a /g, '<a target="_blank" rel="noopener noreferrer" ')
-                    }
-                  </Notice>
-                </PoseItem>
-              ))
-          }
-        </PoseGroup>
-      </Wrapper>
-    );
-  }
-}
+  return (
+    <Wrapper>
+      <PoseGroup flipMove={false}>
+        {
+          currentGame.notices
+            .filter(({ id }) => (
+              isServer || showAll || !storage.get(getNoticeKey({ slug: currentGame.slug, id }))
+            ))
+            .map(({ id, message }) => (
+              <PoseItem key={id}>
+                <Notice
+                  onClose={() => handleCloseNotice(id)}
+                  hideCloseButton={showAll}
+                >
+                  {
+                    // message with target="_blank" and safe attrs at any link
+                    message.replace(/<a /g, '<a target="_blank" rel="noopener noreferrer" ')
+                  }
+                </Notice>
+              </PoseItem>
+            ))
+        }
+      </PoseGroup>
+    </Wrapper>
+  );
+};
 
 Notices.propTypes = {
   showAll: PropTypes.bool.isRequired,
