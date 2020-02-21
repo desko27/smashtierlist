@@ -1,20 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Main from '../../layout/Main'
 
 import Roster from '../../tierlist/Roster'
 
-import ssbu from '../../../data-build/ssbu'
-
-const GameTierList = () => {
+const GameTierList = ({ gameData }) => {
   return (
     <Main>
       <Roster
         gameSlug='ssbu'
-        charactersByTier={ssbu.rosterGroupedByTier}
+        charactersByTier={gameData.rosterGroupedByTier}
       />
     </Main>
   )
+}
+
+GameTierList.propTypes = {
+  gameData: PropTypes.object.isRequired
 }
 
 export default GameTierList
