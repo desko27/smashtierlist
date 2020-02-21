@@ -4,7 +4,7 @@ import Main from '../../layout/Main'
 
 import Roster from '../../tierlist/Roster'
 
-import ssbu from '../../../data-build/ssbu.json'
+import ssbu from '../../../data-build/ssbu'
 
 const GameTierList = () => {
   return (

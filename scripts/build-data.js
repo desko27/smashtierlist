@@ -6,7 +6,9 @@ const { games } = data
 const gameJsons = games.map(game => ({ slug: game.slug, json: JSON.stringify(game) }))
 
 gameJsons.forEach(({ slug, json }) => {
-  fs.writeFile(`./data-build/${slug}.json`, json, 'utf8', function (err) {
+  const fileContents = `export default JSON.parse('${json}')`
+
+  fs.writeFile(`./data-build/${slug}.js`, fileContents, 'utf8', function (err) {
     if (err) {
       throw new Error(`❌ Error while writing '${slug}' JSON to file.`)
     }
