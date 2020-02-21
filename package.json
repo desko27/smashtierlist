@@ -5,11 +5,22 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "eslint": "standard"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run eslint"
+    }
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "next": "9.2.2",
     "react": "16.12.0",
     "react-dom": "16.12.0"
+  },
+  "devDependencies": {
+    "husky": "^4.2.3",
+    "standard": "^14.3.1"
   }
 }

@@ -1,0 +1,79 @@
+.wrapper {
+  --imageSize: 89px;
+  --nameHeight: 16px;
+  --colorBoxHeight: 45px;
+
+  width: 89px;
+  height: calc(var(--imageSize) + var(--nameHeight));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  opacity: 0.3;
+}
+.wrapperVisible {
+  opacity: 1;
+}
+
+.imageWrapper {
+  z-index: 1;
+  overflow: hidden;
+  height: var(--imageSize);
+}
+.imageWrapper img {
+  display: block;
+  width: 100%;
+}
+
+.name {
+  position: relative;
+
+  flex-basis: var(--nameHeight);
+  background: #455059;
+  padding: 0 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.name span {
+  display: inline-block;
+}
+.nameLarge {
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.nameLarge span {
+  transform: scaleX(0.8);
+}
+.name:before {
+  content: '';
+  position: absolute;
+  bottom: var(--nameHeight);
+  left: 0;
+  right: 0;
+
+  height: var(--colorBoxHeight);
+  background: var(--color);
+}
+.name:after {
+  content: '';
+  position: absolute;
+  bottom: var(--nameHeight);
+  left: 0;
+  right: 0;
+
+  height: 33px;
+  width: 66px;
+  margin: 0 auto;
+  background: #fff;
+  opacity: 0.2;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+}

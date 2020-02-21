@@ -5,7 +5,7 @@ import Container from '../Container'
 
 import styles from './index.module.css'
 
-const Main = ({children}) => {
+const Main = ({ children }) => {
   return (
     <main className={styles.wrapper}>
       <Container>
