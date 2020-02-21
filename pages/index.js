@@ -1,6 +1,8 @@
+import TierListTemplate from '../components/templates/TierList'
+
 const Home = () => {
   return (
-    <div>This is home!</div>
+    <TierListTemplate />
   )
 }
 
