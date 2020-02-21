@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   justify-content: stretch;
+  margin-bottom: 30px;
 }
 @media (max-width: 820px) {
   .wrapper {

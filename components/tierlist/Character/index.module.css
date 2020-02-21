@@ -15,6 +15,11 @@
   opacity: 1;
 }
 
+.placeholder {
+  height: calc(var(--colorBoxHeight) + var(--nameHeight));
+  background-color: #455059;
+}
+
 .imageWrapper {
   z-index: 1;
   overflow: hidden;

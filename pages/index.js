@@ -1,8 +1,8 @@
-import TierListTemplate from '../components/templates/TierListTemplate'
+import GameTierList from '../components/templates/GameTierList'
 
 const Home = () => {
   return (
-    <TierListTemplate />
+    <GameTierList />
   )
 }
 
