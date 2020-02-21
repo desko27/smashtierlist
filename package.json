@@ -15,6 +15,7 @@
     }
   },
   "dependencies": {
+    "@svgr/webpack": "^5.1.0",
     "classnames": "^2.2.6",
     "intersection-observer": "^0.7.0",
     "next": "^9.2.1",

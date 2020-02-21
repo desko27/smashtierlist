@@ -3,6 +3,7 @@ module.exports = {
     modern: true
   },
   webpack (config) {
+    // preact stuff
     const splitChunks = config.optimization && config.optimization.splitChunks
     if (splitChunks) {
       const cacheGroups = splitChunks.cacheGroups
@@ -20,6 +21,12 @@ module.exports = {
         }
       }
     }
+
+    // import svg as a react component
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack']
+    })
 
     return config
   }
