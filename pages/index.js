@@ -1,12 +1,15 @@
 import React from 'react'
 import GameTierList from '../components/templates/GameTierList'
 
-import ssbu from '../data-build/ssbu'
-
-const Home = () => {
+const Home = ({ gameData }) => {
   return (
-    <GameTierList gameData={ssbu} />
+    <GameTierList gameData={gameData} />
   )
+}
+
+Home.getInitialProps = async ({ domain }) => {
+  const getTierlistUseCase = await domain.get('get_tierlist_use_case')
+  return { gameData: getTierlistUseCase.execute() }
 }
 
 export default Home
