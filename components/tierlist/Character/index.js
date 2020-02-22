@@ -13,7 +13,7 @@ function Character ({
   gameSlug,
   visible
 }) {
-  const [isIntersecting, ref] = useOnScreen({ rootMargin: '100px' })
+  const [isIntersecting, ref] = useOnScreen()
 
   const charSrcs = {
     png: `/chars/${gameSlug}/${slug}.png.150.png`,
