@@ -11,6 +11,21 @@
   display: flex;
   transition: background-color .2s ease-out;
 }
-.wrapperStuck {
-  background-color: #000;
+@media (max-width: 820px) {
+  .wrapper {
+    display: block;
+  }
+}
+
+.wrapperFirstLine {
+  display: flex;
+}
+
+.wrapperBreakLine {
+  display: flex;
+}
+@media (max-width: 820px) {
+  .wrapperBreakLine {
+    padding-top: 30px;
+  }
 }
