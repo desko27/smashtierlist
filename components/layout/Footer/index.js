@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
+import useOnScreen from '../../hooks/useOnScreen'
+
 import HeartSolidIcon from '../../icons/heart-solid.svg'
 import LinkedinBrandsIcon from '../../icons/linkedin-brands.svg'
 import TwitterSquareBrandsIcon from '../../icons/twitter-square-brands.svg'
 import GithubSquareBrandsIcon from '../../icons/github-square-brands.svg'
 import ReactBrandsIcon from '../../icons/react-brands.svg'
-
-import useOnScreen from '../../hooks/useOnScreen'
 
 import placeholderStyles from './placeholder.module.css'
 

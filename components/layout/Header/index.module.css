@@ -11,9 +11,25 @@
   display: flex;
   transition: background-color .2s ease-out;
 }
+.wrapperScrolling {
+  background-color: #000;
+}
+.wrapperScrollingMobile {
+  background-color: transparent;
+}
 @media (max-width: 820px) {
   .wrapper {
     display: block;
+    position: static;
+  }
+  .wrapperScrolling {
+    background-color: transparent;
+  }
+  .wrapperScrollingMobile {
+    background-color: #000;
+    position: sticky;
+
+    top: calc(-1 * (30px + var(--header-height)));
   }
 }
 
