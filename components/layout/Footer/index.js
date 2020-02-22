@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import HeartSolidIcon from '../../icons/heart-solid.svg'
 import LinkedinBrandsIcon from '../../icons/linkedin-brands.svg'
@@ -8,15 +8,23 @@ import ReactBrandsIcon from '../../icons/react-brands.svg'
 
 import useOnScreen from '../../hooks/useOnScreen'
 
-import styles from './index.module.css'
+import placeholderStyles from './placeholder.module.css'
+
+const dynamicStyles = import('./index.module.css')
 
 const Footer = () => {
   const [isIntersecting, ref] = useOnScreen({ rootMargin: '100px' })
+  const [styles, setStyles] = useState({})
+
+  useEffect(() => {
+    if (styles.wrapper || !isIntersecting) return
+    dynamicStyles.then(cssModule => setStyles(cssModule.default))
+  }, [isIntersecting])
 
   return (
     <footer className={styles.wrapper} ref={ref}>
       {!isIntersecting
-        ? <div className={styles.placeholder} />
+        ? <div className={placeholderStyles.placeholder} />
         : (
           <>
             <img className={styles.footerTop} src='/svg/footer-top.svg' alt='Footer top' />

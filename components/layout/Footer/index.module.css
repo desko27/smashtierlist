@@ -2,10 +2,6 @@
   overflow: hidden;
 }
 
-.placeholder {
-  height: 120px;
-}
-
 .contentsWrapper {
   padding: 60px 30px;
   background-color: #4a4a4a;
