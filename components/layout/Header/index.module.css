@@ -1,0 +1,15 @@
+.wrapper {
+  --layer: 10;
+  --shadowFilter: drop-shadow(0 2px 4px rgba(0, 0, 0, .5));
+
+  z-index: var(--layer);
+  filter: var(--shadowFilter);
+  position: sticky;
+  top: 0;
+  padding: 30px;
+  display: flex;
+  transition: background-color .2s ease-out;
+}
+.wrapperStuck {
+  background-color: #000;
+}
