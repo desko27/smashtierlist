@@ -1,12 +1,10 @@
 import DataBuildRepository from './index'
+import gameSlugs from '../../../../data-build'
 
-const gameImports = {
-  ssb: () => import('../../../../data-build/ssb'),
-  ssbm: () => import('../../../../data-build/ssbm'),
-  ssbb: () => import('../../../../data-build/ssbb'),
-  ssb4: () => import('../../../../data-build/ssb4'),
-  ssbu: () => import('../../../../data-build/ssbu')
-}
+const gameImports = gameSlugs.reduce(
+  (acc, slug) => ({ ...acc, [slug]: () => import(`../../../../data-build/${slug}`) }),
+  {}
+)
 
 export default function () {
   return DataBuildRepository({ gameImports })
