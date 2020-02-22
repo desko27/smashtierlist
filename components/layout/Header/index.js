@@ -16,7 +16,7 @@ const PADDING_MOBILE_OFFSET = 10
 const isClient = typeof window !== 'undefined'
 const isScrollZero = () => isClient && window.scrollY === 0
 
-const Header = ({ gameData, nextGameSlug, prevGameSlug }) => {
+const Header = ({ gameData, nextGameSlug, prevGameSlug, setCharactersByTier }) => {
   const [mainScrollFlagIsIntersecting, mainScrollFlagRef] = useOnScreen({ once: false })
   const [mobileScrollFlagIsIntersecting, mobileScrollFlagRef] = useOnScreen({ once: false })
 
@@ -46,7 +46,10 @@ const Header = ({ gameData, nextGameSlug, prevGameSlug }) => {
           style={{ transform: `translateY(${PADDING_MOBILE_OFFSET - SHADOW_FILTER_OFFSET}px)` }}
         />
         <div className={styles.wrapperBreakLine}>
-          <FilterInput />
+          <FilterInput
+            gameSlug={gameData.slug}
+            setCharactersByTier={setCharactersByTier}
+          />
         </div>
       </div>
     </>
@@ -56,7 +59,8 @@ const Header = ({ gameData, nextGameSlug, prevGameSlug }) => {
 Header.propTypes = {
   gameData: PropTypes.object.isRequired,
   nextGameSlug: PropTypes.string.isRequired,
-  prevGameSlug: PropTypes.string.isRequired
+  prevGameSlug: PropTypes.string.isRequired,
+  setCharactersByTier: PropTypes.func.isRequired
 }
 
 export default Header
