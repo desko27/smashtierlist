@@ -21,6 +21,9 @@
   .wrapper {
     display: block;
     position: static;
+
+    padding: 20px 30px;
+    margin: 10px 0;
   }
   .wrapperScrolling {
     background-color: transparent;

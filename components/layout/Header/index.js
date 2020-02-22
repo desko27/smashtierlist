@@ -10,6 +10,7 @@ import FilterInput from '../../tierlist/FilterInput'
 import styles from './index.module.css'
 
 const SHADOW_FILTER_OFFSET = 15
+const PADDING_MOBILE_OFFSET = 10
 
 const Header = () => {
   const [mainScrollFlagIsIntersecting, mainScrollFlagRef] = useOnScreen({ once: false })
@@ -33,7 +34,7 @@ const Header = () => {
         </div>
         <div
           ref={mobileScrollFlagRef}
-          style={{ transform: `translateY(${-SHADOW_FILTER_OFFSET}px)` }}
+          style={{ transform: `translateY(${PADDING_MOBILE_OFFSET - SHADOW_FILTER_OFFSET}px)` }}
         />
         <div className={styles.wrapperBreakLine}>
           <FilterInput />
