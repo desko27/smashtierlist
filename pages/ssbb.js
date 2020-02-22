@@ -1,2 +1,2 @@
-import { makeGameTierlistPage } from './_gameTierlist'
+import makeGameTierlistPage from '../page-factories/makeGameTierlistPage'
 export default makeGameTierlistPage('ssbb')

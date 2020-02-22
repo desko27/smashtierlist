@@ -1,7 +1,7 @@
 import React from 'react'
 import GameTierlist from '../components/templates/GameTierlist'
 
-export const makeGameTierlistPage = gameSlug => {
+export default gameSlug => {
   const TierlistPage = ({ gameData, nextGameSlug, prevGameSlug }) => {
     return (
       <GameTierlist
