@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 
+import ArrowLeftIcon from '../../icons/arrow-left.svg'
+import ArrowRightIcon from '../../icons/arrow-right.svg'
+
 import styles from './index.module.css'
 
 const getEmptyIfSsbu = gameSlug => gameSlug === 'ssbu' ? '' : gameSlug
@@ -15,13 +18,13 @@ function GameSelect ({ gameData, prevGameSlug, nextGameSlug }) {
       <div className={styles.wrapperInner}>
         <Link href={prevLink}>
           <button className={styles.arrowButton} type='button'>
-            <img src='/svg/arrow-left.svg' alt='Previous game' />
+            <ArrowLeftIcon />
           </button>
         </Link>
         <h2 className={styles.gameTitle}>{gameData.shortName}</h2>
         <Link href={nextLink}>
           <button className={styles.arrowButton} type='button'>
-            <img src='/svg/arrow-right.svg' alt='Next game' />
+            <ArrowRightIcon />
           </button>
         </Link>
       </div>
