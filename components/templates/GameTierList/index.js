@@ -8,13 +8,17 @@ import Wrapper from '../../layout/Wrapper'
 
 import Roster from '../../tierlist/Roster'
 
-const GameTierList = ({ gameData }) => {
+const GameTierlist = ({ gameData, nextGameSlug, prevGameSlug }) => {
   return (
     <Wrapper>
-      <Header />
+      <Header
+        gameData={gameData}
+        prevGameSlug={prevGameSlug}
+        nextGameSlug={nextGameSlug}
+      />
       <Main>
         <Roster
-          gameSlug='ssbu'
+          gameSlug={gameData.slug}
           charactersByTier={gameData.rosterGroupedByTier}
         />
       </Main>
@@ -23,8 +27,9 @@ const GameTierList = ({ gameData }) => {
   )
 }
 
-GameTierList.propTypes = {
-  gameData: PropTypes.object.isRequired
+GameTierlist.propTypes = {
+  gameData: PropTypes.object.isRequired,
+  context: PropTypes.object.isRequired
 }
 
-export default GameTierList
+export default GameTierlist

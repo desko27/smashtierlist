@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 
 import useOnScreen from '../../hooks/useOnScreen'
@@ -15,7 +16,7 @@ const PADDING_MOBILE_OFFSET = 10
 const isClient = typeof window !== 'undefined'
 const isScrollZero = () => isClient && window.scrollY === 0
 
-const Header = () => {
+const Header = ({ gameData, nextGameSlug, prevGameSlug }) => {
   const [mainScrollFlagIsIntersecting, mainScrollFlagRef] = useOnScreen({ once: false })
   const [mobileScrollFlagIsIntersecting, mobileScrollFlagRef] = useOnScreen({ once: false })
 
@@ -34,7 +35,11 @@ const Header = () => {
       >
         <div className={styles.wrapperFirstLine}>
           <SuperTitle>Smash Tier List.</SuperTitle>
-          <GameSelect />
+          <GameSelect
+            gameData={gameData}
+            prevGameSlug={prevGameSlug}
+            nextGameSlug={nextGameSlug}
+          />
         </div>
         <div
           ref={mobileScrollFlagRef}
@@ -46,6 +51,12 @@ const Header = () => {
       </div>
     </>
   )
+}
+
+Header.propTypes = {
+  gameData: PropTypes.object.isRequired,
+  nextGameSlug: PropTypes.string.isRequired,
+  prevGameSlug: PropTypes.string.isRequired
 }
 
 export default Header
