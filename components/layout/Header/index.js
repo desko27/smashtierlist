@@ -12,11 +12,15 @@ import styles from './index.module.css'
 const SHADOW_FILTER_OFFSET = 15
 const PADDING_MOBILE_OFFSET = 10
 
+const isClient = typeof window !== 'undefined'
+const isScrollZero = () => isClient && window.scrollY === 0
+
 const Header = () => {
   const [mainScrollFlagIsIntersecting, mainScrollFlagRef] = useOnScreen({ once: false })
   const [mobileScrollFlagIsIntersecting, mobileScrollFlagRef] = useOnScreen({ once: false })
-  const isMainScrolling = !mainScrollFlagIsIntersecting
-  const isMobileScrolling = !mobileScrollFlagIsIntersecting
+
+  const isMainScrolling = !isScrollZero() && !mainScrollFlagIsIntersecting
+  const isMobileScrolling = !isScrollZero() && !mobileScrollFlagIsIntersecting
 
   return (
     <>
