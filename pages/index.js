@@ -9,7 +9,8 @@ const Home = ({ gameData }) => {
 
 Home.getInitialProps = async ({ domain }) => {
   const getTierlistUseCase = await domain.get('get_tierlist_use_case')
-  return { gameData: getTierlistUseCase.execute() }
+  const gameData = await getTierlistUseCase.execute('ssbu')
+  return { gameData }
 }
 
 export default Home

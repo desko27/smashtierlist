@@ -1,7 +1,9 @@
-export default function DataBuildRepository ({ ssbu }) {
+export default function DataBuildRepository ({ gameImports }) {
   return {
-    getGameData: gameSlug => {
-      return ssbu
+    getGameData: async gameSlug => {
+      const gameImport = gameImports[gameSlug]
+      const { default: gameData } = await gameImport()
+      return gameData
     }
   }
 }

@@ -1,3 +1,7 @@
-export default function GetTierlistUseCase ({ gameSlug, dataBuildRepository }) {
-  return dataBuildRepository.getGameData(gameSlug)
+export default function GetTierlistUseCase ({ dataBuildRepository }) {
+  return {
+    async execute (gameSlug) {
+      return dataBuildRepository.getGameData(gameSlug)
+    }
+  }
 }

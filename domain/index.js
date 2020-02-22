@@ -3,8 +3,9 @@ const USE_CASES = {
 }
 
 const entryPoint = {
-  get: useCaseName => {
-    return USE_CASES[useCaseName]()
+  get: async useCaseName => {
+    const { default: useCaseFactory } = await USE_CASES[useCaseName]()
+    return useCaseFactory()
   }
 }
 
