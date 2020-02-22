@@ -1,12 +1,16 @@
 import React from 'react'
 import GameTierList from '../components/templates/GameTierList'
 
-import ssb from '../data-build/ssb'
-
-const SsbPage = () => {
+const SsbPage = ({ gameData }) => {
   return (
-    <GameTierList gameData={ssb} />
+    <GameTierList gameData={gameData} />
   )
+}
+
+SsbPage.getInitialProps = async ({ domain }) => {
+  const getTierlistUseCase = await domain.get('get_tierlist_use_case')
+  const gameData = await getTierlistUseCase.execute('ssb')
+  return { gameData }
 }
 
 export default SsbPage

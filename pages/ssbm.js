@@ -1,12 +1,16 @@
 import React from 'react'
 import GameTierList from '../components/templates/GameTierList'
 
-import ssbm from '../data-build/ssbm'
-
-const SsbmPage = () => {
+const SsbmPage = ({ gameData }) => {
   return (
-    <GameTierList gameData={ssbm} />
+    <GameTierList gameData={gameData} />
   )
+}
+
+SsbmPage.getInitialProps = async ({ domain }) => {
+  const getTierlistUseCase = await domain.get('get_tierlist_use_case')
+  const gameData = await getTierlistUseCase.execute('ssbm')
+  return { gameData }
 }
 
 export default SsbmPage
