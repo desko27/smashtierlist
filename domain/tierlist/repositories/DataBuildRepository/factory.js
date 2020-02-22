@@ -7,5 +7,5 @@ const gameImports = gameSlugs.reduce(
 )
 
 export default function () {
-  return DataBuildRepository({ gameImports })
+  return DataBuildRepository({ gameImports, gameSlugs })
 }

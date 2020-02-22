@@ -1,5 +1,6 @@
 const USE_CASES = {
-  get_tierlist_use_case: () => import('./tierlist/useCases/GetTierlistUseCase/factory')
+  get_tierlist_use_case: () => import('./tierlist/useCases/GetTierlistUseCase/factory'),
+  get_next_game_slug_use_case: () => import('./tierlist/useCases/GetNextGameSlugUseCase/factory')
 }
 
 const entryPoint = {
