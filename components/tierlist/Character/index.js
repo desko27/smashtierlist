@@ -58,4 +58,4 @@ Character.propTypes = {
   visible: PropTypes.bool.isRequired
 }
 
-export default Character
+export default React.memo(Character)
