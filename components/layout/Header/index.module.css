@@ -1,6 +1,7 @@
 .wrapper {
   --layer: 10;
   --shadowFilter: drop-shadow(0 2px 4px rgba(0, 0, 0, .5));
+  --header-height: 35px;
 
   z-index: var(--layer);
   filter: var(--shadowFilter);

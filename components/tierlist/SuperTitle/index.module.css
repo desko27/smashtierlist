@@ -1,13 +1,12 @@
 .wrapper {
   --color: #b10016;
-  --height: 35px;
 
   display: flex;
 }
 .wrapper:after {
   content: '';
-  border-left: var(--height) solid var(--color);
-  border-bottom: var(--height) solid transparent;
+  border-left: var(--header-height) solid var(--color);
+  border-bottom: var(--header-height) solid transparent;
 }
 @media (max-width: 820px) {
   .wrapper {
@@ -16,7 +15,7 @@
 }
 
 .wrapperInner {
-  height: var(--height);
+  height: var(--header-height);
   flex-grow: 1;
   display: flex;
   align-items: center;
