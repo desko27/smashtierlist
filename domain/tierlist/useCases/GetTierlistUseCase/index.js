@@ -1,3 +1,3 @@
-export default function GetTierlistUseCase ({ gameData }) {
-  return gameData
+export default function GetTierlistUseCase ({ gameSlug, dataBuildRepository }) {
+  return dataBuildRepository.getGameData(gameSlug)
 }

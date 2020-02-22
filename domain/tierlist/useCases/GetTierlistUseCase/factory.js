@@ -1,6 +1,6 @@
 import GetTierlistUseCase from './index'
-import ssbu from '../../../../data-build/ssbu'
+import DataBuildRepositoryFactory from '../../repositories/DataBuildRepository/factory'
 
-export function execute () {
-  return new GetTierlistUseCase({ gameData: ssbu })
+export function execute (gameSlug) {
+  return new GetTierlistUseCase({ gameSlug, dataBuildRepository: DataBuildRepositoryFactory() })
 }
