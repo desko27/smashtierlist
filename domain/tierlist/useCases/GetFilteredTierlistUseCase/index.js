@@ -13,6 +13,8 @@ export default function GetFilteredTierlistUseCase ({ dataBuildRepository }) {
           ...tierGroup,
           characters: filterCharactersArray(tierGroup.characters)
         })
+      ).filter(
+        tierGroup => tierGroup.characters.length
       )
 
       const filteredGameData = {
