@@ -10,7 +10,10 @@ import ReactBrandsIcon from '../../icons/react-brands.svg'
 
 import placeholderStyles from './placeholder.module.css'
 
-const dynamicStyles = import('./index.module.css')
+const dynamicStyles = import(
+  /* webpackChunkName: "footerDynamicStyles" */
+  './index.module.css'
+)
 
 const Footer = () => {
   const [isIntersecting, ref] = useOnScreen({ rootMargin: '100px' })

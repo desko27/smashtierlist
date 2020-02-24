@@ -8,7 +8,6 @@ import styles from './index.module.css'
 const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const [search, setSearch] = useState('')
   const domain = useContext(DomainContext)
-  const getFilteredTierlistUseCaseRef = useRef()
   const updatedSearchRef = useRef(search)
   const inputRef = useRef()
 
@@ -17,18 +16,16 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   }, [search])
 
   const applyFilter = useCallback(async value => {
-    if (!getFilteredTierlistUseCaseRef.current) return
+    const hasValueArgument = typeof value !== 'undefined'
     const result =
-      await getFilteredTierlistUseCaseRef.current.execute(gameSlug, value)
+      await domain.get('get_filtered_tierlist_use_case').execute(
+        gameSlug,
+        hasValueArgument ? value : updatedSearchRef.current
+      )
     setCharactersByTier(result.rosterGroupedByTier)
   }, [gameSlug])
 
-  const handleFocus = async () => {
-    getFilteredTierlistUseCaseRef.current =
-      await domain.get('get_filtered_tierlist_use_case')
-    applyFilter(updatedSearchRef.current)
-  }
-
+  const handleFocus = async () => applyFilter()
   const handleChange = async event => {
     const { value } = event.target
     setSearch(value)

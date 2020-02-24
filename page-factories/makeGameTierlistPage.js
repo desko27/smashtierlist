@@ -14,11 +14,10 @@ export default gameSlug => {
 
   TierlistPage.getInitialProps = async ({ domain }) => {
     const fetchGameData = async () => {
-      const getTierlistUseCase = await domain.get('get_tierlist_use_case')
-      return getTierlistUseCase.execute(gameSlug)
+      return domain.get('get_tierlist_use_case').execute(gameSlug)
     }
     const fetchNextGameSlugs = async () => {
-      const getNextGameSlugUseCase = await domain.get('get_next_game_slug_use_case')
+      const getNextGameSlugUseCase = domain.get('get_next_game_slug_use_case')
       return Promise.all([
         getNextGameSlugUseCase.execute(gameSlug, 'next'),
         getNextGameSlugUseCase.execute(gameSlug, 'prev')
