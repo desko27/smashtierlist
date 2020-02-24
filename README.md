@@ -17,3 +17,9 @@
 <p align="center">
   An Open Source Tier List application that covers all characters in Super Smash Bros game series with UX and performance in mind. Built on top of React and proudly hosted on Now.
 </p>
+
+<p align="center">
+  <a href="https://web.dev/metrics/">
+    <img width="786" alt="Smash Tier List Lighthouse Score" src="https://user-images.githubusercontent.com/4168389/75197398-733ad800-575e-11ea-8de8-e2ad92a16e2e.png">
+  </a>
+</p>
