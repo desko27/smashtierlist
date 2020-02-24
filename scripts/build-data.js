@@ -6,7 +6,10 @@ const { games } = data
 const gameJsons = games.map(game => ({ slug: game.slug, json: JSON.stringify(game) }))
 
 gameJsons.forEach(({ slug, json }) => {
-  const fileContents = `export default JSON.parse('${json}')`
+  // description strings need double escaping
+  const jsonWithReplacements = json.replace(/\\/g, '\\\\')
+
+  const fileContents = `export default JSON.parse('${jsonWithReplacements}')`
   fs.writeFile(`./data-build/${slug}.js`, fileContents, 'utf8', function (err) {
     if (err) throw new Error(`❌ Error while writing '${slug}' JSON to file.`)
     console.log(`✅ Success writing '${slug}' JSON to file.`)

@@ -1,0 +1,28 @@
+.wrapper {
+  --shadow-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .5));
+
+  padding: 10px;
+  background: #475058;
+  filter: var(--shadow-filter);
+  margin-bottom: 30px;
+
+  color: #fff;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.wrapper p {
+  margin: 0;
+}
+.wrapper p + p {
+  margin-top: 10px;
+}
+
+.wrapper a {
+  color: #f8e71c;
+  text-decoration: none;
+}
+.wrapper a:hover {
+  text-decoration: underline;
+}

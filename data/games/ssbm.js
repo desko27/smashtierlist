@@ -4,23 +4,18 @@ module.exports = {
   name: 'Super Smash Bros. Melee',
   shortName: 'Melee',
   console: 'Game Cube',
-  notices: [
-    {
-      id: '2019/01/15',
-      message: `
-        <p>
-          This is the latest and most widely-accepted tier list for
-          <a href="https://www.ssbwiki.com/Super_Smash_Bros._Melee">Super Smash Bros. Melee</a>
-          from Nintendo GameCube, produced by the Smash 64 community and last updated
-          on December 10th, 2015.
-        </p>
-        <p>
-          To learn more about how these tier lists are made check out the "Tier list" article
-          on <a href="https://www.ssbwiki.com/tier_list">the Smash Wiki</a>.
-        </p>
-      `
-    }
-  ],
+  description: `
+    <p>
+      This is the latest and most widely-accepted tier list for
+      <a href="https://www.ssbwiki.com/Super_Smash_Bros._Melee">Super Smash Bros. Melee</a>
+      from Nintendo GameCube, produced by the Smash 64 community and last updated
+      on December 10th, 2015.
+    </p>
+    <p>
+      To learn more about how these tier lists are made check out the "Tier list" article
+      on <a href="https://www.ssbwiki.com/tier_list">the Smash Wiki</a>.
+    </p>
+  `,
   tiers: [
     { name: 'SS', color: '#d0021b' },
     { name: 'S', color: '#f5a623' },

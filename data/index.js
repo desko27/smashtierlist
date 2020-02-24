@@ -20,6 +20,13 @@ const gamesWithIds = rawGames.map((g, gid) => {
     }
   ).filter(t => t.characters.length > 0)
 
+  const description =
+    g.description
+      .replace(/\s\s+/g, ' ') // remove multiple spaces
+      .replace(/\n/g, '') // remove line jumps
+      .replace(/'/g, '&apos;') // TODO: use html entities package?
+      .replace(/<a /g, '<a target="_blank" rel="noopener noreferrer" ')
+
   return {
     id: gid,
     slug: g.slug,
@@ -27,6 +34,7 @@ const gamesWithIds = rawGames.map((g, gid) => {
     name: g.name,
     shortName: g.shortName,
     console: g.console,
+    description,
     rosterGroupedByTier
   }
 })

@@ -1,10 +1,10 @@
 .wrapper {
   --layer: 10;
-  --shadowFilter: drop-shadow(0 2px 4px rgba(0, 0, 0, .5));
+  --shadow-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .5));
   --header-height: 35px;
 
   z-index: var(--layer);
-  filter: var(--shadowFilter);
+  filter: var(--shadow-filter);
   position: sticky;
   top: 0;
   padding: 30px;

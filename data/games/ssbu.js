@@ -4,25 +4,20 @@ module.exports = {
   name: 'Super Smash Bros. Ultimate',
   shortName: 'Ultimate',
   console: 'Switch',
-  notices: [
-    {
-      id: '2019/03/14',
-      message: `
-        <p>
-          This is the latest and most widely-accepted tier list for
-          <a href="https://www.ssbwiki.com/Super_Smash_Bros._Ultimate">Super Smash Bros. Ultimate</a>
-          from Nintendo Switch, produced by ZeRo (who is considered
-          the best SSB4 player in the world) and last updated
-          on March 10th, 2019. Reflects version 2.0.1 of the game.
-        </p>
-        <p>
-          To learn more about how this tier list is made you can check
-          <a href="https://www.youtube.com/channel/UCc8JKj5y6NVUd7RooLMvjdQ">ZeRo's channel</a> and
-          <a href="https://twitter.com/zerowondering">his Twitter account</a>.
-        </p>
-      `
-    }
-  ],
+  description: `
+    <p>
+      This is the latest and most widely-accepted tier list for
+      <a href="https://www.ssbwiki.com/Super_Smash_Bros._Ultimate">Super Smash Bros. Ultimate</a>
+      from Nintendo Switch, produced by ZeRo (who is considered
+      the best SSB4 player in the world) and last updated
+      on March 10th, 2019. Reflects version 2.0.1 of the game.
+    </p>
+    <p>
+      To learn more about how this tier list is made you can check
+      <a href="https://www.youtube.com/channel/UCc8JKj5y6NVUd7RooLMvjdQ">ZeRo's channel</a> and
+      <a href="https://twitter.com/zerowondering">his Twitter account</a>.
+    </p>
+  `,
   tiers: [
     { name: 'S', color: '#d0021b' },
     { name: 'A', color: '#f5a623' },

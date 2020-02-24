@@ -6,6 +6,7 @@ import Header from '../../layout/Header'
 import Main from '../../layout/Main'
 import Wrapper from '../../layout/Wrapper'
 
+import Notice from '../../tierlist/Notice'
 import Roster from '../../tierlist/Roster'
 
 const GameTierlist = ({ gameData, nextGameSlug, prevGameSlug }) => {
@@ -20,6 +21,9 @@ const GameTierlist = ({ gameData, nextGameSlug, prevGameSlug }) => {
         setCharactersByTier={setCharactersByTier}
       />
       <Main>
+        <Notice>
+          {gameData.description}
+        </Notice>
         <Roster
           gameSlug={gameData.slug}
           charactersByTier={charactersByTier}
