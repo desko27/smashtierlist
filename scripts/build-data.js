@@ -1,8 +1,10 @@
 const fs = require('fs')
 const data = require('../data')
 
-const { games } = data
+const OUTPUT_DIR = './data-build'
+if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR)
 
+const { games } = data
 const gameJsons = games.map(game => ({ slug: game.slug, json: JSON.stringify(game) }))
 
 gameJsons.forEach(({ slug, json }) => {
@@ -10,7 +12,7 @@ gameJsons.forEach(({ slug, json }) => {
   const jsonWithReplacements = json.replace(/\\/g, '\\\\')
 
   const fileContents = `export default JSON.parse('${jsonWithReplacements}')`
-  fs.writeFile(`./data-build/${slug}.js`, fileContents, 'utf8', function (err) {
+  fs.writeFile(`${OUTPUT_DIR}/${slug}.js`, fileContents, 'utf8', function (err) {
     if (err) throw new Error(`❌ Error while writing '${slug}' JSON to file.`)
     console.log(`✅ Success writing '${slug}' JSON to file.`)
   })
@@ -18,7 +20,7 @@ gameJsons.forEach(({ slug, json }) => {
 
 const gameSlugs = gameJsons.map(({ slug }) => slug)
 const fileContents = `export default JSON.parse('${JSON.stringify(gameSlugs)}')`
-fs.writeFile('./data-build/index.js', fileContents, 'utf8', function (err) {
+fs.writeFile(`${OUTPUT_DIR}/index.js`, fileContents, 'utf8', function (err) {
   if (err) throw new Error('❌ Error while writing all game slugs to file.')
   console.log('✅ Success writing all game slugs to file.')
 })
