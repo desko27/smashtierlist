@@ -11,6 +11,7 @@ import Roster from '../../tierlist/Roster'
 
 const GameTierlist = ({ gameData, nextGameSlug, prevGameSlug }) => {
   const [charactersByTier, setCharactersByTier] = useState(gameData.rosterGroupedByTier)
+  const [isNoticeVisible, setIsNoticeVisible] = useState()
 
   return (
     <Wrapper>
@@ -19,9 +20,11 @@ const GameTierlist = ({ gameData, nextGameSlug, prevGameSlug }) => {
         prevGameSlug={prevGameSlug}
         nextGameSlug={nextGameSlug}
         setCharactersByTier={setCharactersByTier}
+        isNoticeVisible={isNoticeVisible}
+        setIsNoticeVisible={setIsNoticeVisible}
       />
       <Main>
-        <Notice>
+        <Notice isVisible={isNoticeVisible}>
           {gameData.description}
         </Notice>
         <Roster

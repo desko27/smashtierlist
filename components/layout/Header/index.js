@@ -4,9 +4,12 @@ import cx from 'classnames'
 
 import useOnScreen from '../../hooks/useOnScreen'
 
-import GameSelect from '../../tierlist/GameSelect'
-import SuperTitle from '../../tierlist/SuperTitle'
+import HeartSolidIcon from '../../icons/exclamation-circle.svg'
+
 import FilterInput from '../../tierlist/FilterInput'
+import GameSelect from '../../tierlist/GameSelect'
+import HeaderIcon from '../../tierlist/HeaderIcon'
+import SuperTitle from '../../tierlist/SuperTitle'
 
 import styles from './index.module.css'
 
@@ -16,12 +19,24 @@ const PADDING_MOBILE_OFFSET = 10
 const isClient = typeof window !== 'undefined'
 const isScrollZero = () => isClient && window.scrollY === 0
 
-const Header = ({ gameData, nextGameSlug, prevGameSlug, setCharactersByTier }) => {
+const Header = ({
+  gameData,
+  nextGameSlug,
+  prevGameSlug,
+  setCharactersByTier,
+  isNoticeVisible,
+  setIsNoticeVisible
+}) => {
   const [mainScrollFlagIsIntersecting, mainScrollFlagRef] = useOnScreen({ once: false })
   const [mobileScrollFlagIsIntersecting, mobileScrollFlagRef] = useOnScreen({ once: false })
 
   const isMainScrolling = !isScrollZero() && !mainScrollFlagIsIntersecting
   const isMobileScrolling = !isScrollZero() && !mobileScrollFlagIsIntersecting
+
+  const handleNoticeClick = () => {
+    if (!isNoticeVisible) window.scrollTo(0, 0)
+    setIsNoticeVisible(!isNoticeVisible)
+  }
 
   return (
     <>
@@ -50,6 +65,10 @@ const Header = ({ gameData, nextGameSlug, prevGameSlug, setCharactersByTier }) =
             gameSlug={gameData.slug}
             setCharactersByTier={setCharactersByTier}
           />
+          <HeaderIcon
+            icon={<HeartSolidIcon style={{ fill: isNoticeVisible ? '#f8e71c' : '#9b9b9b' }} />}
+            onClick={handleNoticeClick}
+          />
         </div>
       </div>
     </>
@@ -60,7 +79,9 @@ Header.propTypes = {
   gameData: PropTypes.object.isRequired,
   nextGameSlug: PropTypes.string.isRequired,
   prevGameSlug: PropTypes.string.isRequired,
-  setCharactersByTier: PropTypes.func.isRequired
+  setCharactersByTier: PropTypes.func.isRequired,
+  isNoticeVisible: PropTypes.bool,
+  setIsNoticeVisible: PropTypes.func.isRequired
 }
 
 export default Header

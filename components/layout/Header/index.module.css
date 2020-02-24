@@ -41,7 +41,9 @@
 }
 
 .wrapperBreakLine {
+  flex-grow: 1;
   display: flex;
+  justify-content: space-between;
 }
 @media (max-width: 820px) {
   .wrapperBreakLine {
