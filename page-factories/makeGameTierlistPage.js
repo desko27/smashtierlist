@@ -1,14 +1,21 @@
 import React from 'react'
+
+import CommonMetaTags from '../components/seo/CommonMetaTags'
 import GameTierlist from '../components/templates/GameTierlist'
 
 export default gameSlug => {
   const TierlistPage = ({ gameData, nextGameSlug, prevGameSlug }) => {
+    const title = `Smash Tier List - ${gameData.name}`
+
     return (
-      <GameTierlist
-        gameData={gameData}
-        nextGameSlug={nextGameSlug}
-        prevGameSlug={prevGameSlug}
-      />
+      <>
+        <CommonMetaTags title={title} />
+        <GameTierlist
+          gameData={gameData}
+          nextGameSlug={nextGameSlug}
+          prevGameSlug={prevGameSlug}
+        />
+      </>
     )
   }
 
