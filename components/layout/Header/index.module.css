@@ -1,0 +1,52 @@
+.wrapper {
+  --layer: 10;
+  --shadow-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .5));
+  --header-height: 35px;
+
+  z-index: var(--layer);
+  filter: var(--shadow-filter);
+  position: sticky;
+  top: 0;
+  padding: 30px;
+  display: flex;
+  transition: background-color .2s ease-out;
+}
+.wrapperScrolling {
+  background-color: #000;
+}
+.wrapperScrollingMobile {
+  background-color: transparent;
+}
+@media (max-width: 820px) {
+  .wrapper {
+    display: block;
+    position: static;
+
+    padding: 20px 30px;
+    margin: 10px 0;
+  }
+  .wrapperScrolling {
+    background-color: transparent;
+  }
+  .wrapperScrollingMobile {
+    background-color: #000;
+    position: sticky;
+
+    top: calc(-1 * (30px + var(--header-height)));
+  }
+}
+
+.wrapperFirstLine {
+  display: flex;
+}
+
+.wrapperBreakLine {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 820px) {
+  .wrapperBreakLine {
+    padding-top: 30px;
+  }
+}
