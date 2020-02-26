@@ -1,10 +1,17 @@
-export default function GetFilteredTierlistUseCase ({ dataBuildRepository }) {
-  const filterCharactersArray = ({ characters, searchString }) => {
-    return characters.filter(
-      character => character.name.toLowerCase().includes(searchString)
-    )
-  }
+const fuzzySearchCharactersArray = ({ characters, searchString, Fuse }) => {
+  const fuse = new Fuse(characters, {
+    shouldSort: false,
+    threshold: 0.35,
+    location: 0,
+    distance: 100,
+    maxPatternLength: 32,
+    minMatchCharLength: 1,
+    keys: ['name', 'slug']
+  })
+  return fuse.search(searchString)
+}
 
+export default function GetFilteredTierlistUseCase ({ dataBuildRepository, Fuse }) {
   return {
     async execute (gameSlug, searchString) {
       const gameData = await dataBuildRepository.getGameData(gameSlug)
@@ -13,9 +20,10 @@ export default function GetFilteredTierlistUseCase ({ dataBuildRepository }) {
       const filteredRosterGroupedByTier = gameData.rosterGroupedByTier.map(
         tierGroup => ({
           ...tierGroup,
-          characters: filterCharactersArray({
+          characters: fuzzySearchCharactersArray({
             characters: tierGroup.characters,
-            searchString
+            searchString,
+            Fuse
           })
         })
       ).filter(

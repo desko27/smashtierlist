@@ -17,6 +17,7 @@
   "dependencies": {
     "@svgr/webpack": "^5.1.0",
     "classnames": "^2.2.6",
+    "fuse.js": "^3.4.6",
     "intersection-observer": "^0.7.0",
     "next": "^9.2.1",
     "preact": "^10.2.1",

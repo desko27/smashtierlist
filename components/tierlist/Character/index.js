@@ -39,7 +39,7 @@ function Character ({
               </picture>
             </div>
             <div
-              className={cx(styles.name, name.length > 11 && styles.nameLarge)}
+              className={cx(styles.name, name.length > 10 && styles.nameLarge)}
               style={{ '--color': color }}
             >
               <span itemProp='name'>{name}</span>
