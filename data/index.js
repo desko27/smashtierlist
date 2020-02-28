@@ -1,24 +1,44 @@
-const ssb = require('./games/ssb')
-const ssbm = require('./games/ssbm')
-const ssbb = require('./games/ssbb')
-const ssb4 = require('./games/ssb4')
-const ssbu = require('./games/ssbu')
+const glob = require('glob')
+const path = require('path')
 
-const rawGames = [ssb, ssbm, ssbb, ssb4, ssbu]
+const gameDirectories = [
+  './games/ssb',
+  './games/ssbm',
+  './games/ssbb',
+  './games/ssb4',
+  './games/ssbu'
+]
 
 // inject automatically generated ids
-const gamesWithIds = rawGames.map((g, gid) => {
+const gamesWithIds = gameDirectories.map((gameDirectory, gid) => {
+  const g = require(gameDirectory)
+  const rosterDirectory = `${gameDirectory}/roster`
+  const rosterFilenames = glob.sync(`${rosterDirectory}/*.js`.slice(1), {
+    root: path.join(process.cwd(), 'data')
+  })
+  const rosterObject = rosterFilenames.reduce(
+    (acc, characterFilename) => {
+      const [characterSlug] = path.basename(characterFilename).split('.')
+      const characterObject = require(characterFilename)
+      return {
+        ...acc,
+        [characterSlug]: characterObject
+      }
+    },
+    {}
+  )
   const rosterGroupedByTier = g.tiers.map(
     tier => {
-      const roster = g.roster.map((c, cid) => ({ id: cid, ...c }))
       return {
         tier,
-        characters: roster.filter(
-          c => c.tier === tier.name
-        )
+        characters:
+          tier.characters.map(characterSlug => ({
+            ...rosterObject[characterSlug],
+            slug: characterSlug
+          }))
       }
     }
-  ).filter(t => t.characters.length > 0)
+  )
 
   const description =
     g.description
