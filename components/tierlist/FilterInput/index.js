@@ -3,10 +3,19 @@ import PropTypes from 'prop-types'
 
 import DomainContext from '../../../domain/context'
 
+import EyeIcon from '../../icons/eye.svg'
+import EyeSlashIcon from '../../icons/eye-slash.svg'
+
 import styles from './index.module.css'
+
+const FILTER_MODES = {
+  NORMAL: false,
+  HIGHLIGHT: true
+}
 
 const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const [search, setSearch] = useState('')
+  const [filterMode, setFilterMode] = useState(FILTER_MODES.NORMAL)
   const domain = useContext(DomainContext)
   const updatedSearchRef = useRef(search)
   const inputRef = useRef()
@@ -20,10 +29,13 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
     const result =
       await domain.get('get_filtered_tierlist_use_case').execute(
         gameSlug,
-        hasValueArgument ? value : updatedSearchRef.current
+        {
+          searchString: hasValueArgument ? value : updatedSearchRef.current,
+          filterMode
+        }
       )
     setCharactersByTier(result.rosterGroupedByTier)
-  }, [gameSlug])
+  }, [gameSlug, filterMode])
 
   const handleFocus = async () => applyFilter()
   const handleChange = async event => {
@@ -31,6 +43,9 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
     setSearch(value)
     applyFilter(value)
   }
+
+  const handleFilterModeToggle = () => setFilterMode(mode => !mode)
+  useEffect(() => applyFilter(), [filterMode])
 
   useEffect(() => {
     const handleKeyDown = ({ keyCode }) => {
@@ -40,7 +55,7 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  })
+  }, [])
 
   return (
     <div className={styles.wrapper}>
@@ -55,6 +70,9 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
           onFocus={handleFocus}
           placeholder='Search characters...'
         />
+        <button className={styles.eyeButton} onClick={handleFilterModeToggle}>
+          {filterMode ? <EyeIcon /> : <EyeSlashIcon />}
+        </button>
       </div>
     </div>
   )

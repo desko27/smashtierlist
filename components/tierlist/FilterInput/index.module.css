@@ -46,3 +46,26 @@
     padding-left: 19px;
   }
 }
+
+.eyeButton {
+  position: absolute;
+  right: 17px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+
+  cursor: pointer;
+  opacity: 0.4;
+}
+.eyeButton:hover {
+  opacity: 1;
+}
+.eyeButton svg {
+  height: 18px;
+}

@@ -25,7 +25,7 @@ const TierGroup = ({ tier, characters, gameSlug }) => {
                   {...character}
                   key={character.slug}
                   gameSlug={gameSlug}
-                  visible
+                  visible={typeof character.visible === 'undefined' ? true : character.visible}
                 />
               ))}
             </div>
