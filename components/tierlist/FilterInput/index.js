@@ -57,7 +57,7 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
       return newValue
     })
   }
-  useEffect(() => applyFilter(), [filterMode])
+  useEffect(() => search && applyFilter(), [search, filterMode])
 
   useEffect(() => {
     const handleKeyDown = ({ keyCode }) => {
