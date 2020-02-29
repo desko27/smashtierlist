@@ -8,14 +8,20 @@ import EyeSlashIcon from '../../icons/eye-slash.svg'
 
 import styles from './index.module.css'
 
+const FILTER_MODE_LS_KEY = 'setting:filterMode'
 const FILTER_MODES = {
   NORMAL: false,
   HIGHLIGHT: true
 }
 
+const getInitialFilterMode = () => {
+  if (typeof window === 'undefined') return FILTER_MODES.NORMAL
+  return window.localStorage.getItem(FILTER_MODE_LS_KEY) || FILTER_MODES.NORMAL
+}
+
 const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const [search, setSearch] = useState('')
-  const [filterMode, setFilterMode] = useState(FILTER_MODES.NORMAL)
+  const [filterMode, setFilterMode] = useState(getInitialFilterMode)
   const domain = useContext(DomainContext)
   const updatedSearchRef = useRef(search)
   const inputRef = useRef()
@@ -44,7 +50,13 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
     applyFilter(value)
   }
 
-  const handleFilterModeToggle = () => setFilterMode(mode => !mode)
+  const handleFilterModeToggle = () => {
+    setFilterMode(mode => {
+      const newValue = !mode
+      window.localStorage.setItem(FILTER_MODE_LS_KEY, newValue)
+      return newValue
+    })
+  }
   useEffect(() => applyFilter(), [filterMode])
 
   useEffect(() => {
