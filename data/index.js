@@ -45,7 +45,7 @@ const gamesWithIds = gameDirectories.map((gameDirectory, gid) => {
       .replace(/\s\s+/g, ' ') // remove multiple spaces
       .replace(/\n/g, '') // remove line jumps
       .replace(/'/g, '&apos;') // TODO: use html entities package?
-      .replace(/<a /g, '<a target="_blank" rel="noopener noreferrer" ')
+      .replace(/<a /g, '<a target="_blank" rel="nofollow noopener noreferrer" ')
 
   return {
     id: gid,

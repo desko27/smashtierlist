@@ -44,7 +44,7 @@ const Footer = () => {
               <div className={styles.socialIcons}>
                 <a
                   target='_blank'
-                  rel='noopener noreferrer'
+                  rel='nofollow noopener noreferrer'
                   href='https://linkedin.com/in/desko27'
                   title="Desko27's LinkedIn"
                 >
@@ -52,7 +52,7 @@ const Footer = () => {
                 </a>
                 <a
                   target='_blank'
-                  rel='noopener noreferrer'
+                  rel='nofollow noopener noreferrer'
                   href='https://twitter.com/desko27'
                   title="Desko27's Twitter"
                 >
@@ -60,7 +60,7 @@ const Footer = () => {
                 </a>
                 <a
                   target='_blank'
-                  rel='noopener noreferrer'
+                  rel='nofollow noopener noreferrer'
                   href='https://github.com/desko27'
                   title="Desko27's GitHub"
                 >
