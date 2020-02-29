@@ -8,6 +8,11 @@ import EyeSlashIcon from '../../icons/eye-slash.svg'
 
 import styles from './index.module.css'
 
+/**
+ * TODO: this should lay on domain config
+ * ...also, local storage stuff regarding filter mode should be held in
+ *    some domain logic (i.e. use case/s)
+ */
 const FILTER_MODE_LS_KEY = 'setting:filterMode'
 const FILTER_MODES = {
   NORMAL: false,

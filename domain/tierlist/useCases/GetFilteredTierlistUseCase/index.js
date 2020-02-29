@@ -1,3 +1,6 @@
+/**
+ * TODO: this should lay on domain config
+ */
 const FILTER_MODES = {
   NORMAL: false,
   HIGHLIGHT: true
