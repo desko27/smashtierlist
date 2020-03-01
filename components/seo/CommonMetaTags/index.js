@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -9,19 +10,21 @@ const siteData = {
       ' character. A tier list is a list that ranks all characters in a game.'
 }
 
-const CommonMetaTags = ({ title }) => {
+const CommonMetaTags = ({ title, description: descriptionProp }) => {
   const { pathname } = useRouter()
+  const description = descriptionProp || siteData.metaDescription
+
   return (
     <Head>
       <title>{title}</title>
-      <meta name='description' content={siteData.metaDescription} />
+      <meta name='description' content={description} />
 
       {/* stop google from indexing while definitive domain is not ready */}
       <meta name='robots' content='noindex' />
 
       <meta property='og:title' content={title} />
       <meta property='og:url' content={`${siteData.siteRoot}${pathname}`} />
-      <meta property='og:description' content={siteData.metaDescription} />
+      <meta property='og:description' content={description} />
       <meta property='og:type' content='website' />
       <meta property='og:image' content={`${siteData.siteRoot}/apple-touch-icon.png`} />
       <meta property='og:site_name' content={siteData.siteTitle} />
@@ -42,6 +45,11 @@ const CommonMetaTags = ({ title }) => {
       <meta name='msapplication-TileColor' content='#da532c' />
     </Head>
   )
+}
+
+CommonMetaTags.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string
 }
 
 export default CommonMetaTags
