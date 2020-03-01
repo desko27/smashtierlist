@@ -1,13 +1,9 @@
 import Head from 'next/head'
-import Router from 'next/router'
 
 import '../global.css'
 
 import domain from '../domain'
 import DomainContext from '../domain/context'
-import { pageview } from '../lib/gtag'
-
-Router.events.on('routeChangeComplete', url => pageview(url))
 
 function CustomApp ({ Component, pageProps }) {
   return (
