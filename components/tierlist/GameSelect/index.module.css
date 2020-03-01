@@ -38,10 +38,21 @@
 
 .arrowButton {
   line-height: 0;
-  padding: 0;
   border: none;
   background: none;
   cursor: pointer;
+
+  /* large-sized hitbox for touch screens */
+  padding: 25px;
+  margin: -25px;
+  z-index: 1;
+}
+@media (hover: hover) {
+  .arrowButton {
+    /* reduce hitbox for non-touch screens */
+    padding: 15px;
+    margin: -15px;
+  }
 }
 
 .gameTitle {
