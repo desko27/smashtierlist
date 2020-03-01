@@ -19,9 +19,6 @@ const CommonMetaTags = ({ title, description: descriptionProp }) => {
       <title>{title}</title>
       <meta name='description' content={description} />
 
-      {/* stop google from indexing while definitive domain is not ready */}
-      <meta name='robots' content='noindex' />
-
       <meta property='og:title' content={title} />
       <meta property='og:url' content={`${siteData.siteRoot}${pathname}`} />
       <meta property='og:description' content={description} />
