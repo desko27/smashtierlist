@@ -9,25 +9,21 @@ import EyeSlashIcon from '../../icons/eye-slash.svg'
 import styles from './index.module.css'
 
 /**
- * TODO: this should lay on domain config
- * ...also, local storage stuff regarding filter mode should be held in
+ * TODO: local storage stuff regarding filter mode should be held in
  *    some domain logic (i.e. use case/s)
  */
 const FILTER_MODE_LS_KEY = 'setting:filterMode'
-const FILTER_MODES = {
-  NORMAL: false,
-  HIGHLIGHT: true
-}
 
-const getInitialFilterMode = () => {
+const getInitialFilterMode = domain => {
+  const { FILTER_MODES } = domain.get('config')
   if (typeof window === 'undefined') return FILTER_MODES.NORMAL
   return window.localStorage.getItem(FILTER_MODE_LS_KEY) || FILTER_MODES.NORMAL
 }
 
 const FilterInput = ({ gameSlug, setCharactersByTier }) => {
-  const [search, setSearch] = useState('')
-  const [filterMode, setFilterMode] = useState(getInitialFilterMode)
   const domain = useContext(DomainContext)
+  const [search, setSearch] = useState('')
+  const [filterMode, setFilterMode] = useState(() => getInitialFilterMode(domain))
   const updatedSearchRef = useRef(search)
   const inputRef = useRef()
 

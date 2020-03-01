@@ -1,11 +1,3 @@
-/**
- * TODO: this should lay on domain config
- */
-const FILTER_MODES = {
-  NORMAL: false,
-  HIGHLIGHT: true
-}
-
 const fuzzySearchCharactersArray = ({ characters, searchString, Fuse }) => {
   const fuse = new Fuse(characters, {
     id: 'slug',
@@ -20,7 +12,7 @@ const fuzzySearchCharactersArray = ({ characters, searchString, Fuse }) => {
   return fuse.search(searchString)
 }
 
-export default function GetFilteredTierlistUseCase ({ dataBuildRepository, Fuse }) {
+export default function GetFilteredTierlistUseCase ({ config, dataBuildRepository, Fuse }) {
   return {
     async execute (gameSlug, { searchString, filterMode }) {
       const gameData = await dataBuildRepository.getGameData(gameSlug)
@@ -35,7 +27,7 @@ export default function GetFilteredTierlistUseCase ({ dataBuildRepository, Fuse 
           })
           return {
             ...tierGroup,
-            characters: filterMode === FILTER_MODES.NORMAL
+            characters: filterMode === config.FILTER_MODES.NORMAL
               ? tierGroup.characters.filter(({ slug }) => foundCharacterSlugs.includes(slug))
               : tierGroup.characters.map(character => ({
                 ...character,
