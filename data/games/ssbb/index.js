@@ -111,16 +111,14 @@ module.exports = {
       name: 'F',
       color: '#9013fe',
       characters: [
-        [
-          'mario',
-          'samus',
-          'bowser',
-          'captain-falcon',
-          'link',
-          'jigglypuff',
-          'zelda',
-          'ganondorf'
-        ]
+        'mario',
+        'samus',
+        'bowser',
+        'captain-falcon',
+        'link',
+        'jigglypuff',
+        'zelda',
+        'ganondorf'
       ]
     }
   ]
