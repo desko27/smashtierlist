@@ -3,7 +3,7 @@ import React from 'react'
 import CommonMetaTags from '../../components/seo/CommonMetaTags'
 import GameTierlist from '../../components/templates/GameTierlist'
 
-import { getTitle, getDescription } from './seo'
+import { getTitle, getDescription } from './seoSnippets'
 
 export default gameSlug => {
   const TierlistPage = ({ gameData, nextGameSlug, prevGameSlug }) => {
