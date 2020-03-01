@@ -31,7 +31,7 @@ const CommonMetaTags = ({ title, description: descriptionProp }) => {
       <meta name='twitter:card' content='app' />
       <meta name='twitter:site' content='desko27' />
       <meta name='twitter:creator' content='desko27' />
-      <meta name='twitter:description' content={siteData.metaDescription} />
+      <meta name='twitter:description' content={description} />
       <meta name='twitter:image' content={`${siteData.siteRoot}/apple-touch-icon.png`} />
 
       <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
