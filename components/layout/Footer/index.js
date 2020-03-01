@@ -16,7 +16,7 @@ const getDynamicStyles = () => import(
 )
 
 const Footer = () => {
-  const [isIntersecting, ref] = useOnScreen({ rootMargin: '100px' })
+  const [isIntersecting, ref] = useOnScreen({ rootMargin: '300px' })
   const [styles, setStyles] = useState({})
 
   useEffect(() => {
