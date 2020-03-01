@@ -9,6 +9,7 @@ export default class extends Document {
       <html>
         <Head>
           {/* minimalanalytics.com */}
+          <link rel='preconnect dns-prefetch' href='https://www.google-analytics.com' />
           <script
             dangerouslySetInnerHTML={{
               __html: `
