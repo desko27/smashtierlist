@@ -18,9 +18,9 @@ gameJsons.forEach(({ slug, json }) => {
   })
 })
 
-const gameSlugs = gameJsons.map(({ slug }) => slug)
-const fileContents = `export default JSON.parse('${JSON.stringify(gameSlugs)}')`
-fs.writeFile(`${OUTPUT_DIR}/index.js`, fileContents, 'utf8', function (err) {
+const gameRoutesMap = games.reduce((acc, { slug, route }) => ({ ...acc, [slug]: route }), {})
+const gameRoutesMapFileContents = `export default JSON.parse('${JSON.stringify(gameRoutesMap)}')`
+fs.writeFile(`${OUTPUT_DIR}/index.js`, gameRoutesMapFileContents, 'utf8', function (err) {
   if (err) throw new Error('❌ Error while writing all game slugs to file.')
   console.log('✅ Success writing all game slugs to file.')
 })

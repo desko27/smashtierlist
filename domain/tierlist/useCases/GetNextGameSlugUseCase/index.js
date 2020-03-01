@@ -15,7 +15,8 @@ export default function GetNextGameSlugUseCase ({ dataBuildRepository }) {
       const newIndex = direction === 'next'
         ? getNextIndex(gameSlugs, currentIndex)
         : getPrevIndex(gameSlugs, currentIndex)
-      return gameSlugs[newIndex]
+      const newGameSlug = gameSlugs[newIndex]
+      return dataBuildRepository.getGameRoute(newGameSlug)
     }
   }
 }

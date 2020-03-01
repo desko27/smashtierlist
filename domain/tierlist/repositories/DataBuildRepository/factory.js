@@ -1,6 +1,7 @@
 import DataBuildRepository from './index'
-import gameSlugs from '../../../../data-build'
+import gameRoutesMap from '../../../../data-build'
 
+const gameSlugs = Object.keys(gameRoutesMap)
 const gameImports = gameSlugs.reduce(
   (acc, slug) => ({
     ...acc,
@@ -13,5 +14,5 @@ const gameImports = gameSlugs.reduce(
 )
 
 export default function () {
-  return DataBuildRepository({ gameImports, gameSlugs })
+  return DataBuildRepository({ gameImports, gameSlugs, gameRoutesMap })
 }

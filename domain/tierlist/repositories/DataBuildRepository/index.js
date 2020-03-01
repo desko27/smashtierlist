@@ -1,4 +1,4 @@
-export default function DataBuildRepository ({ gameImports, gameSlugs }) {
+export default function DataBuildRepository ({ gameImports, gameSlugs, gameRoutesMap }) {
   return {
     async getGameData (gameSlug) {
       const gameImport = gameImports[gameSlug]
@@ -7,6 +7,9 @@ export default function DataBuildRepository ({ gameImports, gameSlugs }) {
     },
     async getGameSlugs () {
       return gameSlugs
+    },
+    async getGameRoute (gameSlug) {
+      return gameRoutesMap[gameSlug]
     }
   }
 }

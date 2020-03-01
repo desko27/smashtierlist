@@ -7,7 +7,7 @@ import ArrowRightIcon from '../../icons/arrow-right.svg'
 
 import styles from './index.module.css'
 
-const getEmptyIfSsbu = gameSlug => gameSlug === 'ssbu' ? '' : gameSlug
+const getEmptyIfSsbu = gameSlug => gameSlug === 'ultimate' ? '' : gameSlug
 
 function GameSelect ({ gameData, prevGameSlug, nextGameSlug }) {
   const prevLink = `/${getEmptyIfSsbu(prevGameSlug)}`
