@@ -10,7 +10,7 @@ import ReactBrandsIcon from '../../icons/react-brands.svg'
 
 import placeholderStyles from './placeholder.module.css'
 
-const dynamicStyles = import(
+const getDynamicStyles = () => import(
   /* webpackChunkName: "footerDynamicStyles" */
   './index.module.css'
 )
@@ -21,7 +21,7 @@ const Footer = () => {
 
   useEffect(() => {
     if (styles.wrapper || !isIntersecting) return
-    dynamicStyles.then(cssModule => setStyles(cssModule.default))
+    getDynamicStyles().then(cssModule => setStyles(cssModule.default))
   }, [isIntersecting])
 
   return (
