@@ -17,7 +17,9 @@ const FILTER_MODE_LS_KEY = 'setting:filterMode'
 const getInitialFilterMode = domain => {
   const { FILTER_MODES } = domain.get('config')
   if (typeof window === 'undefined') return FILTER_MODES.NORMAL
-  return window.localStorage.getItem(FILTER_MODE_LS_KEY) || FILTER_MODES.NORMAL
+  const stringFromLocalStorage = window.localStorage.getItem(FILTER_MODE_LS_KEY)
+  return typeof stringFromLocalStorage === 'undefined'
+    ? FILTER_MODES.NORMAL : (/true/i).test(stringFromLocalStorage)
 }
 
 const FilterInput = ({ gameSlug, setCharactersByTier }) => {
