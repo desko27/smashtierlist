@@ -121,7 +121,12 @@ module.exports = {
       name: 'D',
       color: '#4a90e2',
       characters: [
-        'little-mac'
+        'little-mac',
+        'joker',
+        'hero',
+        'banjo-and-kazooie',
+        'terry',
+        'byleth'
       ]
     }
   ]
