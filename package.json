@@ -6,6 +6,7 @@
     "dev": "npm run build:data && next dev",
     "build": "npm run build:data && next build",
     "build:data": "node ./scripts/build-data.js",
+    "gen-character-images": "node ./scripts/gen-character-images.js",
     "start": "next start",
     "eslint": "standard"
   },
@@ -29,6 +30,10 @@
   },
   "devDependencies": {
     "husky": "^4.2.3",
+    "imagemin": "^7.0.1",
+    "imagemin-gm": "^2.0.2",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-webp": "^5.1.0",
     "standard": "^14.3.1"
   }
 }
