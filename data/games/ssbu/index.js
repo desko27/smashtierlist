@@ -6,7 +6,7 @@ module.exports = {
   console: 'Switch',
   description: `
     <p>
-      This is the latest and most widely-accepted tier list for
+      This is the latest and most widely-accepted smash tier list for
       <a href="https://www.ssbwiki.com/Super_Smash_Bros._Ultimate">Super Smash Bros. Ultimate</a>
       from Nintendo Switch, produced by ZeRo (who is considered
       the best SSB4 player in the world) and last updated

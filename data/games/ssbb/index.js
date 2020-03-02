@@ -6,7 +6,7 @@ module.exports = {
   console: 'Wii',
   description: `
     <p>
-      This is the latest and most widely-accepted tier list for
+      This is the latest and most widely-accepted smash tier list for
       <a href="https://www.ssbwiki.com/Super_Smash_Bros._Brawl">Super Smash Bros. Brawl</a>
       from Nintendo Wii, produced by the Smash Back Room and last updated
       on April 25, 2013.
