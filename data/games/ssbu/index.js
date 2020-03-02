@@ -10,7 +10,7 @@ module.exports = {
       <a href="https://www.ssbwiki.com/Super_Smash_Bros._Ultimate">Super Smash Bros. Ultimate</a>
       from Nintendo Switch, produced by ZeRo (who is considered
       the best SSB4 player in the world) and last updated
-      on March 10th, 2019. Reflects version 2.0.1 of the game.
+      on February 13th, 2020. Reflects version 7.0.0 of the game.
     </p>
     <p>
       To learn more about how this tier list is made you can check
