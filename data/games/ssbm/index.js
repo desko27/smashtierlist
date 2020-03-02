@@ -6,7 +6,7 @@ module.exports = {
   console: 'Game Cube',
   description: `
     <p>
-      This is the latest and most widely-accepted tier list for
+      This is the latest and most widely-accepted smash tier list for
       <a href="https://www.ssbwiki.com/Super_Smash_Bros._Melee">Super Smash Bros. Melee</a>
       from Nintendo GameCube, produced by the Smash 64 community and last updated
       on December 10th, 2015.

@@ -6,7 +6,7 @@ module.exports = {
   console: 'Wii U',
   description: `
     <p>
-      This is the latest and most widely-accepted tier list for
+      This is the latest and most widely-accepted smash tier list for
       <a href="https://www.ssbwiki.com/Super_Smash_Bros._4">Super Smash Bros. 4</a>
       from Nintendo Wii U, produced by the Smash Back Room and last updated
       on December 11th, 2017. Reflects version 1.1.7 of the game.

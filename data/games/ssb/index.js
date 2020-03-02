@@ -6,7 +6,7 @@ module.exports = {
   console: 'Nintendo 64',
   description: `
     <p>
-      This is the latest and most widely-accepted tier list for
+      This is the latest and most widely-accepted smash tier list for
       <a href="https://www.ssbwiki.com/Super_Smash_Bros.">Super Smash Bros.</a>
       from Nintendo 64, produced by the Smash 64 community and last updated
       on May 12, 2015.
