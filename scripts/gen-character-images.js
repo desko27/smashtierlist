@@ -20,7 +20,7 @@ games.map(({ slug: gameSlug }) => {
   // 150px sized PNGs
   generateCharacterImages({
     gameSlug,
-    source: getAbsPath(`public/chars/${gameSlug}/source/*.png`),
+    source: getAbsPath(`data/games/${gameSlug}/roster/*.png`),
     destination: getAbsPath(`public/chars/${gameSlug}/150-png`),
     plugins: [
       imageminGm.resize({ width: 150, height: 150 }),
@@ -30,7 +30,7 @@ games.map(({ slug: gameSlug }) => {
   // 150px sized WEBPs
   generateCharacterImages({
     gameSlug,
-    source: getAbsPath(`public/chars/${gameSlug}/source/*.png`),
+    source: getAbsPath(`data/games/${gameSlug}/roster/*.png`),
     destination: getAbsPath(`public/chars/${gameSlug}/150-webp`),
     plugins: [
       imageminGm.resize({ width: 150, height: 150 }),
