@@ -16,8 +16,8 @@ function Character ({
   const [isIntersecting, ref] = useOnScreen()
 
   const charSrcs = {
-    png: `/chars/${gameSlug}/${slug}.png.150.png`,
-    webp: `/chars/${gameSlug}/${slug}.png.150.png.webp`
+    png: `/chars/${gameSlug}/150-png/${slug}.png`,
+    webp: `/chars/${gameSlug}/150-webp/${slug}.webp`
   }
 
   return (
