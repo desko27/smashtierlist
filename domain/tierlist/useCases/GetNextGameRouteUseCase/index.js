@@ -1,4 +1,4 @@
-export default function GetNextGameSlugUseCase ({ dataBuildRepository }) {
+export default function GetNextGameRouteUseCase ({ dataBuildRepository }) {
   const getNextIndex = (array, index) => {
     return (index + 1) % array.length
   }

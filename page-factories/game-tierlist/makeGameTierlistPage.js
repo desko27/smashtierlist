@@ -27,10 +27,10 @@ export default gameSlug => {
       return domain.get('get_tierlist_use_case').execute(gameSlug)
     }
     const fetchNextGameSlugs = async () => {
-      const getNextGameSlugUseCase = domain.get('get_next_game_slug_use_case')
+      const getNextGameRouteUseCase = domain.get('get_next_game_route_use_case')
       return Promise.all([
-        getNextGameSlugUseCase.execute(gameSlug, 'next'),
-        getNextGameSlugUseCase.execute(gameSlug, 'prev')
+        getNextGameRouteUseCase.execute(gameSlug, 'next'),
+        getNextGameRouteUseCase.execute(gameSlug, 'prev')
       ])
     }
 

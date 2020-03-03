@@ -11,10 +11,10 @@ const USE_CASES = {
       /* webpackChunkName: "get_filtered_tierlist_use_case" */
       './tierlist/useCases/GetFilteredTierlistUseCase/factory'
     ),
-  get_next_game_slug_use_case: () =>
+  get_next_game_route_use_case: () =>
     import(
-      /* webpackChunkName: "get_next_game_slug_use_case" */
-      './tierlist/useCases/GetNextGameSlugUseCase/factory'
+      /* webpackChunkName: "get_next_game_route_use_case" */
+      './tierlist/useCases/GetNextGameRouteUseCase/factory'
     )
 }
 
