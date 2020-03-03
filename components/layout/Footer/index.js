@@ -26,7 +26,7 @@ const Footer = () => {
 
   return (
     <footer className={styles.wrapper} ref={ref}>
-      {!isIntersecting
+      {!isIntersecting || !styles.wrapper
         ? <div className={placeholderStyles.placeholder} />
         : (
           <>
