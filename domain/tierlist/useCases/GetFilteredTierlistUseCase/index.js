@@ -27,7 +27,7 @@ export default function GetFilteredTierlistUseCase ({ config, dataBuildRepositor
           })
           return {
             ...tierGroup,
-            characters: filterMode === config.FILTER_MODES.NORMAL
+            characters: filterMode === config.SETTINGS.FILTER_MODE.VALUES.NORMAL
               ? tierGroup.characters.filter(({ slug }) => foundCharacterSlugs.includes(slug))
               : tierGroup.characters.map(character => ({
                 ...character,
