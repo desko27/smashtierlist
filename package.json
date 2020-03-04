@@ -22,6 +22,7 @@
     "glob": "^7.1.6",
     "intersection-observer": "^0.7.0",
     "next": "^9.2.1",
+    "next-seo": "^4.4.0",
     "preact": "^10.2.1",
     "preact-render-to-string": "^5.1.4",
     "react": "github:preact-compat/react#1.0.0",
