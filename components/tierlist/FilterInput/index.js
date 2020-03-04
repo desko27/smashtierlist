@@ -17,7 +17,7 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const inputRef = useRef()
 
   useEffect(() => {
-    domain.get('get_setting_use_case').execute('filterMode').then(setFilterMode)
+    domain.get('settings__get_setting_use_case').execute('filterMode').then(setFilterMode)
   }, [])
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const applyFilter = useCallback(async value => {
     const hasValueArgument = typeof value !== 'undefined'
     const result =
-      await domain.get('get_filtered_tierlist_use_case').execute(
+      await domain.get('tierlist__get_filtered_tierlist_use_case').execute(
         gameSlug,
         {
           searchString: hasValueArgument ? value : updatedSearchRef.current,
@@ -47,7 +47,7 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const handleFilterModeToggle = () => {
     setFilterMode(mode => {
       const newValue = !mode
-      domain.get('set_setting_use_case').execute('filterMode', newValue)
+      domain.get('settings__set_setting_use_case').execute('filterMode', newValue)
       return newValue
     })
   }
