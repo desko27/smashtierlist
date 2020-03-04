@@ -17,10 +17,7 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const inputRef = useRef()
 
   useEffect(() => {
-    domain.get('get_setting_use_case').execute('filterMode').then(m => {
-      console.log(m)
-      setFilterMode(m)
-    })
+    domain.get('get_setting_use_case').execute('filterMode').then(setFilterMode)
   }, [])
 
   useEffect(() => {

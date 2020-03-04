@@ -8,7 +8,6 @@ export default function SettingsRepository ({
       const defaultValue = config.settings[key].default
       const settingValue = getItemFromStorage(`setting:${key}`)
       if (typeof settingValue === 'undefined' || settingValue === null) return defaultValue
-      console.log(settingValue)
       return JSON.parse(settingValue)
     },
     async setByKey (key, value) {
