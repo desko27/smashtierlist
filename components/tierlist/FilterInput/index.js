@@ -8,26 +8,17 @@ import EyeSlashIcon from '../../icons/eye-slash.svg'
 
 import styles from './index.module.css'
 
-/**
- * TODO: local storage stuff regarding filter mode should be held in
- *    some domain logic (i.e. use case/s)
- */
-const FILTER_MODE_LS_KEY = 'setting:filterMode'
-
-const getInitialFilterMode = domain => {
-  const { FILTER_MODES } = domain.get('config')
-  if (typeof window === 'undefined') return FILTER_MODES.NORMAL
-  const stringFromLocalStorage = window.localStorage.getItem(FILTER_MODE_LS_KEY)
-  return typeof stringFromLocalStorage === 'undefined'
-    ? FILTER_MODES.NORMAL : (/true/i).test(stringFromLocalStorage)
-}
-
 const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const domain = useContext(DomainContext)
+
   const [search, setSearch] = useState('')
-  const [filterMode, setFilterMode] = useState(() => getInitialFilterMode(domain))
+  const [filterMode, setFilterMode] = useState()
   const updatedSearchRef = useRef(search)
   const inputRef = useRef()
+
+  useEffect(() => {
+    domain.get('get_setting_use_case').execute('filterMode').then(setFilterMode)
+  }, [])
 
   useEffect(() => {
     updatedSearchRef.current = search
@@ -56,7 +47,7 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const handleFilterModeToggle = () => {
     setFilterMode(mode => {
       const newValue = !mode
-      window.localStorage.setItem(FILTER_MODE_LS_KEY, newValue)
+      domain.get('set_setting_use_case').execute('filterMode', newValue)
       return newValue
     })
   }

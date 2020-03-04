@@ -1,6 +1,11 @@
 export default {
-  FILTER_MODES: {
-    NORMAL: false,
-    HIGHLIGHT: true
+  settings: {
+    filterMode: {
+      default: false,
+      options: {
+        normal: false,
+        highlight: true
+      }
+    }
   }
 }
