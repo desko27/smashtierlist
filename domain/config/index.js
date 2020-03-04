@@ -1,10 +1,10 @@
 export default {
-  SETTINGS: {
-    FILTER_MODE: {
-      KEY: 'filterMode',
-      VALUES: {
-        NORMAL: false,
-        HIGHLIGHT: true
+  settings: {
+    filterMode: {
+      default: false,
+      options: {
+        normal: false,
+        highlight: true
       }
     }
   }

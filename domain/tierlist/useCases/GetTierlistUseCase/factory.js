@@ -1,6 +1,6 @@
 import GetTierlistUseCase from './index'
 import DataBuildRepositoryFactory from '../../repositories/DataBuildRepository/factory'
 
-export default function () {
+export default () => {
   return GetTierlistUseCase({ dataBuildRepository: DataBuildRepositoryFactory() })
 }

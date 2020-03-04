@@ -8,25 +8,22 @@ import EyeSlashIcon from '../../icons/eye-slash.svg'
 
 import styles from './index.module.css'
 
-const getInitialFilterMode = ({ filterModeLocalStorageKey, FILTER_MODE_VALUES }) => {
-  if (typeof window === 'undefined') return FILTER_MODE_VALUES.NORMAL
-  const stringFromLocalStorage = window.localStorage.getItem(filterModeLocalStorageKey)
-  return typeof stringFromLocalStorage === 'undefined'
-    ? FILTER_MODE_VALUES.NORMAL : (/true/i).test(stringFromLocalStorage)
-}
-
 const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const domain = useContext(DomainContext)
-  const { KEY: FILTER_MODE_KEY, VALUES: FILTER_MODE_VALUES } =
-    domain.get('config').SETTINGS.FILTER_MODE
-  const filterModeLocalStorageKey = `setting:${FILTER_MODE_KEY}`
+  const { key: filterModeKey } = domain.get('config').settings.filterMode
+  const filterModeLocalStorageKey = `setting:${filterModeKey}`
 
   const [search, setSearch] = useState('')
-  const [filterMode, setFilterMode] = useState(
-    () => getInitialFilterMode({ filterModeLocalStorageKey, FILTER_MODE_VALUES })
-  )
+  const [filterMode, setFilterMode] = useState()
   const updatedSearchRef = useRef(search)
   const inputRef = useRef()
+
+  useEffect(() => {
+    domain
+      .get('get_setting_use_case')
+      .execute('filterMode')
+      .then(setFilterMode)
+  }, [])
 
   useEffect(() => {
     updatedSearchRef.current = search

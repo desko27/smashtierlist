@@ -1,6 +1,6 @@
 import DataBuildRepositoryFactory from '../../repositories/DataBuildRepository/factory'
 import GetNextGameRouteUseCase from './index'
 
-export default function () {
+export default () => {
   return GetNextGameRouteUseCase({ dataBuildRepository: DataBuildRepositoryFactory() })
 }

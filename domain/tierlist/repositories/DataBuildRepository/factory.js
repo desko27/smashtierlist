@@ -13,6 +13,6 @@ const gameImports = gameSlugs.reduce(
   {}
 )
 
-export default function () {
+export default () => {
   return DataBuildRepository({ gameImports, gameSlugs, gameRoutesMap })
 }
