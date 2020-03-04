@@ -20,6 +20,11 @@ const USE_CASES = {
     import(
       /* webpackChunkName: "get_setting_use_case" */
       './settings/useCases/GetSettingUseCase/factory'
+    ),
+  set_setting_use_case: () =>
+    import(
+      /* webpackChunkName: "set_setting_use_case" */
+      './settings/useCases/SetSettingUseCase/factory'
     )
 }
 

@@ -1,15 +1,18 @@
-const makeGetSetting = getItemFromStorage =>
-  key => getItemFromStorage(`setting:${key}`)
-
-export default function SettingsRepository ({ config, getItemFromStorage }) {
-  const getSetting = makeGetSetting(getItemFromStorage)
-
+export default function SettingsRepository ({
+  config,
+  getItemFromStorage,
+  setItemFromStorage
+}) {
   return {
     async getByKey (key) {
       const defaultValue = config.settings[key].default
-      const settingValue = getSetting(key)
+      const settingValue = getItemFromStorage(`setting:${key}`)
       if (typeof settingValue === 'undefined' || settingValue === null) return defaultValue
+      console.log(settingValue)
       return JSON.parse(settingValue)
+    },
+    async setByKey (key, value) {
+      setItemFromStorage(`setting:${key}`, JSON.stringify(value))
     }
   }
 }

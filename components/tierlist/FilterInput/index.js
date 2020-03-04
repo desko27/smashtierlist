@@ -10,8 +10,6 @@ import styles from './index.module.css'
 
 const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const domain = useContext(DomainContext)
-  const { key: filterModeKey } = domain.get('config').settings.filterMode
-  const filterModeLocalStorageKey = `setting:${filterModeKey}`
 
   const [search, setSearch] = useState('')
   const [filterMode, setFilterMode] = useState()
@@ -19,10 +17,10 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const inputRef = useRef()
 
   useEffect(() => {
-    domain
-      .get('get_setting_use_case')
-      .execute('filterMode')
-      .then(setFilterMode)
+    domain.get('get_setting_use_case').execute('filterMode').then(m => {
+      console.log(m)
+      setFilterMode(m)
+    })
   }, [])
 
   useEffect(() => {
@@ -52,7 +50,7 @@ const FilterInput = ({ gameSlug, setCharactersByTier }) => {
   const handleFilterModeToggle = () => {
     setFilterMode(mode => {
       const newValue = !mode
-      window.localStorage.setItem(filterModeLocalStorageKey, newValue)
+      domain.get('set_setting_use_case').execute('filterMode', newValue)
       return newValue
     })
   }
