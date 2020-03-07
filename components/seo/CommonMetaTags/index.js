@@ -13,32 +13,31 @@ const siteData = {
 const CommonMetaTags = ({ title, description: descriptionProp }) => {
   const { pathname } = useRouter()
   const description = descriptionProp || siteData.metaDescription
+  const currentUrl = `${siteData.siteRoot}${pathname}`
 
   return (
-    <>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical='https://www.canonical.ie/'
-        openGraph={{
-          url: `${siteData.siteRoot}${pathname}`,
-          title,
-          description,
-          images: [{
-            url: `${siteData.siteRoot}/apple-touch-icon.png`,
-            width: 180,
-            height: 180,
-            alt: siteData.siteTitle
-          }],
-          site_name: siteData.siteTitle
-        }}
-        twitter={{
-          handle: '@handle',
-          site: '@site',
-          cardType: 'summary_large_image'
-        }}
-      />
-    </>
+    <NextSeo
+      title={title}
+      description={description}
+      canonical={currentUrl}
+      openGraph={{
+        url: currentUrl,
+        title,
+        description,
+        images: [{
+          url: `${siteData.siteRoot}/apple-touch-icon.png`,
+          width: 180,
+          height: 180,
+          alt: siteData.siteTitle
+        }],
+        site_name: siteData.siteTitle
+      }}
+      twitter={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image'
+      }}
+    />
   )
 }
 
