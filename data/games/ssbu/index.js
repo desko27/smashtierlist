@@ -7,15 +7,15 @@ module.exports = {
   description: `
     <p>
       This is the latest and most widely-accepted smash tier list for
-      <a href="https://www.ssbwiki.com/Super_Smash_Bros._Ultimate">Super Smash Bros. Ultimate</a>
-      from Nintendo Switch, produced by ZeRo (who is considered
-      the best SSB4 player in the world) and last updated
-      on February 13th, 2020. Reflects version 7.0.0 of the game.
+      Super Smash Bros. Ultimate from Nintendo Switch and last updated
+      on February 18th, 2020. Reflects version 7.0.0 of the game.
     </p>
     <p>
-      To learn more about how this tier list is made you can check
-      <a href="https://www.youtube.com/channel/UCc8JKj5y6NVUd7RooLMvjdQ">ZeRo's channel</a> and
-      <a href="https://twitter.com/zerowondering">his Twitter account</a>.
+      What you see is the <a href="https://twitter.com/jaaahsh/status/1229812803852173313">PGRUv2 Ultimate Tier List</a>
+      and it was created by
+      sending an anonymous survey to the top 50 players in the world in Smash
+      Ultimate. The result is an unbiased real opinion on what the pro
+      players think of the game.
     </p>
   `,
   tiers: [
@@ -23,30 +23,34 @@ module.exports = {
       name: 'S',
       color: '#d0021b',
       characters: [
+        'palutena',
+        'joker',
         'peach',
         'daisy',
-        'zero-suit-samus',
         'pikachu',
-        'joker'
+        'zero-suit-samus'
       ]
     },
     {
       name: 'A',
       color: '#f5a623',
       characters: [
-        'inkling',
-        'palutena',
-        'snake',
-        'fox',
-        'wolf',
-        'olimar',
-        'shulk',
-        'mr-game-watch',
-        'pokemon-trainer',
-        'lucina',
         'wario',
+        'lucina',
+        'shulk',
+        'pokemon-trainer',
+        'inkling',
+        'wolf',
+        'fox',
+        'snake',
+        'mario',
+        'mr-game-watch',
         'rob',
+        'roy',
         'pac-man',
+        'greninja',
+        'chrom',
+        'olimar',
         'megaman'
       ]
     },
@@ -54,82 +58,79 @@ module.exports = {
       name: 'B',
       color: '#7ed321',
       characters: [
-        'samus',
-        'dark-samus',
         'ken',
-        'ryu',
-        'rosalina',
-        'piranha-plant',
-        'sonic',
-        'diddy-kong',
+        'terry',
+        'pichu',
         'yoshi',
         'young-link',
-        'toon-link',
-        'roy',
-        'chrom',
-        'mario',
-        'terry',
         'link',
-        'ness',
-        'luigi',
-        'greninja',
+        'sonic',
+        'samus',
+        'dark-samus',
         'cloud',
-        'byleth',
-        'banjo-and-kazooie',
-        'ice-climbers'
+        'bowser',
+        'ryu',
+        'ness'
       ]
     },
     {
       name: 'C',
       color: '#50e3c2',
       characters: [
-        'pichu',
-        'sheik',
-        'lucas',
-        'bowser',
-        'donkey-kong',
-        'king-dedede',
-        'mii-brawler',
-        'zelda',
-        'robin',
-        'wii-fit-trainer',
-        'villager',
-        'lucario',
+        'rosalina',
         'ike',
-        'incineroar',
-        'meta-knight',
         'marth',
+        'diddy-kong',
+        'toon-link',
+        'luigi',
         'duck-hunt',
-        'mii-swordfighter',
-        'mii-gunner',
-        'bayonetta',
-        'mewtwo',
-        'falco',
-        'ridley',
-        'isabelle',
-        'richter',
-        'pit',
         'hero',
-        'dr-mario',
-        'corrin',
-        'captain-falcon',
-        'ganondorf',
-        'bowser-jr'
+        'wii-fit-trainer',
+        'banjo-and-kazooie',
+        'falco',
+        'lucas'
       ]
     },
     {
       name: 'D',
       color: '#4a90e2',
       characters: [
-        'jigglypuff',
-        'kirby',
-        'king-k-rool'
+        'captain-falcon',
+        'ice-climbers',
+        'sheik',
+        'byleth',
+        'zelda',
+        'ridley',
+        'meta-knight',
+        'robin',
+        'simon',
+        'richter',
+        'mii-brawler',
+        'villager',
+        'lucario',
+        'piranha-plant',
+        'mii-swordfighter'
       ]
     },
     {
       name: 'E',
       color: '#bd10e0',
       characters: [
+        'mii-gunner',
+        'mewtwo',
+        'pit',
+        'donkey-kong',
+        'corrin',
+        'incineroar',
+        'bowser-jr',
+        'bayonetta',
+        'dr-mario',
+        'isabelle',
+        'king-dedede',
+        'jigglypuff',
+        'kirby',
+        'king-k-rool',
+        'ganondorf',
         'little-mac'
       ]
     }
